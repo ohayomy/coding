@@ -1,6 +1,10 @@
 
 #title
 content
+<<<<<<< HEAD
 master
+=======
+o2
+>>>>>>> o2
 #title
 content
