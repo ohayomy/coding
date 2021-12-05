@@ -1,0 +1,2 @@
+1. position: absolute인 div도형을 감싸고 있는 태그에는 relative속성을 주어야 함
+2. 안쪽에 float: left,right 속성을 줬다면 바깥쪽 태그에 overflow:hidden을 주어야 함

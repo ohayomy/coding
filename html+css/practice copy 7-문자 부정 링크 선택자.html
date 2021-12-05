@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+
+    <style>
+
+        p:first-letter {
+            font-size: 50px;
+            
+        }
+        p:first-line {
+            color: red;
+        }
+        p:first-child::selection {
+            background-color:yellow;
+        }
+        
+        p:not(first-letter) {
+           font-size: 0.8em;
+        }
+        div:not(#second) {
+            font-size: 200%;
+        }
+
+        a::after {
+            content:'-' attr(href)
+
+        }
+        
+
+    </style>
+
+
+    </head>
+
+<body>
+    <div>
+<p>바꾸기를 원치 않는 위치에서도 변화가<br>
+    바꾸기를 원치 않는 위치에서도 변화가</p>
+<p>바꾸기를 원치 않는 위치에서도 변화가<br>
+    바꾸기를 원치 않는 위치에서도 변화가</p>
+<p>바꾸기를 원치 않는 위치에서도 변화가<br>
+    바꾸기를 원치 않는 위치에서도 변화가</p>
+   </div>
+    <div id="second">
+<p>바꾸기를 원치 않는 위치에서도 변화가<br>
+    바꾸기를 원치 않는 위치에서도 변화가</p>
+<p>바꾸기를 원치 않는 위치에서도 변화가<br>
+    바꾸기를 원치 않는 위치에서도 변화가</p>
+<p>바꾸기를 원치 않는 위치에서도 변화가<br>
+    바꾸기를 원치 않는 위치에서도 변화가</p>
+   </div>
+<div>
+    <ol>
+        <li><a href="http://www.google.com" target='_blank'>구글</a></li>
+        <li><a href="http://www.naver.com" target='_blank'>네이버</a></li>
+    </ol>
+</div>
+
+</body>
+
+</html>

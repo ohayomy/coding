@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title>패딩과 보더박스의 충돌?</title>
+
+    <style>
+        * {
+        text-align: center;
+        font-weight: bold;
+        font-size: 20px;
+        }
+        
+        div:nth-child(1){
+        width: 200px; height: 200px;
+        background-color: red;
+        margin: 10px;
+        border: 10px solid black;
+
+        }
+        div:nth-child(2){
+        width: 200px; height: 200px;
+        background-color: green;
+        padding: 10px;
+        border: 10px solid black;
+        }
+        div:nth-child(3){
+        width: 200px; height: 200px;
+        background-color: blue;
+        margin: 10px;
+        box-sizing: border-box;
+        border: 10px solid black;
+        }
+        div:nth-child(4){
+        width: 200px; height: 200px;
+        background-color: yellow;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 10px solid black;
+        }
+        
+    </style>
+
+
+    </head>
+
+<body>
+<div>마진있고 보더바깥</div>
+<div>패딩있고 보더바깥</div>
+<div>마진있고 보더안쪽</div>
+<div>패딩있고 보더안쪽</div>
+
+
+</body>
+
+</html>
