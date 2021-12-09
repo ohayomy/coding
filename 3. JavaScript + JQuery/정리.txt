@@ -120,14 +120,18 @@ if (<불 표현식>) {
         case<값1> :
              <문장>
                   break;
- switch(<표현식>) {
+
         case<값2> :
              <문장>
                   break;
- switch(<표현식>) {
+ 
         case<값3> :
              <문장>
                   break;
+          default:
+             <문장>
+                  break;
+                        }
 
 @삼항연산자
 if else 조건문을 짧게 줄인 형태
@@ -170,7 +174,7 @@ while(true) {    명령어      } ; 을 시행하면 무한루프가 된다.
 괄호값이 false로 변하면 while문은 시행을 멈춘다.
 
 var i=0;
-while (i<10) { alert(i), i++; }
+while (i<10) { alert(i), i++; };
 등등.	
 
 
