@@ -1,0 +1,6 @@
+1. div태그에 background-image를 넣을 때는 width와 height를 지정해야함
+2. li태그를 가로정렬시킬 때 float:left를 사용하면 공백없이 다닥다닥 붙지만,
+   display:inline을 사용하면 자동 띄어쓰기된다.
+3. 그러나 display:inline을 사용하면 width나 height값은 무시되며 padding과 margin값도 가로로만 적용된다.
+4. 일반 div태그를 하나 만들면 좌측 페이지 시작부터 우측 페이지 끝까지만큼 긴 블록이 생긴다고 보면 된다.
+   그러나 div태그에 float:left를 넣어주면 div 태그는 딱 그 안의 글자를 둘러쌀만큼으로 짧아진다.

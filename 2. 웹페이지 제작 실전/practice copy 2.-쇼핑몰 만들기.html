@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title>쇼핑몰 사이트 만들기</title>
+
+    <style>
+        html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;}
+        #gnb {
+            width: 100%; background-color: brown;
+            
+        }
+        #gnb ul{
+            overflow: hidden; height: 30px; line-height: 30px;
+            width: 1000px; margin: 0 auto; 
+        }
+        #gnb ul li{
+            list-style: none; float:left; margin-left: 50px;
+            font-size: 0.9em;
+            
+        }
+        #gnb a {
+            color: white; text-decoration: none;
+        }
+        #logo {
+            width: 200px; height: 100px;
+            border:1px solid black; margin: 70px auto;
+            text-align: center; line-height: 100px;
+        }
+        #hit {
+          
+
+        }
+        #hit ul{ overflow: hidden; width:1000px;
+             margin: 0 auto 3px;
+
+        }
+        #hit ul li{
+            list-style: none; float:right; text-align: center;
+            border:1px solid black; 
+            
+        }
+        #hit a { font-size: 1.1em;
+            padding: 10px 30px; display:block; color: black;
+            text-decoration: none;
+
+        }
+        #hit li:first-child { border-radius: 0 10px 10px 0;
+
+        }
+        #hit li:last-child { border-radius: 10px 0 0 10px;
+
+        }
+        #lnb { border-top:1px dashed black;
+            border-bottom: 1px dashed black;
+            width: 100%;  height: 30px;
+            padding: 5px;
+
+        }
+        #lnb ul{overflow: hidden; width: 1000px;
+            margin: 0 auto;
+          
+
+        }
+        #lnb li{list-style: none; float:left; margin: 5px;
+                line-height: 25px; 
+        }
+        #lnb a{
+            font-size: 1.1em; padding: 10px 30px; 
+            text-decoration: none; color: black; 
+
+        }
+        #sec1, #sec2 {
+            width: 1000px; margin: 0 auto;
+            overflow: hidden;
+
+
+        }
+        #sec1 div{ height: 400px; line-height: 400px;
+            text-align: center; 
+        }
+        .slide_banner {border:1px solid black;
+            box-sizing: border-box;
+            float: left; width: 700px;
+
+
+        }
+        .side_banner {border:1px solid black;
+            box-sizing: border-box;
+            float: left; width: 300px;
+
+
+        }
+        #sec2 div {
+            margin-top: 10px;
+            width: 1000px; height: 400px; line-height: 400px;
+            text-align: center; border:1px solid black;
+            box-sizing: border-box;
+
+        }
+
+        .hit_product {overflow: hidden;
+
+        }
+
+
+        .hit_product ul li{ list-style: none; float: left;
+            margin: 0 7px 0 0; width: 240px; border: 1px solid black;
+            box-sizing: border-box;
+
+        }
+        .hit_product li:first-child{
+            margin-left: 7px;
+
+        }
+
+        #sec2 a{ text-decoration: none; color: black;
+        }
+
+
+        .md_product { overflow: hidden;
+
+        }
+        .md_product ul li {list-style: none; float: left;
+            margin: 0 7px 0 0; width: 240px; border: 1px solid black;
+            box-sizing: border-box;
+
+        }
+        .md_product li:first-child {
+            margin-left: 7px;
+        }
+
+        footer {
+            width: 1000px; height: 310px; margin: 20px auto 0;
+            overflow: hidden;
+        }
+        footer div{
+            float:left; height: 250px;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+        footer div:nth-child(1) {
+            width: 200px;
+        }
+        footer div:nth-child(2) {
+            width: 500px;
+        }
+        footer div:nth-child(3) {
+            width: 300px;
+        }
+        footer div:nth-child(4) {
+            width: 1000px; margin: 10px auto 0;
+            background-color: #242424; color: white;
+            line-height: 50px; height: 50px; text-align: center;
+        }
+
+        
+    </style>
+
+
+    </head>
+
+<body>
+    <header>
+        <div id="gnb">
+            <ul>
+                <li><a href="http://">Login</a></li>
+                <li><a href="http://">Join us</a></li>
+                <li><a href="http://">Wish list</a></li>
+                <li><a href="http://">Cart</a></li>
+                <li><a href="http://">Order</a></li>
+                <li><a href="http://">Mypage</a></li>
+                <li><a href="http://">Notice</a></li>
+                <li><a href="http://">QnA</a></li>
+                <li><a href="http://">Review</a></li>
+                <li><a href="http://">Favorite</a></li>
+               
+            </ul>
+        </div>
+        <div id="logo">Logo</div>
+        <div id="hit">
+            <ul>
+                <li><a href="http://">hit4</a></li>
+                <li><a href="http://">hit3</a></li>
+                <li><a href="http://">hit2</a></li>
+                <li><a href="http://">hit1</a></li>
+               
+            </ul>
+        </div>
+        <div id="lnb">
+            <ul>
+                <li><a href="http://">menu1</a></li>
+                <li><a href="http://">menu2</a></li>
+                <li><a href="http://">menu3</a></li>
+                <li><a href="http://">menu4</a></li>
+                <li><a href="http://">menu5</a></li>
+                <li><a href="http://">menu6</a></li>
+                <li><a href="http://">menu7</a></li>
+                <li><a href="http://">menu8</a></li>
+                
+              
+            </ul>
+        </div>
+    </header>
+
+    <section>
+        <div id="sec1">
+            <div class="slide_banner">slide bannner</div>
+            <div class="side_banner">side banner</div>
+
+        </div>
+
+        <div id="sec2">
+            <div class="hit_product">
+                <ul>
+                    <li><a href="http://">hit product1</a></li>
+                    <li><a href="http://">hit product2</a></li>
+                    <li><a href="http://">hit product3</a></li>
+                    <li><a href="http://">hit product4</a></li>
+                </ul>
+            </div>
+            <div class="md_product">
+                <ul>
+                    <li><a href="http://">md product1</a></li>
+                    <li><a href="http://">md product2</a></li>
+                    <li><a href="http://">md product3</a></li>
+                    <li><a href="http://">md product4</a></li>
+                    
+                </ul>
+                
+            </div>
+            
+        </div>
+
+
+    </section>
+
+    <footer>
+        <div class="office_logo">office logo</div>
+        <div class="office_address">office address</div>
+        <div class="shopping_info">shopping info</div>
+        <div class="copyright">copyright</div>
+
+    </footer>
+
+</body>
+
+</html>

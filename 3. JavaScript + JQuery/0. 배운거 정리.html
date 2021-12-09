@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>배운거 정리</title>
+
+    <script>
+    var input = prompt('용어, 식별자, 문자자료형, 불자료형, 질문', '키워드를 입력해주세요');
+        
+    switch(input) {
+        case "용어": console.log('표현식: 값을 만들어내는 코드\n키워드: 의미가 담긴 단어(태그같은 역할)\n식별자: 우리가 편의상 지은 이름');
+        break;
+        case "식별자": console.log('식별자: 우리가 편의상 지은 이름\n          키워드를 제외해야하며\n          첫글자는 숫자가 안되고\n          특수문자는 _와 $만 허용\n          공백 불가\n          항상 대문자로 시작(변수와 인스턴스, 함수 메서드의 이름은 항상 소문자로시작)\n          여러 단어는 각 단어 첫글자를 대문자로(IAmABoy)\nIAmABoy-camel case\ni_am_a_boy-snake case\n식별자의 종류\n괄호 없고 단독: 변수           괄호없고 다른 식별자와 병용: 속성\n괄호 있고 단독: 함수           괄호있고 다른 식별자와 병용: 메서드');
+        break;
+        case "문자자료형": console.log('문자 자료형: 큰따옴표와 작은따옴표를 혼용하며 상황에 맞게 사용.\n                백슬래시+따옴표를 쓰면 내부에서 쓰는 따옴표로 인식하므로\n                둘중 하나만을 단독사용 할 수도 있다.\n출력방식: alert("안녕하세요"); 팝업창이 뜸        console.log("안녕하세요"); F12누르면보임');
+        break;
+        case "불자료형": console.log('@불 자료형\n값이 true, false 두개로 나오는 모든 연산\n true=1 false=0\n\n@논리연산자\n논리부정연산자: not      !\n논리곱연산자: and        &&\n논리합연산자: or          ||\n\n\ntrue && true =true\ntrue && false =false\nfalse && true =false\nfalse && false =false\n\ntrue || true =true\ntrue || false =true\nfalse || true =true\nfalse || false =false');
+        break;
+        case "질문": alert('외부 텍스트 붙여넣기 할 때 엔터친 부분이 있으면 명령어가 중간에 끊기는 부분에 대해서')
+
+
+    
+    
+    
+    
+    default: alert('등재되지 않은 키워드입니다.')
+    }
+       
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

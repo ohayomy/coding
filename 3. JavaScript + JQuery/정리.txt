@@ -1,0 +1,177 @@
+표현식: 값을 만들어내는 코드
+키워드: 의미가 담긴 단어(태그같은 역할)
+식별자: 우리가 편의상 지은 이름
+          키워드를 제외해야하며
+          첫글자는 숫자가 안되고
+          특수문자는 _와 $만 허용
+          공백 불가
+          항상 대문자로 시작(변수와 인스턴스, 함수 메서드의 이름은 항상 소문자로시작)
+          여러 단어는 각 단어 첫글자를 대문자로(IAmABoy)
+IAmABoy-camel case
+i_am_a_boy-snake case
+
+
+@식별자의 종류
+괄호 없고 단독: 변수           괄호없고 다른 식별자와 병용: 속성
+괄호 있고 단독: 함수           괄호있고 다른 식별자와 병용: 메서드
+ 
+
+
+
+
+@문자 자료형: 큰따옴표와 작은따옴표를 혼용하며 상황에 맞게 사용.
+                백슬래시+따옴표를 쓰면 내부에서 쓰는 따옴표로 인식하므로
+                둘중 하나만을 단독사용 할 수도 있다.
+@출력방식: alert("안녕하세요"); 팝업창이 뜸        console.log("안녕하세요"); F12누르면보임
+                
+
+숫자 자료형
+
+@불 자료형
+값이 true, false 두개로 나오는 모든 연산
+ true=1 false=0
+
+@논리연산자
+논리부정연산자: not      !
+논리곱연산자: and        &&
+논리합연산자: or          ||
+
+true && true =true
+true && false =false
+false && true =false
+false && false =false
+
+true || true =true
+true || false =true
+false || true =true
+false || false =false
+
+
+
+
+변수
+변수와 연산자
+자료형 검사와 입력
+
+
+
+자료형 변환
+1,강제 자료형 변환: 개발자가 원하는 시점에 특정한 코드로 자료형 변화
+2. 자동(암묵적) 자료형 변환: 프로그래밍 언어가 내부적으로 자동으로 자료형 변환
+
+
+
+@강제 자료형 변환
+1.숫자로변환
+숫자형 문자열 숫자로 변환= 그대로 숫자로출력
+문자를 숫자로 변환시:NaN Not a Number
+ true=1 false=0
+
+2.문자로변환
+숫자를 문자열로 변환 =그대로 숫자로 출력
+true=true false=false
+
+3.불로 변환
+alert(Boolean(0));
+alert(Boolean(NaN));
+alert(Boolean(''));
+alert(Boolean(null));
+alert(Boolean(undefined));
+alert(Boolean(false));
+만 false값이고 나머지는 true.
+(alert(Boolean('0'));과 alert(Boolean('false'))는 문자열이므로 true 이다.)
+
+@자동 자료형 변환
+숫자 + 문자(숫자형 문자열) =문자
+
+<어떤자료형> <덧셈을 제외한 연산자> 숫자 = 숫자
+
+100 + "" == String(100)
+
+@일치 연산자
+==, != 최대한 유연하게 자료 비교    (ex) 10=="10")
+===, !== 최대한 유연하지 않게 자료 비교  
+
+var 대신
+let a = 10;
+const constantA = 10;
+
+${ }로 문자열 도중 연산식 삽입가능
+
+(typeof -연산자)
+
+var date = new Date();            현재시간불러오기
+var todaydate = date.getDate();
+alert(month)를 할때 컴퓨터가 0월부터 세는 경우가 있어서 
+5월은 4월로 뜸, 확인을 해줘야 함
+
+@if 조건문
+if (<불 표현식>) {          } else {       }
+
+if else가 반복될 경우 중첩조건문이라 하며 사이else 뒤 { }를 생략하여
+if (<불 표현식>) {     
+     } else if (<불 표현식>) {
+     } else if (<불 표현식>) {
+     }
+등으로 표현가능
+
+@switch조건문
+ switch(<표현식>) {
+        case<값1> :
+             <문장>
+                  break;
+ switch(<표현식>) {
+        case<값2> :
+             <문장>
+                  break;
+ switch(<표현식>) {
+        case<값3> :
+             <문장>
+                  break;
+
+@삼항연산자
+if else 조건문을 짧게 줄인 형태
+
+예시) if (number > 0) { alert('양수입니다'); }
+                else { alert('0또는 음수입니다'); }
+
+변환) (number > 0 ) ? alert('양수입니다') : alert('0또는 음수입니다') ;
+
+
+@짧은 조건문
+논리연산자를 활용한 짧게만든 조건문
+
+
+@indexOf 메서드
+"자바에서 백슬래시와 따옴표는 그대로 출력되지 않는다".indexOf("자바")         --- 0
+"자바에서 백슬래시와 따옴표는 그대로 출력되지 않는다".indexOf("사과")         --- -1
+
+@배열 기본
+var array=[a, b, c, d, e];
+각각의 요소는 엘리멘트, 그리고 순서가 인덱스가 된다.
+이 때 a는 Zero index가 되며 e는 4가된다
+
+array[0]=a, array[1]=b, array[4]=e
+
+array관련 키워드 중
+array.length는 array.length는 마지막 인덱스보다 1이 더높다.
+array.push를 이용하면 마지막요소 뒤에 입력값을 추가할 수 있다.
+이를 활용해서
+array[array.length - 1] 로 인덱스 마지막 요소를 추출할 수 있다.
+array[array.length]=f; 로 array.push의 역할이 가능.
+array.splice(x, y)로 x번째 인덱스부터 y개의 요소를 삭제할 수 있다.
+
+var string = "가나다라마바사" ;
+인 문자열에서도 string.length와 string[a]=b;를 쓸수있다.
+왜인지 string[a]=b ; 는 실행되지않는다.
+
+@while반복문
+while(true) {    명령어      } ; 을 시행하면 무한루프가 된다.
+괄호값이 false로 변하면 while문은 시행을 멈춘다.
+
+var i=0;
+while (i<10) { alert(i), i++; }
+등등.	
+
+
+

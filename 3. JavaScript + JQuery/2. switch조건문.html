@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script>
+        var rawInput = prompt('숫자를 입력해주세요', '숫자');
+        if (rawInput =='') {
+            rawInput = "adsafsdfa"
+        }
+        var input = Number(rawInput);
+
+
+       switch(input%2) {
+           case 1: alert('홀수입니다.');
+            break;
+           case 0: alert('짝수입니다.');
+            break;
+           default: alert('숫자가 아닙니다');
+            break;
+       }
+       
+       
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
