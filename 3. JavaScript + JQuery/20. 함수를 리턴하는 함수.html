@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script>
+        function returnFunction() {
+            var output = function() {
+                alert("hello world");
+            };
+            return output;
+        }
+      
+        returnfunction()();
+        
+    </script>
+</head>
+<body>
+    <h1>f(g(x))꼴-합성함수, 위의 에러는 외부함수가 정의되지않았기때문</h1>
+    
+</body>
+</html>

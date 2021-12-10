@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script>
+        function testA() {
+            alert("testA 위치입니다");
+            alert("testA 위치입니다");
+            alert("testA 위치입니다");
+        }
+        
+        var testB = function() {
+            alert("testB 위치입니다");
+            alert("testB 위치입니다");
+            alert("testB 위치입니다");
+            
+        };
+
+        testA();
+        testB();
+
+
+        var test = function () {alert("B입니다");}
+        function test() {alert("A입니다");}
+
+        test ();
+
+      
+    </script>
+</head>
+<body>
+    <p>위에껀 이름있는함수(선언적함수)로 가장먼저 호출된다.<br>
+        아래껀 이름없는함수(익명함수)로 일반적인 호출방식대로 된다<br>
+        그것이 아랫줄에서 B입니다 가 뜨는 이유
+    </p>
+    <h1>상수함수꼴</h1>
+    
+</body>
+</html>

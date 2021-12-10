@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script>
+        var array = [52, 273, 103, 32, 57, 103, 31, 2];
+        
+        for (var i=0; i<8; i++) {
+            for (var h=0; h<8; h++ ){
+               if(array[i] > array[h]) {
+                   array[i]= 999;
+                   break;
+               }
+               
+                       }
+          
+        }
+        alert(array);
+        
+      
+    </script>
+</head>
+<body>
+    <p>맨처음에 array[i]=0;이라고 써놧어서 안구해지는거였음<br>앞쪽 요소가 0으로 변하니까 자연스레 0이 최소값이되면서 2도 0으로 변해버렷다.<br>반복문의 앞호출이 뒤호출에 영향을 줄 수 있다.
+    </p>
+</body>
+</html>

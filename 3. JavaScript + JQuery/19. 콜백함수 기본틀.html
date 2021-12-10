@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script>
+        function callTwoTimes(callback) {
+            for (var i=0; i<2; i++) {
+                callback();
+            }
+
+        }
+        function testA() { alert("testA함수입니다")}
+        var testB = function() {alert("testB함수입니다")}
+
+
+        callTwoTimes(testA);
+        callTwoTimes(testB);
+
+      
+    </script>
+</head>
+<body>
+    <h1>f<sup>n</sup>(x)꼴</h1>
+    
+</body>
+</html>

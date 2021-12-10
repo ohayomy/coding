@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script>
+        function test(a, b, c) {
+            if (typeof (a) == "undefined") {a=10;}
+            if (!b) {b=20;}
+            c = c || 30;
+
+            alert(a+b+c);
+        }
+
+        test(10, 20, 30);
+        test();
+      
+        function test(a=10, b=20, c=30) {
+            alert(a+b+c);
+        }
+
+        test();
+    </script>
+</head>
+<body>
+    <p>마지막 방법은  c만 비우는 것은 안된다. a만 비우는 것은 가능하므로
+        미정변수는 앞쪽에 배치하도록 한다.
+    </p>
+    
+</body>
+</html>

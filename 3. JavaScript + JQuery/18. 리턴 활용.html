@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script>
+        function findNumber(array, number) {
+            if (!Array.isArray(array)) {return;}
+            if (typeof (number) !="number") {return;}
+
+            for (var i=0; i < array.length; i++){
+                if (array[i] == number) {
+                    return i;
+                }
+            }
+        }
+
+        var output = findNumber([1,2,3,4,5,6,7], 4);
+        alert(output);
+        
+
+
+
+
+      
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

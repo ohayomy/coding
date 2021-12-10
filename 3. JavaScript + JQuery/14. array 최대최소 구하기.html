@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script>
+        var array = [52, 273, 103, 32, 57, 103, 31, 2];
+        var min = 99999999999;
+        for (var i=0; i < array.length; i++) {
+            if (min > array[i]){
+                min = array[i];
+            }
+        }
+        alert(min);
+
+        var max = -99999999;
+        for (var i=0; i<array.length; i++) {
+            if (max < array[i]) {
+                max = array[i];
+            } 
+        }
+        alert(max);
+      
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

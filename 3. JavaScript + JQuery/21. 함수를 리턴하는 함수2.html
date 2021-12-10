@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script>
+        function returnFunction(data) {
+            var a = data *1;
+            var b = data *2;
+            var c = data *3;
+            
+            return function () {
+                alert(a);
+                alert(b);
+                alert(c);
+            }
+
+        }
+        returnFunction(10)();
+        returnFunction(20)();
+        returnFunction(30)();
+      
+    </script>
+</head>
+<body>
+    <h1>  외부함수와 내부함수라고 칭할 때, 내부함수를 외부함수 바깥에서 개별적으로 사용하는 것은 에러가 난다. 반대로 바깥에서 내부함수의 변수나 인자를 건드릴 수 없다. 따라서 내부함수의 변수를 보호하는 것이 가능하다.</h1>
+    
+</body>
+</html>

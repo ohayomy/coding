@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script>
+        var SECOND = 1000;
+        var id = setInterval(function () {
+            alert("1초마다 실행합니다");
+        }, 1*SECOND)
+
+        setTimeout(function() {
+            clearInterval(id);
+        }, 3*SECOND)
+        
+      
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
