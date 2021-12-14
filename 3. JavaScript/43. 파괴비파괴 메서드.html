@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script>
+        var string = "Hello World...!";
+        string = string.toUpperCase();
+
+        alert(string); 
+        // 비파괴적 메서드는 =을 붙여서 표현
+
+        // array.push같은 파괴적 메서드는 바로씀
+
+        string = string.fontcolor("red").anchor("test").toUpperCase();
+        alert(string);
+
+        // 비파괴 메서드는 이처럼 체인으로 연결할 수 있다.
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

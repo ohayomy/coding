@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script>
+        var originalValue = 10;
+        var newValue = originalValue;
+        originalValue = 273;
+        alert(originalValue);
+        alert(newValue);
+      
+
+        var originalArray = [1, 2, 3, 4];
+        var newArray = originalArray;
+        originalArray[0] = 273;
+        alert(originalArray);
+        alert(newArray);
+
+
+
+
+    </script>
+</head>
+<body>
+    <h1>위에는 단순 그당시 값복사이고, 밑에는 주소복사이다. 메모리주소 자체를 할당해버리기때문에 한몸처럼 움직이는 것(객체와 배열).</h1>
+    
+</body>
+</html>

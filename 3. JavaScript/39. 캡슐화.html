@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script>
+        function Rectangle (width, height) {
+            var _width = width;
+            var _height = height;
+            
+            this.getWidth = function () {
+                return _width;
+            }
+            this.getHeight = function () {
+                return _height;
+            }
+            this.setWidth = function (value) {
+                if(value <= 0) {
+                    return alert("0보다 작은 값은 넣을 수 없습니다.");
+                }
+                _width = value;
+            }
+            this.setHeight = function (value) {
+                if(value <= 0) {
+                    return alert("0보다 작은 값은 넣을 수 없습니다.");
+                }
+                _height = value;
+            }
+        }
+
+
+
+
+
+        Rectangle.prototype.getArea = function () {
+            return this.getWidth() * this.getHeight();
+        }
+
+        var rectangle = new Rectangle(5, 7);
+        rectangle.setHeight(-10);
+        // rectangle.setHeight(30);
+        
+        alert('Area: ' + rectangle.getArea());
+
+
+      
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

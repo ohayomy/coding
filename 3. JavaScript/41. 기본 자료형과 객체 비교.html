@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script>
+        var primitiveNumber = 273;
+        var objectNumber = new Number(273);
+        // 넘버라는 생성자함수로 오브젝트넘버라는 객체 생성
+
+        var output = '';
+        output += typeof (primitiveNumber) + ":" + primitiveNumber + "\n"
+        output += typeof (objectNumber) + ":" + objectNumber;
+        alert(output);
+
+        objectNumber.a= 10;
+        alert(objectNumber.a);
+        // 오브젝트라서 a라는 속성에 속성값 부여
+
+        Number.prototype.power = function () {
+            return this * this;
+        };
+
+        alert(primitiveNumber.power());
+        // 일회용 옷에 메서드를 추가
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

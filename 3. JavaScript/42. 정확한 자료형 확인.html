@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script>
+        function isNumber (value) {
+            return value.constructor === Number ;
+        }
+        var primitiveNumber = 273;
+        var objectNumber = new Number(52);
+
+        alert(isNumber(primitiveNumber));
+        alert(isNumber(objectNumber));
+
+
+
+        var _ = {};
+        _["isNumber"] = function (obj) {
+            return toString.call(obj) ==='[object Number]';
+        }
+    //   isNumber의 구현방법
+
+        alert(({}).toString.call(10));
+        alert(({}).toString.call("문자열"));
+        alert(({}).toString.call(new Date()));
+        // call이 toString메서드의 기능을 자기 자신의 것으로 바꿔서 내부에 constructor 이름을
+            // 출력하게 만든다?
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
