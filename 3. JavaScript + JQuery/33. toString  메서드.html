@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script>
+      
+      var student = {};
+      student.toString = function () {
+          return "안녕하세요";
+      }
+
+      alert(student);
+      alert(student + "...!");
+
+      // 단순히 student라는 오브젝트를 호출함에도 투스트링 문자가 자동으로 호출됨.
+    
+      var noStudent = {};
+      noStudent.toString = function () {
+          return "안녕하세요";
+      }
+
+      alert(noStudent);
+      alert(noStudent + "...!");
+
+
+      alert(noStudent.toString());
+
+    // 투스트링을 직접 호출해도 되긴 된다.
+      
+
+
+    </script>
+</head>
+<body>
+  <h1>자바스크립트에 모든 객체들이 기본적으로 갖고잇다.
+  함수로 선언이 되며 문자열로 변환될 때 자동으로 호출됨<br>투스트링을 직접 호출해도 되긴 된다.
+</h1>
+    
+</body>
+</html>

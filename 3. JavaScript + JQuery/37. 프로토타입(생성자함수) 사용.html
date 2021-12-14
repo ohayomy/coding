@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script>
+        function Student(이름, 국어, 수학, 영어, 과학) {
+            this.이름 = 이름;
+            this.국어 = 국어;
+            this.수학 = 수학;
+            this.영어 = 영어;
+            this.과학 = 과학;
+        }
+        // 단순 객체구현과 다르게 따로 오브젝트 생성을 하지 않는다.
+        // 생성자 함수는 첫 글자가 대문자이다.
+        
+        Student.prototype.getSum = function () {
+            return this.국어 + this.수학 + this.영어 + this.과학;
+        }
+        Student.prototype.getAver = function () {
+            return this.getSum() / 4;
+        }
+        Student.prototype.toString = function () {
+            return this.이름 + "\t" + this.getSum() + "\t" + "\t" + this.getAver() + "\n";
+        }
+
+        
+
+        var students = [];
+        students.push(new Student("윤인성", 80, 34, 35, 93));
+        students.push(new Student("윤아린", 45, 23, 96, 65));
+        students.push(new Student("구지연", 65, 34, 65, 64));
+        students.push(new Student("구지연", 65, 34, 65, 64));
+        students.push(new Student("구지연", 65, 34, 65, 64));
+        students.push(new Student("구지연", 65, 34, 65, 64));
+
+         
+        // 생성자 함수를 호출할때는 구분을 위해 앞에 new를 붙인다
+        // var instance = new Student("윤인성", 80, 34, 35, 93) 가 된다. 다시말해
+        //    생성자 함수를 거친 객체 데이터를 각각 인스턴스라고 부른다. 즉, students 어레이는
+        //    6개의 인스턴스를 가지는 것. 
+
+        var output = "이름\t평균\t총합\n";
+        for (let i = 0; i < students.length; i++) {
+            output += students[i].toString();
+            // 마찬가지로 toString 메서드가 아니어도 상관없는 부분이다.
+            
+        }
+        console.log(output);
+
+
+
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+    <h1>질문: students[i].toString(); 부분에서 students[i]. 의 점은 단순히 범위를 나타내는 건지? 혹은 object.toString처럼 함수의 이름을 나타내는 거라면 어떻게 toString이 호출된 것인지.                </h1>
+</body>
+</html>

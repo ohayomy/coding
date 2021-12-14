@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script>
+        class Student {
+            constructor(이름, 국어, 수학, 영어, 과학) {
+                this.이름 = 이름;
+                this.국어 = 국어;
+                this.수학 = 수학;
+                this.영어 = 영어;
+                this.과학 = 과학;
+            }
+        
+        getSum() {
+            return this.국어 + this.수학 + this.영어 + this.과학;
+        }
+        getAver() {
+            return this.getSum() / 4;
+        }
+        toString() {
+            return this.이름 + "\t" + this.getSum() + "\t" + "\t" + this.getAver() + "\n";
+        }
+
+    }
+        // 클래스 내부에서는 function 키워드를 따로 선언할 필요가 없다.
+
+
+
+        var students = [];
+        students.push(new Student("윤인성", 80, 34, 35, 93));
+        students.push(new Student("윤아린", 45, 23, 96, 65));
+        students.push(new Student("구지연", 65, 34, 65, 64));
+        students.push(new Student("구지연", 65, 34, 65, 64));
+        students.push(new Student("구지연", 65, 34, 65, 64));
+        students.push(new Student("구지연", 65, 34, 65, 64));
+
+        
+        var output = "이름\t평균\t총합\n";
+        for (let i = 0; i < students.length; i++) {
+            output += students[i].toString();
+        
+            
+        }
+        console.log(output);
+
+
+
+
+
+      
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

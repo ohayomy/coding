@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script>
+     function createStudent(이름, 국어, 수학, 영어, 과학) {
+         var object = {
+             이름: 이름,
+             국어: 국어,
+             수학: 수학,
+             영어: 영어,
+             과학: 과학
+         };
+
+         object.getSum = function () {
+             return this.국어 + this.수학 + this.영어 + this.과학;
+         }
+
+         object.getAver = function () {
+             return this.getSum() / 4;
+         }
+
+         object.toString = function () {
+             return this.이름 + "\t" + this.getSum() + "\t" + "\t" + this.getAver() + "\n";
+
+         }
+
+         return object;
+         
+     }
+
+    //  객체를 구현하는 부분
+
+
+     var students = [];
+     students.push(createStudent("윤인성", 80, 34, 35, 93));
+     students.push(createStudent("윤아린", 45, 23, 96, 65));
+     students.push(createStudent("구지연", 65, 34, 65, 64));
+     students.push(createStudent("구지연", 65, 34, 65, 64));
+     students.push(createStudent("구지연", 65, 34, 65, 64));
+     students.push(createStudent("구지연", 65, 34, 65, 64));
+
+    //  데이터를 생성하는 부분
+
+
+     var output = "이름\t총합\t평균\n";
+     for (let i = 0; i < students.length; i++) {
+         output += students[i].toString();
+        //  여기선 굳이 toString메서드를 쓰지 않아도 괜찮습니다
+         
+     }
+     console.log(output);
+
+    //  메인프로세스 부분
+
+
+      
+    </script>
+</head>
+<body>
+    <h1>1.객체를 구현하는 부분<br>2.데이터를 생성하는부분<br>3. 메인 프로세스 부분을 분할하여 분업과 추출, 수정에 용이해진 형태로서<br> 원시적인 방법에서 객체 지향 프로그래밍을 시킨것이다.<br>
+    그러나 만들어진 모든 오브젝트가 동일한 함수를 반복하여 생성하는 비효율성에 의해 프로토타입이라는 개념이 탄생한다(다음문서).</h1>
+</body>
+</html>

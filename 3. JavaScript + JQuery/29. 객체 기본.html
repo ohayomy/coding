@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script>
+        // 오브젝트 = 속성 + 속성값
+        var object = {
+            키A: "값A",
+            키B: "값B",
+            키C: "값C",
+            키D: "값D"
+
+        };
+
+        alert(object["키A"] + object["키B"]);
+        alert(object.키C + object.키D);
+
+        var kei = "키A"
+        alert(object[kei]);
+
+
+        // 총 3가지 방법이 있다.
+
+        
+        
+        for (var key in object) {
+            alert(key + ":" + object[key]);
+        }
+
+        
+
+      
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

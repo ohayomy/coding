@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script>
+        var students = [];
+        students.push({이름: '연하진', 국어: 87, 수학: 43, 영어: 34, 과학: 92});
+        students.push({이름: '김미화', 국어: 65, 수학: 53, 영어: 98, 과학: 23});
+        students.push({이름: '서준석', 국어: 24, 수학: 73, 영어: 98, 과학: 65});
+
+        var output = "이름\t총합\t평균\n";
+        for (var i = 0; i < students.length; i++) {
+           with (students[i]) {
+               var sumAll = 국어 + 수학 + 영어 + 과학;
+               var average = sumAll / 4 ;
+               output += 이름 + "\t" + sumAll + "\t\t" + average + "\n"; 
+           }
+            
+        }
+    
+    
+        console.log(output);
+
+
+
+
+        
+    </script>
+</head>
+<body>
+    <h1>현실에 있는 수많은 오브젝트들 중에 내가 필요한 속성만을 가져와서 객체화 하는 것을 "추상화"라고 한다</h1>
+    
+</body>
+</html>

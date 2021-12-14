@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script>
+      var student = {
+          이름: '연하진',
+          국어: 92, 수학: 98,
+          영어: 82, 과학: 98
+      };
+
+       alert('이름' in student);
+       alert('성별' in student);
+       var key = "국어";
+       alert(key in student);
+
+       with (student) {
+           var output = '';
+           output += '이름: ' + 이름 + '\n';
+           output += '국어: ' + 국어 + '\n';
+           output += '수학: ' + 수학 + '\n';
+           output += '영어: ' + 영어 + '\n';
+           output += '과학: ' + 과학 + '\n';
+           output += '총점: ' + (국어+수학+영어+과학);
+           alert(output);
+       }
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
