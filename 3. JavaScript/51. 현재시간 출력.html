@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script>
+      
+    </script>
+</head>
+<body>
+    <h1 id="clock"> </h1>
+    <script>
+        var clock = document.getElementById("clock");
+            clock.innerHTML = (new Date()).toString(); // 이렇게 하면 처음 1초딜레이 없어짐
+        setInterval(function () {
+            clock.innerHTML = (new Date()).toString();
+        }, 1000 * 1);
+
+
+    </script>
+
+
+
+</body>
+</html>

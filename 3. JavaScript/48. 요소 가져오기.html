@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script>
+        
+      
+    </script>
+</head>
+<body>
+    <h1 id="a" class="test">Hello World A</h1>
+    <h1 id="b">Hello World B</h1>
+  
+    <script>
+        var A = document.getElementById("a");
+        var B = document.getElementById("b");
+
+        A.setAttribute("title", "hello");    //f12로 확인가능
+        B.innerHTML = "html과 다르게 숫자값도 따옴표를 쓰고 font-size같은 건 하이푼을 빼고 대문자를 써서 fontSize와 같이 쓴다";
+        
+        
+        var headerA = document.querySelector("h1")
+        headerA.style.fontWeight = "bold";             //볼드안되네
+        var headerB = document.querySelector("#a")
+        headerB.style.fontSize = "70px";
+        var headerC = document.querySelector(".test")
+        headerC.style.fontStyle = "italic";
+        var headerD = document.querySelector("[title=hello]")
+        headerD.style.textAlign = "center";
+        //f12 보기
+
+        var array = document.querySelectorAll("h1");      // 배열로 리턴
+
+        var colors = ["red", "blue"];
+        for (var i=0; i <array.length; i++) {
+            array[i].style.color = colors[i];
+
+        }
+
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script src="underscore-umd.js"></script>
+    <script>
+        var array = [
+            {이름:"바나나", 가격: 500},
+            {이름:"사과", 가격: 600},
+            {이름:"배", 가격: 300}
+                    ];
+
+
+        // _.sortBy (array, function (item) {return item.가격;});
+        // // 함수 방식
+        // _(array).sortBy(function (item) {return item.가격;});
+        // // 객체 방식
+        // _.sortBy(array, (item) => item.가격);
+        // // 화살표함수 
+       
+        var output = _.sortBy(array, function (item) {
+            return item.가격;
+        });
+        console.log(output);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

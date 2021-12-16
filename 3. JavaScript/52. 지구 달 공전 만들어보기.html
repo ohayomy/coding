@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script>
+      
+    </script>
+</head>
+<body>
+
+    <h1 id="sun">@</h1>
+    <h1 id="earth">0</h1>
+    <h1 id="moon">*</h1>
+    <script>
+        var sun = document.getElementById("sun");
+        var earth = document.getElementById("earth");
+        var moon = document.getElementById("moon");
+        
+        var sunX = 250;
+        var sunY = 250;
+
+        sun.style.position = "absolute";
+        sun.style.left = sunX + "px";   //sunX는 숫자타입인데 왜 따옴표가 안붙는지.
+        sun.style.top = sunY + "px";      // "250px"은 되는데?
+
+        earth.style.position = "absolute";
+        moon.style.position = "absolute";
+
+        var earthAngle = 0;
+        var moonAngle = 0;
+
+
+        setInterval(function () {
+            var earthX = sunX + Math.cos(earthAngle) * 150;
+            var earthY = sunY + Math.sin(earthAngle) * 150;
+            var moonX = earthX + Math.cos(moonAngle) * 30;
+            var moonY = earthY + Math.sin(moonAngle) * 30;
+
+            earth.style.left = earthX + "px";
+            earth.style.top = earthY + "px";
+            moon.style.left = moonX + "px";
+            moon.style.top = moonY + "px";
+
+            earthAngle += 0.1;
+            moonAngle += 0.3;
+        }, 1000/30);
+
+    </script>
+    
+</body>
+</html>

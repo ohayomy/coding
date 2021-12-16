@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script>
+      
+    </script>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <script>
+        var header = document.querySelector("h1");
+        var nobody = document.body;
+
+        // nobody.removeChild(header); // 적게사용함, header와 body 둘다정의해야함
+
+        header.parentNode.removeChild(header); //많이사용함, header만 정의하고 그 부모노드를 이용해 쉽게 제거가능
+        
+        
+
+    </script>
+</body>
+</html>

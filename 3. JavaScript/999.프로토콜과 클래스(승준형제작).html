@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+//클래스개념이 있느냐 없느냐의 차이
+//클래스기반 언어는 틀 자체를 상속시킴
+//상속시킨 틀을 이용해 객체생성, 상위클래스 하위클래스 개념있음
+//프로토타입 기반언어는 연결,참조의 개념
+//클래스 문법이 추가되었지만
+//클래스 기반언어가 된건 아님
+
+//이벤트 버블링,이벤트 캡쳐링
+//프로토타입에서 상속을 구현
+// function Unit(name,brood,weapon) {
+//     this.name=name,
+//     this.brood=brood,
+//     this.weapon=weapon}
+
+// Unit.prototype.GetName=function(){
+//     return console.log(this.name)
+// }
+    
+// function Marine(brood,weapon) {
+//     Unit.call(this,"마린",brood,weapon)
+// }
+// function Hydra(brood,weapon) {
+//     Unit.call(this,"히드라",brood,weapon)
+//     this.type="중형"
+// }
+// Marine.prototype=Unit.prototype
+// Hydra.prototype=Unit.prototype
+
+
+// var marine=new Marine("테란","총")
+// var hydra=new Hydra("저그","가시뼈")
+// marine.GetName()
+// console.log(marine)
+// console.log(hydra)
+
+
+// 클래스에서의 상속
+class Unit {
+    constructor(name, brood, weapon) {
+        this.name = name,
+        this.brood = brood,
+        this.weapon = weapon
+    }
+GetName(){
+    return console.log(this.name)
+}
+    }
+
+class Marine extends Unit {
+    constructor(brood, weapon) {
+        super("마린", brood, weapon) //super키워드로 Unit의 키 호출
+        this.type = "소형" //추가 프로퍼티
+    }
+}
+class Hydra extends Unit {
+    constructor(brood, weapon) {
+        super("히드라", brood, weapon)
+    }
+}
+var marine = new Marine("테란", "총")
+var hydra = new Hydra("저그", "등뼈")
+console.log(marine)
+console.log(hydra)
+hydra.GetName()
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
