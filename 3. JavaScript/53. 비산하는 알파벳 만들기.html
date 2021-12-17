@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <title>Document</title>
+    <title>움직임이 이상하다</title>
 
 </head>
 <body>
@@ -21,6 +21,7 @@
         function randomSpeed(maxSpeed) {
             return Math.random() * maxSpeed - maxSpeed / 2;
         }
+        
         // 양수와 음수로 랜덤한 속도를 생성하는 함수
     </script>
     <!-- //보조함수 -->
@@ -35,8 +36,8 @@
             this.y = nextRandomInteger(canvasHeight);
             this.vx = randomSpeed(10);
             this.vy = randomSpeed(10);
-            this.ax = 0;
-            this.ay = 0;
+            this.ax = 0.2;
+            this.ay = 0.1;
 
             this.body = document.createElement('h1');
             this.body.innerHTML = randomAlphabet();
@@ -47,7 +48,7 @@
 
         MovingText.prototype.move = function () {
             if (this.x <0 || this.x > canvasWidth) {this.vx *= -1;}
-            if (this.y <0 || this.y > canvasHeight) {this.vx *= -1;}
+            if (this.y <0 || this.y > canvasHeight) {this.vy *= -1;}
 
 
             this.x += this.vx;
