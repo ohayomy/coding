@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+      body {
+          font-size: 50px;
+        }
+        
+        
+        a {
+            text-decoration: none;
+            color: green;
+            
+          transition: 5s;
+        }
+        
+        a:hover {
+          color: red;
+          text-decoration: underline;
+          
+        }
+
+  </style>
+</head>
+<body>
+  <a href="#none">법적고지</a>
+  <a href="#none">개인정보</a>
+  <a href="#none">처리방침</a>
+  <h4>1. href="" 처럼 비워놓으면 jQuery에서 오류가 난다. 따라서 #none을 넣어준다.
+      <br>2. a태그는 바디태그의 폰트색상에 영향을 받지 않는다. 따로 설정해주어야한다.<br>
+3. 트랜지션은 a:hover태그가 아닌 a태그에 넣어줘야 마우스를 올릴때, 뺄때 모두 적용된다.</h4>
+
+</body>
+</html>

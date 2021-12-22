@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+            background-color: red;
+            margin: 10px;
+
+        }
+        a {
+            text-decoration: none;
+            color: black;
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 2px;
+            margin: 2px;
+            background-color: yellow;
+        }
+
+        a.blue {
+            background-color: blue;
+        }
+        
+        
+    </style>
+
+
+    </head>
+
+<body>
+    <div id="button">
+        <a class="show" href="#none">클래스넣기</a>
+        <a class="hide" href="#none">클래스제거</a>
+        <a class="toggleClass" href="#none">토글클래스</a>
+
+    </div>
+    <div id="box">
+        box
+    </div>
+
+    <script>
+        $(".show").click(function () {
+            $("box").addClass("blue")
+        })
+        $(".hide").click(function () {
+            $("box").removeClass("blue")
+        })
+        $(".toggleClass").click(function () {
+            $("box").toggleClass("blue")
+        })
+
+    </script>
+
+
+</body>
+
+</html>
