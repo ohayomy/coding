@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+    <script src="jquery-3.6.0.js"></script>
+
+</head>
+<body>
+    <h1>Hello World</h1>
+    
+    <script>
+       
+        $("h1").on({
+            click: function () {
+                $(this).html("click")
+            },
+            dblclick: function () {
+                $(this).html("dblclick")
+            },
+            mouseenter: function () {
+                $(this).html("mouseenter")
+            }
+
+        })
+
+       
+    </script>
+</body>
+</html>

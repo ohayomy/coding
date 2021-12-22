@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+    <script src="jquery-3.6.0.js"></script>
+
+</head>
+<body>
+    <h1>Hello World</h1>
+    <script>
+
+        $("body").on("click", "h1", function () {
+            $("<h1></h1>").html("Hello").appendTo("body")
+        })
+       
+    </script>
+    
+</body>
+</html>

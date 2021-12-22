@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+    <script src="jquery-3.6.0.js"></script>
+
+    <script>
+       
+    </script>
+    <style>
+        .header {
+            text-align: center;
+        }
+        .red-text {
+            color:red;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <script>
+        $("h1").addClass("red-text")
+        $("h1").addClass("header")
+        
+        var outputA = $("h1").hasClass("header")
+        var outputB = $("h1").hasClass("content")
+
+        $("<h2></h2>").html(outputA.toString()).appendTo("body")
+        $("<h2></h2>").html(outputB.toString()).appendTo("body")
+        $("<h2></h2>").html(outputA).appendTo("body")
+        $("<h2></h2>").html(outputB).appendTo("body") //boolean의 경우 false이면 출력되지않는다.
+
+
+        setTimeout(function () {
+            
+            $("h1").removeClass("red-text")
+            $("h1").removeClass("header")
+        }, 2000)
+
+
+            
+    </script>
+    
+</body>
+</html>

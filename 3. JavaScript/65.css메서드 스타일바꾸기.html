@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+    <script src="jquery-3.6.0.js"></script>
+
+</head>
+<body>
+    <h1>Hello World</h1>
+    <h1>Hello World</h1>
+    <h1>Hello World</h1>
+    <script>
+        $("h1").css("color", "red")  // A.(문자열, 문자열)
+        
+        $("h1").css({
+            "color": "blue",
+            "background-color": "yellow",       //B.(객체)
+            "text-align": "center"
+        })
+
+        $("h1").css({
+            "color": "blue",
+            "backgroundColor": "yellow",       //(객체)-camelcase 사용가능
+            "textAlign": "center"
+        })
+        
+        var array = ["red", "blue", "violet"]
+        $("h1").css("color", function (index) {       //C.함수로 값을 입력(h1태그가 여러개일 경우
+            return array[index];                     //   함수를 이용해 각각의 적용 가능)
+        })                                              // A나 B의 경우 일괄적용
+                                                    // $로 h1을 불러오면 자동으로 0부터 순서가
+                                                    //매겨지나보다.(for반복문 사용할필요없음)
+
+        $("h1").css({
+            "color": function (index) {            //객체 적용방식에도 함수값 입력가능
+            return array[index];
+        }})
+        // 1.Setter - JQuery 객체 리턴
+
+        var value = $("h1").css("color")
+        alert(value)
+        // 2.Getter - 값추출 - 매개변수를 하나 생략해서 사용 - 문자열을 리턴\
+
+
+
+        // $("h1").remove()로 h1에 걸린 JQuery명령 전부삭제가능
+        //그러나 글자까지 사라진다?
+       
+       
+    </script>
+
+
+   
+</body>
+</html>

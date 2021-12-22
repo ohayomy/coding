@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+    <script src="jquery-3.6.0.js"></script>
+
+    <script>
+       
+    </script>
+</head>
+<body>
+    <h1></h1>
+    <h1></h1>
+    <h1></h1>
+    <script>
+        // html은 매개변수가 하나이다.
+        // 또한 문자열이기 때문에 객체지정할 수 없다.
+        // 그러나 입력방식은 css나 img와 동일하다.
+        $("h1").html("Hello World")
+
+        //1. Setter
+
+
+        var test = $("h1").html()
+        alert(test)
+        //2.Getter
+
+
+        $("h1").html("<img src='http://placehold.it/100x100'> Hello World")
+        // html에 태그형태의 문자열을 삽입하면 안의 태그가 실행된다. 이를 막고자한다면
+        // text 를 써서 글자만 출력할 수 있다.
+        // text는 Getter 실행시 맨첫번째것 뿐만 아니라 모두다 출력되는 특징이 있다.
+
+        
+    </script>
+    
+    
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+    <script src="jquery-3.6.0.js"></script>
+
+</head>
+<body>
+    <a href="https://www.naver.com">Hello World</a>
+    
+    <script>
+        $("a").click(function (event) {
+            $(event.currentTarget).html("click!")
+            $(this).css("font-size", "3em")
+            //this = event.currentTarget
+        })
+        $("a").click(function (event) {
+            // event.preventDefault()
+            // event.stopPropagation() 
+            return false;
+            // return false; 는 위의 event.preventDefault()와
+            //   event.stopPropagation()를 합친 역할을 한다.
+        })
+        $("body").click(function () {
+            $(this).css("background-color", "orange")
+            //질문: 여기서 this가 event.currentTarget이 되나?
+        })
+       
+    </script>
+</body>
+</html>

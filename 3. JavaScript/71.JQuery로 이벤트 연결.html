@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+    <script src="jquery-3.6.0.js"></script>
+
+    <script>
+       
+    </script>
+</head>
+<body>
+    <h1>Hello World</h1>
+    
+    
+    <script>
+        
+        $("h1").click(function (event) {
+            
+            $(event.currentTarget).html("click!")
+            $(this).css("color", "red")
+            //this = event.currentTarget
+        })
+        $("h1").click(5672, function (event) {
+            alert(event.data)
+            // 중복클릭 가능
+            // 5672는 데이터 형태로 저장가능(문자열도 가능함)
+        })
+
+    </script>
+    
+    
+</body>
+</html>

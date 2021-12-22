@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+    <script src="jquery-3.6.0.js"></script>
+    
+    <style>
+        * {
+            text-align: center;
+            font-weight: bold;
+        }
+        /* body {
+            border:1px solid black;
+            width: 750px;
+            margin: 0 auto;
+            height: 900px;
+        } */
+
+    </style>
+    <script>
+        
+        $(document).ready(function() { 
+            for (i=2; i<10; i++) {
+                $("<div></div>")
+                        .css({"height":"300px",
+                              "width":"175px",
+                              "border":"1px solid black",
+                              "margin-top":"10px",
+                              "fontSize":"14px",
+                              "textAlign":"center",
+                              "float":"left"
+                             })
+                        .html( i + "단")
+            }
+            
+        });
+        </script>
+</head>
+<body>
+    <h1>구구단을 외자</h1>
+    <hr width="700px" size="2px" color="black">
+    
+    
+</body>
+</html>

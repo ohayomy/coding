@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+    <script src="jquery-3.6.0.js"></script>
+
+    <script>
+       $(function () {
+           for (let i = 0; i < 3; i++) {
+               
+               
+               $("<div></div>")
+               .append("<h1>Hello</h1>")
+               .append("<p>Hello WorldHello WorldHello WorldHello WorldHello WorldHello World</p>")
+               .appendTo("body")
+               .click(function () {
+                    $(this).find("p").css("color", "red");
+                //    $("p", this).css("color", "red")
+               })
+            }
+       });
+       // 한번에 일괄변경되는걸 막고 클릭한 단락만 색변화를 주기위해 find메서드에 this를 사용하였다.
+
+
+    </script>
+</head>
+<body>
+    
+    
+</body>
+</html>

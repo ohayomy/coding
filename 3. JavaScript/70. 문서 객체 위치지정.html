@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+    <script src="jquery-3.6.0.js"></script>
+
+    <script>
+       
+    </script>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <script>
+        $("<h1></h1>").html("Hello append").appendTo("body").css("color", "red")
+        $("<h1></h1>").html("Hello prepend").prependTo("body").css("color", "red")
+        $("<h1></h1>").html("Hello Before").insertBefore("body").css("color", "red")
+        $("<h1></h1>").html("Hello After").insertAfter("body").css("color", "red")
+
+        $("body").append("<h1>qq</h1>").css("color", "blue")
+        $("body").prepend("<h1>ww</h1>").css("color", "blue")
+        $("body").before("<h1>dd</h1>").css("color", "blue")
+        $("body").after("<h1>ss</h1>").css("color", "blue")
+        //색깔적용 왜이렇게 되는지?
+
+    </script>
+    
+</body>
+</html>

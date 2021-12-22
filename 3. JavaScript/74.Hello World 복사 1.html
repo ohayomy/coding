@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+    <script src="jquery-3.6.0.js"></script>
+
+</head>
+<body>
+    <h1>Hello world</h1>
+    
+    <script>
+        var handler = function () {
+            $("<h1></h1>")
+                .html("Hello")
+                .appendTo("body")
+                .click(handler)
+            
+        };
+       $("h1").on("click", handler)
+           
+       
+
+    </script>
+</body>
+</html>

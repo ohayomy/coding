@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+    <script src="jquery-3.6.0.js"></script>
+
+    <script>
+       
+    </script>
+</head>
+<body>
+    <img> <img> <img>
+    <script>
+        $("img").attr("src", "http://placehold.it/100x100")
+
+        $("img").attr({
+            "src": function (index) {
+                return "http://placehold.it/100x" + ((index+1) *100)
+            },
+            "alt": "test image"
+        })
+        // 1. Setter
+
+        var test = $("img").attr("src")       //여러개중에 그냥 추출하면 맨 첫번쨰 것이 추출된다.
+        alert(test);
+
+        // 2. Getter
+        
+
+    </script>
+    
+    
+</body>
+</html>

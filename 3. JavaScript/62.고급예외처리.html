@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+</head>
+<body>
+    
+    <script>
+       var input = prompt("숫자를 입력해주세요", "숫자");
+       var numberInput = Number(input);
+       var array = [
+           function () {
+               alert("0번째 함수입니다")
+           },
+           function () {
+               alert("1번째 함수입니다")
+           },
+           function () {
+               alert("2번째 함수입니다")
+           }
+       ];
+       
+       try {
+            array[numberInput]();
+            } catch (exception) {
+                   console.log(exception)
+                   console.log(exception.name)
+                   console.log(exception.message)
+                   console.log(exception.description)
+                alert("0과 2사이의 값을 입력해주세요")
+            } finally  {
+
+            }
+    //     finally는 트라이에서 걸리던 캐치에서 걸리던 무조건 실행됨
+       
+    </script>
+</body>
+</html>

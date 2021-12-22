@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+    <script src="jquery-3.6.0.js"></script>
+
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        $("div").click(function () {
+            $(this).clearQueue()            //연속클릭시 명령 간 대기시간 삭제됨
+            $(this).animate({width: "+=100"},500)
+                   .animate({height: "+=100"}, 500)
+                   .animate({left: "+=100"}, 500)
+        })
+        //빨리누르면 사각형이 찌부됨
+
+        //그 외, 애니메이트 메서드 사이에 .delay(1000)을 줘서 딜레이를 줄 수 있다.
+
+
+        // $("div").click(function () {
+        //     $(this).clearQueue()            
+        //     $(this).animate({width: "+=60"},2000)
+        //            .animate({height: "+=60"}, 2000)
+        //            .animate({left: "+=60"}, 2000)
+        // })
+    </script>
+    
+</body>
+</html>

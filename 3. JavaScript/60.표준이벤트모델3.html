@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+</head>
+<body>
+    <a href="www.naver.com">naverrrr</a>
+    <script>
+       var header = document.querySelector("a");
+       header.addEventListener("click", function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+       })
+       
+       
+    </script>
+</body>
+</html>

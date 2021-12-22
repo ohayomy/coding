@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+
+    <script src="jquery-3.6.0.js"></script>
+
+
+</head>
+<body>
+    <h1>    </h1>
+    <script>
+        //jQuery란? 엘리먼트를 선택하는 강력한 방법과 선택된 엘리먼트들을 효율적으로 제어할 수 있는 다양한 수단을 제공하는
+        //            자바스크립트 라이브러리
+        //라이브러리란? 자주 사용하는 코드들을 재사용할 수 있는 형태로 가공해서 프로그래밍 효율을 높여주는 코드들
+
+
+
+        $("h1")
+                .css()
+                .attr()
+                .html()
+                .text()
+        // 이렇게 4가지의 메서드로 h1의 변화가 가능하다. 이것이 setter이며,
+        // 매개변수를 하나 떼면 getter 형식이 된다.
+
+
+
+
+
+
+
+
+
+        // JQuery의 세가지 사용법
+
+        $("h1").css("color", "red")
+        $("h1").css("background-color", "orange")
+        $("h1").html("안녕하세요")
+        // 1. CSS 선택자:문서 객체를 선택
+     
+        var header = document.querySelector("h1");
+        $(header)
+        // 2. 문서 객체 : 문서 객체를 선택
+
+        $("<h1></h1>")
+            .appendTo("body")
+            .css("color", "red")
+            .html("Hello World")
+        // 3. 태그 형태의 문자열: 문서 객체를 생성(태그가 존재하지 않아도 쓸 수 있다.)
+        //질문: 저 첫괄호 안에 그냥 문자 입력하면안되나? 왜굳이 html메서드를 따로쓰는걸까.
+
+
+    </script>
+    
+</body>
+</html>

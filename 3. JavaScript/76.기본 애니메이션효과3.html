@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+    <script src="jquery-3.6.0.js"></script>
+
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        $("div").click(function () {
+            $(this).stop(true, true)
+            $(this).animate({
+                width: "+=100",
+                height: "+=100",
+                left: "+=100"
+            }, 2000)
+        })
+        //stop은 1.clearQueue 2.jumpToEnd를 인자로 가진다
+        // jumpToEnd는 연속클릭 시 모션삭제한다
+       
+    </script>
+    
+</body>
+</html>
