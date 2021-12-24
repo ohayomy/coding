@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+
+    <style>
+        div div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            transition: 1s;
+            
+        }
+        div div:hover {
+            width: 100px;
+            height: 300px;
+            background-color: green;
+            
+        }
+        div div:active {            
+            width: 300px;
+            height: 300px;
+            background-color: blue;
+            border-radius:100%;
+        }
+        //active는 마우스를 꾹 누르고잇을때
+        
+    </style>
+
+
+    </head>
+
+<body>
+    <div>
+        <div></div>
+    </div>
+<h1>트랜지션의 기본 구조는 다음과 같다. <br>
+    transition: <속성> <기간> <방식> <지연>;<br>transition: 3s;와 같이 생략해서 쓸 수도 있으며 아래와 같이 속성별로 따로따로 설정할 수 있다.<br>
+    transition: background 3s ease-in, transform 1s linear;<br>
+    방식에는 ease, linear, ease-in, ease-out, ease-in-out, cubic-bezier, steps가 있는데,<br>
+    ease ; 천천-빠름-천천<br>
+linear ; 등속<br>
+ease-in ; 천천-보통<br>
+ease-out ; 보통-천천<br>
+ease-in-out ; 천천-보통-천천<br>
+cubic-bezier ; 커스텀<br>
+steps ; 뚝뚝 끊어 보여준다<br>
+</h1>
+
+</body>
+
+</html>

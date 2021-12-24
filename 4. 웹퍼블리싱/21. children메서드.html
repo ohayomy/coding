@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+
+    <style>
+        ul {
+            margin: 200px;
+            /* border: 1px solid black; */
+            width: 170px;
+            list-style:none;
+            padding:0px;
+            
+            
+        }
+        li > a {
+            background-color: black;
+            color: white;
+            display:block;
+            
+            
+        }
+        li a {
+            text-decoration: none;
+            padding:3px;
+            text-align: center;
+            border: 1px solid white;
+        }
+        div {
+            border: 1px solid black;
+            display:none;
+        }
+        div a {
+            display: block;
+        }
+        
+        
+        
+    </style>
+
+
+    </head>
+
+<body>
+    <ul>
+        <li>
+            <a href="#none">MENU1</a>
+            <div class="menu1">
+                <a href="#none">sub-menu 1</a>
+                <a href="#none">sub-menu 2</a>
+                <a href="#none">sub-menu 3</a>
+            </div>
+        </li>
+        <li>
+            <a href="#none">MENU2</a>
+            <div class="menu2">
+                <a href="#none">sub-menu 1</a>
+                <a href="#none">sub-menu 2</a>
+                <a href="#none">sub-menu 3</a>
+            </div>
+        </li>
+        <li>
+            <a href="#none">MENU3</a>
+            <div class="menu3">
+                <a href="#none">sub-menu 1</a>
+                <a href="#none">sub-menu 2</a>
+                <a href="#none">sub-menu 3</a>
+            </div>
+        </li>
+
+    </ul>
+
+    <script>
+        $("ul li").mouseenter(function() {
+            
+            $(this).children("div").stop().slideDown()
+        })
+        
+        $("ul li").mouseleave(function() {
+
+            $(this).children("div").stop().slideUp()
+        })
+        // 이 스탑메서드의 위치가 어디 들어가느냐가 중요하다.
+        // 스탑메서드의 위치가 바뀌면 이상해진다.
+        // 스탑이 없어서도 안된다.
+    </script>
+
+
+</body>
+
+</html>
