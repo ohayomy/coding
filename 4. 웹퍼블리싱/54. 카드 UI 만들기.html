@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <style>
+      body {
+        margin: 0;
+      }
+      a {
+        text-decoration: none;
+        color: red;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: black;
+      }
+      .card {
+        border-radius: 40px 50px 70px 40px/ 30px 55px 65px 40px;
+        margin: 20px;
+        position: relative;
+        width: 250px;
+        height: 250px;
+        text-align: center;
+        overflow: hidden;
+        /* overflow:hidden을 해버리면 기존 디스플레이 플렉스의 장점인 요소들이 뭉개지지않는다는 점이 사라진다.*/
+        flex-shrink: 0;
+        /* 플렉스의 성질 중 하나인 슈링크를 이용해 이를 막을 수 있다. */
+        transition: 0.5s;
+      }
+      .content {
+        position:absolute;
+        top:100%;
+        left: 0;
+        padding: 50px 10px;
+        width: inherit;
+        height: inherit;
+        background: linear-gradient(0deg, blue, transparent);
+        box-sizing: border-box;
+        transition: 0.5s;
+        visibility: hidden;
+        color: white;
+
+      }
+      .card:hover .content{
+        top: 0;
+        visibility: visible;
+
+      }
+      .card:hover {
+        transform: translateY(-20px);
+      }
+      span {
+        display: block;
+        font-size: 12px;
+      }
+      p {
+        font-size: 12px;
+      }
+      .card:nth-child(2) .content {
+          background: linear-gradient(0deg, rgb(21, 126, 21), transparent);
+      }
+      .card:nth-child(3) .content {
+          background: linear-gradient(0deg, black, transparent);
+      }
+       
+    </style>
+    </head>
+
+<body>
+
+    <div class="container">
+
+      <div class="card">
+        <img src="images/image.png" width="250px">
+        <div class="content">
+          <h3>Lion<span>주황색</span></h3>
+          <p>라이언(RYAN)은 카카오프렌즈에서 창작한 동물 캐릭터이다. 겉보기에는 얼핏 곰처럼 보이지만 사실은 갈기가 없는 사자이며 수컷이다.</p>
+          <a href="#none"><i class="fab fa-facebook-square"></i></a>
+          <a href="#none"><i class="fab fa-twitter"></i></a>
+          <a href="#none"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    
+
+      <div class="card">
+        <img src="images/image2.png" width="250px">
+        <div class="content">
+          <h3>Apeach<span>분홍색</span></h3>
+          <p>Secret Forest의 복숭아 나무에서 유전자 변이로 태어난 어피치.풍부한 햇살을 받아 유독 돋보이는 분홍색을 띱니다. 복숭아 나무에서 탈출한 뒤, 맨 처음 튜브를 만나게 됩니다.</p>
+          <a href="#none"><i class="fab fa-facebook-square"></i></a>
+          <a href="#none"><i class="fab fa-twitter"></i></a>
+          <a href="#none"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    
+
+    
+      <div class="card">
+        <img src="images/image3.png" width="250px">
+        <div class="content">
+          <h3>Tube<span>흰색</span></h3>
+          <p>튜브는 겁이 많고 소심한 오리 캐릭터로 극도로 화가나거나,극도로 겁을 먹으면 초록색의 미친 오리로 변신한다는 설정을 지니고 있다.</p>
+          <a href="#none"><i class="fab fa-facebook-square"></i></a>
+          <a href="#none"><i class="fab fa-twitter"></i></a>
+          <a href="#none"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <script>
+
+
+    </script>
+</body>
+
+</html>

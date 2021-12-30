@@ -5,16 +5,14 @@
     <script src="jquery-3.6.0.js"></script>
     
     <style>
-        * {
-            text-align: center;
-            font-weight: bold;
-        }
-        /* body {
+       
+        body {
             border:1px solid black;
-            width: 750px;
+            width: 740px;
             margin: 0 auto;
-            height: 900px;
-        } */
+            height: 800px;
+            text-align: center;
+        }
 
     </style>
     <script>
@@ -22,6 +20,7 @@
         $(document).ready(function() { 
             for (i=2; i<10; i++) {
                 $("<div></div>")
+                        .appendTo("body")
                         .css({"height":"300px",
                               "width":"175px",
                               "border":"1px solid black",
@@ -30,7 +29,12 @@
                               "textAlign":"center",
                               "float":"left"
                              })
-                        .html( i + "단")
+                             for (var j=1; j<10; j++) {
+                                var output;
+                                output = "\n"+i+" x "+j+" = "+i*j;
+                                 $(this).html( i + "단" + output).appendTo()
+                                 
+                                }
             }
             
         });

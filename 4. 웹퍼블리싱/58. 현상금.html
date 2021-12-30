@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            
+        }
+        span {
+            font-size: 7em;
+            letter-spacing: 20px;
+        }
+        p {
+
+        }
+        .container {
+            width: 800px;
+            border: 1px solid black;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 10px 10px 20px black;
+            background-color: burlywood;
+        }
+        .pic {margin-top: 20px;
+            position: relative;
+            height: 220px;
+
+        }
+        .pic img {
+            width: 200px;
+            filter: grayscale(1);
+            border: 3px solid brown;
+            cursor: pointer;
+            position: absolute;
+            transition: 1s;
+        }
+
+        img:nth-child(1) {
+            top:0;
+            left:1%;
+        }
+        img:nth-child(3) {
+            top:0;
+            left: 35%;
+        }
+        img:nth-child(2) {
+            top:0;
+            left:69%;
+        }
+        img.active {
+            top:0;
+            left: 35%;
+        }
+        img:nth-child(1).active ~ img:nth-child(3) {
+            left:1%;
+        }
+        img:nth-child(2).active + img:nth-child(3) {
+            left:69%;
+        }
+
+        .pic img.active {
+            /* filter: grayscale(0); */
+            filter: none;
+            border-radius: 50%;
+        }
+        .tex {
+
+        }
+        .content {
+            display: none;
+        }
+       .content.active {
+           display:block;
+       }
+       .content p:nth-child(1) {
+           font-size: 3em;
+           margin: 10px 0 0 10px;
+           letter-spacing: 15px;
+       }
+       .content p:nth-child(2) {
+           font-size: 4em;
+           margin: 0;
+           color: red;
+           letter-spacing: 5px;
+           text-shadow: 2px 3px 5px black;
+           font-style: italic;
+       }
+       .content p:nth-child(3) {
+           font-size: 5em;
+           margin: 0;
+           color: green;
+           text-decoration: underline;
+       }
+    </style>
+    </head>
+
+<body>
+    <div class="container">
+        <span>WANTED</span>
+
+        <div class="pic">
+            <img src="images/image.png" data-alt="tab1">
+            <img src="images/image3.png" data-alt="tab3">
+            <img class="active" src="images/image2.png" data-alt="tab2">
+        </div>
+
+        <div class="tex">
+
+            <div class="content" id="tab1">
+                <p>DEAD OR ALIVE</p>
+                <p>LION</p>
+                <p>$10,000,000-</p>
+            </div>
+
+            <div class="content active" id="tab2">
+                <p>DEAD OR ALIVE</p>
+                <p>APEACH</p>
+                <p>$500,000-</p>
+            </div>
+
+            <div class="content" id="tab3">
+                <p>DEAD OR ALIVE</p>
+                <p>TUBE</p>
+                <p>$780,000-</p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script>
+        $(".pic img").click(function () {
+            // $(".pic img").removeClass("active")  /* 1번방법: 싹다지우고 새로 하나 추가*/
+            $(this).addClass("active")
+            $(this).siblings().removeClass("active") /* 2번방법: 추가하면서 형제요소들 제거 */
+
+
+
+            // $(".content").removeClass("active") /* 마찬가지로 싹다지우고 새로추가할수도잇음 */ 
+            $("#" + $(this).attr("data-alt")).addClass("active")
+            $("#" + $(this).attr("data-alt")).siblings().removeClass("active")       /*추가하면서 형제요소 삭제하기 */
+        })
+    </script>
+</body>
+
+</html>
