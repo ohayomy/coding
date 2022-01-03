@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <script src="wow.min/wow.min.js"></script>
+    <style>
+        .parent {
+            border: 1px solid black;
+            width: 800px;
+            padding: 20px;
+            overflow: hidden;
+        }
+        .parent div {
+            float: left;
+            border: 3px solid red;
+            width: 50%;
+            height: 200px;
+            box-sizing: border-box;
+            text-align: center;
+            line-height: 200px;
+            font-size: 3em;
+        }
+       .left {
+            animation: left 1s linear;
+            animation-fill-mode: both;
+       }
+       .right {
+            animation: right 1s linear;
+            animation-fill-mode: both;
+       }
+
+       @keyframes left {
+           0% {
+                opacity:0;
+                transform: translateX(-50%)
+           }
+           100% {
+                opacity:1;
+                transform: translateX(0)
+           }
+       }
+
+       @keyframes right {
+           0% {
+                opacity:0;
+                transform: translateX(50%)
+           }
+           100% {
+                opacity:1;
+                transform: translateX(0)
+           }
+       }
+
+    </style>
+    </head>
+
+<body>
+    <h1>Scroll Reveal Animation</h1>
+
+    <img src="http://placehold.it/800x1500" alt="">
+
+    <div class="parent">
+        <div class="left wow">Left</div>
+        <div class="right wow">Right</div>
+    </div>
+
+    <script>
+              new WOW().init();
+            //   기본형
+
+            //   wow = new WOW(
+            //           {
+            //           boxClass:     'wow',      // default
+            //           animateClass: 'animated', // default
+            //           offset:       0,          // default
+            //           mobile:       true,       // default
+            //           live:         true        // default
+            //         }
+            //         )
+            //         wow.init();
+            //    옵션형. 오프셋을 설정해서 몇픽셀 내렷을때 실행시킬지
+            //            정할 수 있다.
+    </script>
+</body>
+
+</html>
