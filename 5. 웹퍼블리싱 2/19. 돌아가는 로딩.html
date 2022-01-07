@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <style>
+        .loading {
+            /* border: 1px solid black; */
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        span {
+            text-transform: uppercase;
+            font-size: 35px;
+            position: absolute;
+            font-weight: bold;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.7);
+            /* fontsize는 10px이 최소지만 트랜스폼 스케일을 사용하면 그보다 더 줄일 수 있다. */
+            animation: loading 1s infinite;
+        }
+        .circle {
+           border: 15px solid black;
+           width: inherit;
+           height: inherit;
+           box-sizing: border-box;
+           border-radius: 50%;
+           border-right-color: gainsboro;
+           border-left-color: gainsboro;
+           animation: circle 1s infinite;
+           animation-direction: reverse;
+           /* 밑에 로테이트 각을 음수로 해도 됨 */
+       }
+
+       @keyframes circle {
+            0% {
+                transform: rotate(0);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+       }
+       @keyframes loading {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+       }
+
+    </style>
+    </head>
+
+<body>
+    <div class="loading">
+        <span>loading</span>
+        <div class="circle"></div>
+    </div>
+
+
+    <script>
+
+
+    </script>
+</body>
+
+</html>

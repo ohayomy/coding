@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Poor+Story&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="featherlight/featherlight.css">
+    <script src="featherlight/featherlight.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            outline: none;
+        }
+        body {
+            font-size: 16px;
+            font-family: Mukta, "Poor Story";
+            line-height: 1.6em;
+            color: white;
+            margin: 0;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+        }
+        .title h1 {
+            font-size: 64px;
+            font-weight: 600;
+            text-align: center;
+            position: relative;
+            padding-bottom: 40px;
+            margin-bottom: 70px;
+            color: rgb(45, 211, 12);
+        }
+        .title h1::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(90deg, red, blue);
+        }
+        section {
+            display: grid;
+            justify-items: center;
+            align-content: center;
+            height: 100vh;
+            background: url(images/universe.png);
+        }
+        .items {
+            width: 1280px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            /* fraction은 부분, 파편이라는 뜻이다. 
+            즉 repeat(4, 1fr)은 1fr 1fr 1fr 1fr 이 된다.*/
+            gap: 30px;
+            /* 그냥 gap이라고 쓰면 column gap과 row gap이 모두 30px이 된다. */
+        }
+        .item {
+            /* border: 1px solid white; */
+        }
+        .item .photo {
+            /* border: 1px solid white; */
+            height: 400px;
+            border-radius: 15px;
+            box-shadow: 10px 10px 30px /*30px */ gray;
+            /* offsetx offsety blur 다음에 spread-radius를 줘서 더 그림자가 더 확산하도록 할 수 있다. 음수를 줘서 줄어들게 할 수도 있다. 또한 박스쉐도우는 뒤에 콤마를 붙여서 두개를 중첩해서 쓰는것도 가능하다. */
+            background-size: cover;
+            background-position: top;
+            background-repeat: no-repeat;
+            transition: 1.7s;
+        }
+        .item:nth-child(2) .photo{
+            background-image: url(images/web-portfolio-01.jpg);
+        }
+        .item:nth-child(3) .photo{
+            background-image: url(images/web-portfolio-02.jpg);
+        }
+        .item:nth-child(4) .photo{
+            background-image: url(images/web-portfolio-03.jpg);
+        }
+        .item:hover .photo {
+            background-position: bottom;
+        }
+        .item span {
+            display: block;
+            text-align: center;
+            margin-top: 7px;
+        }
+        .item span a {
+            background-color: royalblue;
+            padding: 0px 6px;
+            border-radius: 10px;
+            margin-left: 3px;
+        }
+        .item span a:first-child {
+            background-color: crimson;
+        }
+        aside b {
+            color: green;
+        }
+        aside h2{
+            margin-top: 10px;
+            font-size: 30px;
+        }
+        aside p span{
+            display: list-item;
+            list-style: disc;
+            /* list-style: decimal; 이건 숫자부여 */
+            margin-left: 20px;
+        }
+        @media (max-width: 767px) {
+            section {
+                align-content: start;
+                /* 수직중앙이 아닌 위를 기준으로 잡는다. */
+                height: auto;
+                /* 스마트폰은 높이가 엄청 길기때문에 오토로 준다 */
+                /* 두개 매우중요 */
+
+                padding: 20px;
+            }
+            .items {
+                width: 100%;
+                grid-template-columns: repeat(1, 1fr);
+                /* grid-template-columns: 1fr; */
+                /* grid-template-columns: auto; */
+            }
+            .title h1 {
+                font-size: 32px;
+                margin-top: 30px;
+                margin-bottom: 40px;
+            }
+        }
+        @media (min-width: 768px) and (max-width: 1023px) {
+            section {
+                align-content: start;
+                height: auto;
+                padding: 50px;
+            }
+            .items {
+                width: 100%;
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .title h1 {
+                margin-top: 50px;
+                margin-bottom: 60px;
+            }
+            aside,
+            .item:nth-of-type(3) {
+                grid-column: 1 / span 2;
+                /* grid-column: span 2; */
+            }
+        }
+        /* Featherlight Custom CSS */
+
+/* ▼ 아래 커스텀 CSS는 수강생 본인이 직접 꼭! 만들어 보시기를 권합니다. */
+.featherlight .featherlight-content {
+  margin-left: 0;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+}
+.featherlight iframe {
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+.featherlight .featherlight-close-icon {
+  position: absolute;
+  z-index: 9999;
+  top: 20px;
+  left: 20px;
+  line-height: 25px;
+  width: 25px;
+  cursor: pointer;
+  text-align: center;
+  background-color: transparent;
+  color: #000;
+  border: none;
+  padding: 0;
+  font-size: 40px;
+  outline: none;
+}
+    </style>
+    </head>
+
+<body>
+    <section class="portfolio">
+        <div class="title">
+            <h1>Publishing Portfolio</h1>
+        </div>
+        <div class="items">
+            <aside class="paragraph">
+                <b>Web Portfolio</b>
+                <h2>Website Publishing</h2>
+                <p>사용사의 편리성을 생각하며 미술이라는 컨텐츠와 어울리게 UX/UI 구조설계를 진행하였습니다. 그리고 기존 사이트에서 반응형 페이지가 될 수 있도록 제작했습니다.
+                <br><br>
+                전체 폰트 중 영문은 Mukta를, 한글은 Poor Story를 사용했으며, 제작기간은 2022년 1월 6일부터 7일까지입니다.
+                </p>
+                <p>
+                   <span>UI 디자인 방식: Photoshop</span> 
+                   <span>퍼블리싱 제작방식: HTML+CSS+JQUERY</span> 
+                   <span>레이아웃 제작방식: CSS Grid & Flex</span> 
+                   <span>플러그인: Slick slider</span> 
+                   <span>제작 참여율: 100%</span> 
+                </p>
+            </aside>
+            <div class="item">
+                <div class="photo"></div>
+                <span class="portfolio-title">Website portfolio #01
+                    <a href="html/web-portfolio-01.html" data-featherlight="iframe">pc</a>
+                    <a href="html/web-portfolio-01-mobile.html" data-featherlight="iframe">mobile</a>
+                </span>
+            </div>
+            <div class="item">
+                <div class="photo"></div>
+                <span class="portfolio-title">Website portfolio #02
+                    <a href="html/web-portfolio-02.html" data-featherlight="iframe">pc</a>
+                    <a href="html/web-portfolio-02-mobile.html" data-featherlight="iframe">mobile</a>
+                </span>
+            </div>
+            <div class="item">
+                <div class="photo"></div>
+                <span class="portfolio-title">Website portfolio #03
+                    <a href="html/web-portfolio-03.html" data-featherlight="iframe">pc</a>
+                </span>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+
+
+    </script>
+</body>
+
+</html>

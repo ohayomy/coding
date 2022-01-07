@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+
+    <style>
+        .beBlack {
+            background-color: black;
+            color: white;
+        }
+        
+        
+    </style>
+
+</head>
+
+<body>
+    <button>공지사항</button>
+    <button>갤러리</button>
+    
+    
+    <script>
+        $("button").mouseenter(function(){
+            $(this).addClass("beBlack")
+            $(this).siblings().removeClass("beBlack")
+        })
+        $("button").mouseleave(function(){
+            $("button").removeClass("beBlack")
+        })
+        
+
+
+
+    </script>
+
+</body>
+
+</html>

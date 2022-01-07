@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <style>
+        body {
+            margin: 0;
+        }
+        .gnb li {
+            list-style: none;
+        }
+        .gnb {
+            /* display: none; */
+            position: fixed;
+            top:45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3.5em;
+            line-height: 1.6em;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 100;
+        }
+        .gnb a {
+            
+            text-decoration: none;
+            color: white;
+            position: relative;
+            padding-right: 10px;
+            /* 밑줄 길이 늘리기 */
+        }
+        .gnb a::before {
+            content:"";
+            position: absolute;
+            background-color: yellowgreen;
+            opacity: 0.8;
+            height: 20px;
+            width: 0;
+            left: 0;
+            bottom: 7px;
+            transition: 0.5s;
+        }
+        .gnb a:hover::before {
+            width: 100%;
+        }
+        .toggle.active ~ .gnb{
+            opacity: 1;
+            visibility: visible;
+        }
+        .toggle {
+            position: fixed;
+            top:20px;
+            left: 20px;
+            cursor:pointer ;
+            z-index: 99;
+        }
+        .toggle i {
+            width: 40px;
+            height: 40px;
+            font-size: 30px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px black;
+            transition: 0.5s;
+        }
+        .toggle.active i {
+            background-color: yellowgreen;
+            transform: rotate(315deg);
+        }
+
+
+
+
+
+        
+        .overlay {
+            position: fixed;
+            background-color: black;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            top: 20px;
+            left: 20px;
+            transition: 0.5s;
+            opacity: 0;
+            z-index: 10;
+        }
+        .overlay.active {
+            transform: scale(130);
+            opacity: 1;
+        }
+        /* .overlay {
+            position:fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+        }
+        .overlay::before,
+        .overlay::after {
+            content:"";
+            position: absolute;
+            width: 100%;
+            height: 0%;
+            background-color: black;
+            transition: 0.35s;
+        }
+        .overlay::before {
+            top:0;
+        }
+        .overlay::after {
+            bottom:0;
+        }
+        .overlay.active::before,
+        .overlay.active::after{
+            height: 50%;
+        } */
+
+
+
+
+
+        section.welcome{
+            height: 100vh;
+            width: 100%;
+        }
+        section.welcome img {
+            width: inherit;
+            height: inherit;
+            object-fit: cover;
+        }
+        section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        section:nth-child(odd) {
+            background-color: whitesmoke;
+        }
+       section .inner {
+           width: 1150px;
+           text-align: center;
+       }
+       .inner h1 {
+           font-size: 3em;
+           position: relative;
+           padding-bottom: 30px;
+       }
+       .inner h1::before {
+           content:"";
+           position: absolute;
+           width: 150px;
+           height: 4px;
+           background-color: crimson;
+           left: 50%;
+           transform: translateX(-50%);
+           bottom:0;
+       }
+       .inner p {
+           font-size: 1.1em;
+           line-height: 1.5em;
+       }
+    </style>
+    </head>
+
+<body>
+    <div class="toggle">
+        <i class="xi-plus-thin"></i>
+    </div>
+    <div class="overlay"></div>
+    <ul class="gnb">
+        <li><a href="#feature1">Home</a></li>
+        <li><a href="#feature2">About</a></li>
+        <li><a href="#feature3">Graphic Portfolio</a></li>
+        <li><a href="#feature4">Web Portfolio</a></li>
+        <li><a href="#feature5">Contact</a></li>
+        <li><a href="#feature6">Epilogue</a></li>
+    </ul>
+    <div class="container">
+        <section class="welcome">
+            <img src="images/bg-welcome.jpg" alt="">
+        </section>
+        <section id="feature1">
+            <div class="inner">
+                <b>Lorem ipsum dolor sit amet.</b>
+                <h1>Section: Home</h1>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore atque repellendus exercitationem id tenetur dolorem maxime dolor itaque dicta voluptatem iure sunt ex, accusantium qui ipsam. Animi inventore vero fugit fuga officiis consequatur. Fugit sapiente vero soluta dolor, numquam cum, dignissimos cumque inventore quisquam placeat ratione laboriosam? Illo voluptates blanditiis rem doloribus sapiente, quidem sequi voluptas veniam explicabo delectus cumque nihil quaerat vero natus quia maxime quibusdam error consequuntur ab inventore reprehenderit expedita facere. Facere nam asperiores, magni voluptas nobis quos laudantium! Porro illo fugit, itaque velit ab aliquam. Temporibus illum culpa magni pariatur maxime, nihil molestiae soluta velit quidem!</p>
+            </div>
+        </section>
+        <section id="feature2">
+            <div class="inner">
+                <b>Lorem ipsum dolor sit amet.</b>
+                <h1>Section: About</h1>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore atque repellendus exercitationem id tenetur dolorem maxime dolor itaque dicta voluptatem iure sunt ex, accusantium qui ipsam. Animi inventore vero fugit fuga officiis consequatur. Fugit sapiente vero soluta dolor, numquam cum, dignissimos cumque inventore quisquam placeat ratione laboriosam? Illo voluptates blanditiis rem doloribus sapiente, quidem sequi voluptas veniam explicabo delectus cumque nihil quaerat vero natus quia maxime quibusdam error consequuntur ab inventore reprehenderit expedita facere. Facere nam asperiores, magni voluptas nobis quos laudantium! Porro illo fugit, itaque velit ab aliquam. Temporibus illum culpa magni pariatur maxime, nihil molestiae soluta velit quidem!</p>
+            </div>
+        </section>
+        <section id="feature3">
+            <div class="inner">
+                <b>Lorem ipsum dolor sit amet.</b>
+                <h1>Section: Graphic Protfolio</h1>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore atque repellendus exercitationem id tenetur dolorem maxime dolor itaque dicta voluptatem iure sunt ex, accusantium qui ipsam. Animi inventore vero fugit fuga officiis consequatur. Fugit sapiente vero soluta dolor, numquam cum, dignissimos cumque inventore quisquam placeat ratione laboriosam? Illo voluptates blanditiis rem doloribus sapiente, quidem sequi voluptas veniam explicabo delectus cumque nihil quaerat vero natus quia maxime quibusdam error consequuntur ab inventore reprehenderit expedita facere. Facere nam asperiores, magni voluptas nobis quos laudantium! Porro illo fugit, itaque velit ab aliquam. Temporibus illum culpa magni pariatur maxime, nihil molestiae soluta velit quidem!</p>
+            </div>
+        </section>
+        <section id="feature4">
+            <div class="inner">
+                <b>Lorem ipsum dolor sit amet.</b>
+                <h1>Section: Web Portfolio</h1>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore atque repellendus exercitationem id tenetur dolorem maxime dolor itaque dicta voluptatem iure sunt ex, accusantium qui ipsam. Animi inventore vero fugit fuga officiis consequatur. Fugit sapiente vero soluta dolor, numquam cum, dignissimos cumque inventore quisquam placeat ratione laboriosam? Illo voluptates blanditiis rem doloribus sapiente, quidem sequi voluptas veniam explicabo delectus cumque nihil quaerat vero natus quia maxime quibusdam error consequuntur ab inventore reprehenderit expedita facere. Facere nam asperiores, magni voluptas nobis quos laudantium! Porro illo fugit, itaque velit ab aliquam. Temporibus illum culpa magni pariatur maxime, nihil molestiae soluta velit quidem!</p>
+            </div>
+        </section>
+        <section id="feature5">
+            <div class="inner">
+                <b>Lorem ipsum dolor sit amet.</b>
+                <h1>Section: Contact</h1>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore atque repellendus exercitationem id tenetur dolorem maxime dolor itaque dicta voluptatem iure sunt ex, accusantium qui ipsam. Animi inventore vero fugit fuga officiis consequatur. Fugit sapiente vero soluta dolor, numquam cum, dignissimos cumque inventore quisquam placeat ratione laboriosam? Illo voluptates blanditiis rem doloribus sapiente, quidem sequi voluptas veniam explicabo delectus cumque nihil quaerat vero natus quia maxime quibusdam error consequuntur ab inventore reprehenderit expedita facere. Facere nam asperiores, magni voluptas nobis quos laudantium! Porro illo fugit, itaque velit ab aliquam. Temporibus illum culpa magni pariatur maxime, nihil molestiae soluta velit quidem!</p>
+            </div>
+        </section>
+        <section id="feature6">
+            <div class="inner">
+                <b>Lorem ipsum dolor sit amet.</b>
+                <h1>Section: Epliogue</h1>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore atque repellendus exercitationem id tenetur dolorem maxime dolor itaque dicta voluptatem iure sunt ex, accusantium qui ipsam. Animi inventore vero fugit fuga officiis consequatur. Fugit sapiente vero soluta dolor, numquam cum, dignissimos cumque inventore quisquam placeat ratione laboriosam? Illo voluptates blanditiis rem doloribus sapiente, quidem sequi voluptas veniam explicabo delectus cumque nihil quaerat vero natus quia maxime quibusdam error consequuntur ab inventore reprehenderit expedita facere. Facere nam asperiores, magni voluptas nobis quos laudantium! Porro illo fugit, itaque velit ab aliquam. Temporibus illum culpa magni pariatur maxime, nihil molestiae soluta velit quidem!</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        $(".toggle").click(function () {
+            $(".toggle, .overlay").toggleClass("active")
+        })
+        $(".gnb a").click(function () {
+            $(".toggle, .overlay").removeClass("active")
+        })
+
+    </script>
+</body>
+
+</html>

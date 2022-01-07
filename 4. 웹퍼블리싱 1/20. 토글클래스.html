@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+            background-color: red;
+            margin: 10px;
+
+        }
+        a {
+            text-decoration: none;
+            color: black;
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 2px;
+            margin: 2px;
+            background-color: yellow;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+        
+        
+    </style>
+
+    
+    </head>
+
+<body>
+    <div class="button">
+        <a class="show" href="#none">클래스넣기</a>
+        <a class="hide" href="#none">클래스제거</a>
+        <a class="toggleClass" href="#none">토글클래스</a>
+
+    </div>
+    <div class="box">
+        box
+    </div>
+    <h1>jQuery로 클래스 부여를 할 때는 id 부여를 해서는 안된다.<br>클래스가 아니면 인식하지 못한다.
+    </h1>
+
+    <script>
+        $(".show").click(function () {
+            $(".box").addClass("blue")
+        })
+        $(".hide").click(function () {
+            $(".box").removeClass("blue")
+        })
+        $(".toggleClass").click(function () {
+            $(".box").toggleClass("blue")
+        })
+
+    </script>
+    
+<!-- id를 쓰면안되나? -->
+
+</body>
+
+</html>

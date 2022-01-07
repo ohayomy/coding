@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <style>
+        body {
+            background-color: black;
+        }
+        a {
+            text-decoration: none;
+            color: transparent;
+            font-size: 10em;
+            font-weight: 500;
+            -webkit-text-stroke: 1px white;
+            position: relative;
+        }
+        a::before,
+        a::after {
+            content: attr(data-text);
+            -webkit-text-stroke: 1px transparent;
+            position: absolute;
+            top:0;
+            left:0;
+            opacity:0.1;
+            transition: 0.5s;
+        }
+        a::before {
+            color: blue;
+        }
+        a::after {
+            color: red;
+        }
+        a:hover {
+            color: white;
+        }
+        a:hover::after {
+            /* top: -30px;
+            left: 30px; */
+            transform: translate(30px, -30px);
+            opacity:1;
+        }
+        a:hover::before {
+            /* top: -10px;
+            left: 10px; */
+            transform: translate(10px, -10px);
+            opacity:1;
+
+        }
+
+        h2 {
+            color: white
+        }
+       
+    </style>
+    </head>
+
+<body>
+    <a class="btn" href="#none" data-text="Portfolio">Portfolio</a>
+    <h2>비표준: 이 기능은 비표준이며 표준 트랙에 없습니다. 웹을 접하는 프로덕션 사이트에서는 사용하지 마십시오. 모든 사용자에게 작동하는 것은 아닙니다. 또한 구현 간에 큰 비호환성이 있을 수 있으며 향후 동작이 변경될 수 있습니다. 이 방법은 매우 편리한 방법이지만 아쉽게도 표준 방법은 아니라 웹킷 및 모질라 계열의 브라우저에서만 적용됩니다.</h2>
+
+
+    <script>
+
+
+    </script>
+</body>
+
+</html>

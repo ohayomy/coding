@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <style>
+        body {
+            /* 리니어 그라디언트는 높이값을 주어야 실행된다.
+            따라서 프레임이 앱솔루트로 붕 떠버린 지금, height:100vh를 넣어줘야 작동하는 것이다. */
+        }
+        a {
+            text-decoration: none;
+        }
+        .frame {
+            position: absolute;
+            top:50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* border: 1px solid black; */
+            width: 100%;
+            text-align: center;
+            /* width 100%를 주면 가로를 다 쓰기때문에 공간이 남는데도 div박스들이 흘러내리는 것을 막을 수 있다.*/
+        }
+        .profile {
+            border: 1px solid black;
+            width: 320px;
+            padding: 50px 30px;
+            box-sizing: border-box;
+            background-color: floralwhite;
+            border-radius: 7px;
+            box-shadow: 5px 5px 5px black;
+            text-align: center;
+            position: relative;
+            display:inline-block;
+            transition: 0.3s;
+            /* 제이쿼리 클래스부여에도 트랜지션이 된다. */
+
+        }
+        .photo {
+            width: 120px;
+            height: 120px;
+            display:inline-block;
+            /* text-align효과를 받아서 중앙정렬 시키기 위함 */
+            position: relative;
+        }
+        .photo img {
+            width: 120px;
+            border-radius: 50%;
+            box-shadow: 2px 2px 2px gray;
+            /* 이미지에도 넣을 수 있다. */
+        }
+        .photo i {
+            position: absolute;
+            right:10px;
+            bottom:10px;
+            font-size: 20px;
+            background-color: dodgerblue;
+            color: white;
+            border-radius: 50%;
+        }
+        .profile h1 {
+            font-size: 26px;
+            line-height: 1.1em;
+            margin-bottom: 5px;
+            /* h1의 기본마진이 커서 5면 줄어든다 */
+        }
+        .profile h1 span {
+            display:block;
+            font-size: 13px;
+            color: gray;
+        }
+        .profile p {
+        }
+        .profile p span {
+            display: block;
+            color: royalblue;
+        }
+        .sns {
+            border-top: 1px solid gray;
+            padding-top: 20px;
+        }
+        .sns div{
+            display:inline-block;
+            width: 31%;
+        }
+        .sns i {
+            font-size: 2.5em;
+            color: white;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 0 5px black;
+        }
+        .sns div:nth-child(1) i{
+            background: linear-gradient(180deg, blue, red);
+        }
+        .sns div:nth-child(2) i{
+            background: linear-gradient(180deg, blue, dodgerblue);
+        }
+        .sns div:nth-child(3) i{
+            background: linear-gradient(180deg, blue, green);
+        }
+        .sns span {
+            font-size: 13px;
+            color: #bbb;
+        }
+       .sns span big{
+           color: black;
+           font-size: 22px;
+           font-weight: bold;
+           display: block;
+           margin-top: 5px;
+       }
+       .darkmode {
+           /* border: 1px solid black; */
+           width: 20px;
+           height: 20px;
+            position: absolute;
+            top:20px;
+            left:20px;
+            cursor: pointer;
+            font-size: 18px;
+       }
+       .darkmode::before {
+           content:"\eb0f";
+           font-family: xeicon;
+       }
+       .like-more {
+            position: absolute;
+            /* border: 1px solid black; */
+            top: 20px;
+            right:20px;
+       }
+       .like {
+           /* border: 1px solid black; */
+            display:inline-block;
+            width: 20px;
+            height: 20px;
+            font-size: 18px;
+            cursor: pointer;
+       }
+       .like::before {
+           content:"\ea11";
+           font-family: xeicon;
+           
+       }
+       .like.active::before {
+            content:"\ea10";
+       }
+       .more {
+        cursor: pointer;
+       }
+
+        /* 여기부터 다크모드  */
+       .profile.dark {
+           background-color: rgb(10, 4, 32);
+           color: white;
+       }
+       .profile.dark .darkmode,
+       .profile.dark .like-more{
+           color: white;
+       }
+       .profile.dark .sns big{
+            color: white;
+       }
+       .profile.dark .darkmode::before {
+           content:"\eba3"
+       }
+
+
+    </style>
+    </head>
+
+<body>
+    <div class="frame">
+        <div class="profile">
+            <div class="darkmode"></div>
+            <div class="like-more">
+                <span class="like"></span>
+                <span class="more"><i class="xi-ellipsis-v"></i></span>
+            </div>
+            <div class="photo">
+                <img src="images/image.png" alt="">
+                <i class="xi-check-min"></i>
+            </div>
+            <h1>RYAN<span>kakao friends</span></h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, accusamus.<span>safasfafasf</span></p>
+            <div class="sns">
+                <div>
+                    <i class="xi-instagram"></i>
+                    <span><big>10.2k</big>followers</span>
+                    
+                </div>
+                <div>
+                    <i class="xi-facebook"></i>
+                    <span><big>20.2k</big>followers</span>
+
+                </div>
+                <div>
+                    <i class="xi-twitter"></i>
+                    <span><big>30.2k</big>followers</span>
+
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+
+
+    <script>
+        $(".darkmode").click(function () {
+            $(".profile").toggleClass("dark")
+
+        })
+        $(".like").click(function () {
+            $(this).toggleClass("active")
+        })
+    </script>
+</body>
+
+</html>

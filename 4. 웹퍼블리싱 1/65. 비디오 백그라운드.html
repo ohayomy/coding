@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            position: relative;
+            /* border: 10px solid white; */
+            height: 100vh;
+        }
+        .video-frame {
+
+        }
+        video {
+            position: fixed;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -100;
+        
+        }
+        .logo {
+            position: absolute;
+            top: 50px;
+            left: 100px;
+        }
+       .letter {
+            position: absolute;
+            color: white;
+            font-size: 30px;
+            left: 100px;
+            bottom: 100px;
+            animation: show 2s 1s linear;
+            animation-fill-mode: both;
+            /* 키프레임이 0퍼센트에서 스탠바이하게 해준다. 이걸 해주면 딜레이 1초동안 글자가 떠잇는걸 막을 수 있다. */
+       }
+       @keyframes show {
+           0% {
+                opacity:0;
+                margin-left: -100px;
+           }
+           100% {
+                opacity:1;
+                margin-left: 0;
+           }
+       }
+    </style>
+    </head>
+
+<body>
+        <div class="container">
+            <div class="video-frame">
+                <video src="images/space.mp4" autoplay muted loop poster="images/city.png"></video>
+            </div>
+            <div class="logo">
+                <img src="images/logo.png" alt="">
+            </div>
+            <div class="letter">
+                skldfjlkswsewedsfadffasfasf ewedsfadffasfasf 
+            </div>
+        </div>
+
+    <script>
+
+
+    </script>
+</body>
+
+</html>

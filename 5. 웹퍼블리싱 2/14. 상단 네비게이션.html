@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+            background-color: #eee;
+            text-align: center;
+            margin: 0;
+        }
+        header {
+            background-color: white;
+            box-shadow: 0px 2px 2px black;
+        }
+        nav {
+            width: 1100px;
+            margin: auto;
+            overflow: hidden;
+        }
+        nav > div {
+            height: 80px;
+            line-height: 80px;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        .logo {
+            float: left;
+            width: 180px;
+        }
+        .gnb {
+            width: calc(100% - 280px);
+            display: inline-block;
+            /* 이렇게 해줘야 로그인이 위로올라간다. 꼼수라고 하심 */
+            
+            /* float: left; */
+        }
+        .gnb a {
+            margin: 10px;
+        }
+        .lnb {
+            float: right;
+            width: 100px;
+        }
+        .lnb a {
+            background-color: teal;
+            color: white;
+            padding: 3px 7px;
+            border-radius: 20px;
+
+        }
+        /* 그러나 드롭 네비게이션이 들어간다면 overflow: hidden을 쓸 수 없으므로 float를 안쓴다. */
+       
+    </style>
+    </head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="#none"><img src="images/logo.png" alt="" height="70px"></a>
+            </div>
+            <div class="gnb">
+                <a href="#none">강의목록</a>
+                <a href="#none">로드맵</a>
+                <a href="#none">멘토링</a>
+                <a href="#none">커뮤니티</a>
+                <a href="#none">인프런</a>
+            </div>
+            <div class="lnb">
+                <a href="#none">로그인</a>
+            </div>
+        </nav>
+    </header>
+
+    <script>
+
+
+    </script>
+</body>
+
+</html>

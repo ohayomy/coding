@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <style>
+        body {
+            margin: 0;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        section img {
+            width: 100%;
+            height: 800px
+        }
+        .banner-outer {
+            position: relative;
+            background: linear-gradient(90deg, rgb(3, 28, 43) 50%, white 50%);
+        }
+        .banner{
+            width: 1450px;
+            margin: auto;
+            height: 40px;
+        }
+        .banner img {
+            /* display: none; */
+        }
+        .banner span {
+            position: absolute;
+            right: 10px;
+            font-size: 26px;
+            color: gray;
+            cursor: pointer;
+            top: 5px;
+        }
+        .lnb-outer {
+            background-color: gainsboro;
+        }
+        .lnb {
+            width: 1450px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+        }
+        .logo {}
+        .lnb-navi {}
+        .lnb-navi a {}
+        .lnb-navi a::after {
+            content:"|";
+            font-size: 12px;
+            color: darkgray;
+            margin-right: 7px;
+            padding-left: 7px;
+        }
+        .lnb-navi a:last-child::after {
+            display: none;
+        }
+        .gnb-outer {
+            background-color: rgb(33, 31, 36);
+        }
+        nav {
+            width: 1450px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .gnb {
+            margin: 0;
+            list-style: none;
+            display: flex;
+            height: 50px;
+           
+            
+        }
+        .gnb-outer li:not(.gnb li:last-child){
+            flex: 1;
+            text-align: center;
+            border-right: 1px solid gainsboro;
+            position: relative;
+        }
+        .gnb-outer li > a {
+            display: block;
+            color: white;
+            height: 100%;
+            padding-top: 14px;
+
+        }
+        .gnb em {
+            color: white;
+            background-color: crimson;
+            padding: 0 5px 0 0;
+            border-radius: 5px;
+
+        }
+        .gnb li:first-child {
+            background-color: crimson;
+        }
+        .gnb li:last-child {
+            background-color: blueviolet;
+            height: 50px;
+            width: 50px;
+            position: relative;
+        }
+        .trigger {
+            width: 25px;
+            height: 14px;
+            /* border: 1px solid black; */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+
+        }
+        .trigger span {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background-color: white;
+
+        }
+        .trigger span:nth-child(1) {
+        }
+        .trigger span:nth-child(2) {
+            top: 50%;
+        }
+        .trigger span:nth-child(3) {
+            top:100%
+            
+        }
+        .gnb li:last-child.active {
+            background-color: white;
+        }
+        .trigger.active span:nth-child(1) {
+            top:50%;
+            transform: rotate(45deg);
+            background-color: black;
+        }
+        .trigger.active span:nth-child(2) {
+            display: none;
+        }
+        .trigger.active span:nth-child(3) {
+            top: 50%;
+            transform: rotate(-45deg);
+            background-color: black;
+        }
+        .dropdown {
+            position: absolute;
+            width: 100%;
+            top:100%;
+            opacity:0;
+            visibility: hidden;
+            transition: 0.5s;
+        }
+        .dropdown a {
+            display: block;
+            padding: 8px;
+            background-color: rgb(245, 245, 245);
+            border-bottom: 1px solid #ddd;
+        }
+        .dropdown a:hover {
+            background-color: grey;
+        }
+        .gnb li:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+        }
+        .sitemap-outer {
+            background-color: white;
+            position: absolute;
+            top: 100%;
+            left:40px;
+            width: 1410px;
+            display: none;
+        }
+        .sitemap {
+            display: flex;
+        }
+        .sitemap div {
+            flex:1;
+            line-height: 2em;
+            font-size: 15px;
+            text-align: center;
+            padding: 10px;
+        }
+        .sitemap div b{
+        }
+        .sitemap div a{
+            /* display: list-item; */
+            /* 왜안뜨지 */
+            display: block;
+            margin: 10px;
+        }
+        .sitemap a::before {
+            content:"-"
+        }
+        .sitemap a:hover {
+            text-decoration: underline;
+        
+        }
+    
+    </style>
+    </head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="banner-outer">
+                <div class="banner">
+                    <span><i class="xi-close-thin"></i></span>
+                    <img src="images/banner.png">
+                </div>
+            </div>
+            <div class="lnb-outer">
+                <div class="lnb">
+                    <div class="logo">
+                        <a href="#none"><img src="images/logo2.png"></a>
+                    </div>
+                    <div class="lnb-navi">
+                        <a href="#none">Login</a>
+                        <a href="#none">Register Membership</a>
+                        <a href="#none">Education Gift</a>
+                        <a href="#none">Voucher Learning</a>
+                        <a href="#none">Customer Center</a>
+                    </div>
+                </div>
+            </div>
+            <div class="gnb-outer">
+                <nav>
+                    <ul class="gnb">
+                        <li>
+                            <a href="#none">Take a lecture</a>
+                        </li>
+                        <li>
+                            <a href="#none">Infinite refund course</a>
+                            <div class="dropdown">
+                                <a href="#none">TOEIC refund course</a>
+                                <a href="#none">infinite pass</a>
+                                <a href="#none">TOEIC speaking pass</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#none">Instructor introduction</a>
+                        </li>
+                        <li>
+                            <a href="#none">Free lecture</a>
+                            <div class="dropdown">
+                                <a href="#none">TOEIC refund course</a>
+                                <a href="#none">TOEIC 5 minutes in practice</a>
+                                <a href="#none">Pronunciation travel</a>
+                                <a href="#none">TOEIC</a>
+                                <a href="#none">Daily TOEIC VOCA</a>
+                                <a href="#none">speaking practice</a>
+                                <a href="#none">Writing practice</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#none">Event <em>13</em></a>
+                            <div class="dropdown">
+                                <a href="#none">Event in progress</a>
+                                <a href="#none">End event</a>
+                                <a href="#none">Wouter Announcement</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#none">Class room</a>
+                            <div class="dropdown">
+                                <a href="#none">Lecture while taking</a>
+                                <a href="#none">Questions / Review</a>
+                                <a href="#none">Coupons</a>
+                                <a href="#none">Course voucher</a>
+                                <a href="#none">Payment/ Shipping</a>
+                                <a href="#none">Level Test</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="trigger">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="sitemap-outer">
+                        <div class="sitemap">
+                            <div>
+                                <b>Guided Lesson</b>
+                                <a href="#none">Progress Tracker</a>
+                                <a href="#none">Classroom Mode</a>
+                                <a href="#none">Skills Progression</a>
+                            </div>
+                            <div>
+                                <b>Guided Lesson</b>
+                                <a href="#none">...</a>
+                                <a href="#none">...</a>
+                                <a href="#none">...</a>
+                            </div>
+                            <div>
+                                <b>Guided Lesson</b>
+                                <a href="#none">...</a>
+                                <a href="#none">...</a>
+                                <a href="#none">...</a>
+                            </div>
+                            <div>
+                                <b>Guided Lesson</b>
+                                <a href="#none">...</a>
+                                <a href="#none">...</a>
+                                <a href="#none">...</a>
+                            </div>
+                            <div>
+                                <b>Guided Lesson</b>
+                                <a href="#none">...</a>
+                                <a href="#none">...</a>
+                                <a href="#none">...</a>
+                            </div>
+                            <div>
+                                <b>Guided Lesson</b>
+                                <a href="#none">...</a>
+                                <a href="#none">...</a>
+                                <a href="#none">...</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <section>
+            <img src="images/universe.png">
+        </section>
+    </div>
+
+
+    <script>
+        $(".banner span").click(function () {
+            $(".banner-outer").slideUp()
+        })
+        $(".trigger").click(function () {
+            $(this).toggleClass("active")
+            $(".gnb li:last-child").toggleClass("active")
+
+            // $(".sitemap-outer").fadeToggle()
+            $(".sitemap-outer").slideToggle()
+        })
+    </script>
+</body>
+
+</html>

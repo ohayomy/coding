@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: lightslategray;
+        }
+        .container {
+            display: flex;
+        }
+        .frame {
+            /* border: 1px solid black; */
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 50px;
+
+        }
+        .frame:nth-child(1):hover span{
+            background-color: crimson;
+            border: none;
+        }
+        .frame:nth-child(2):hover span{
+            background-color:yellow;
+            border: none;
+        }
+        .frame:nth-child(3):hover span{
+            background-color: green;
+            border: none;
+        }
+        /* 이렇게도되는구나. */
+        span {
+            border: 1px solid white;
+            position: absolute;
+            width: inherit;
+            height: inherit;
+            border-radius: 45% 65% 77% 50% / 53% 64% 79% 47%;
+            transition: 0.7s;
+            animation: circle linear infinite;
+        }
+        span:nth-child(1){
+            animation-duration: 7s;
+           
+        }
+        span:nth-child(2){
+            animation-duration: 5s;
+            animation-direction: reverse;
+            
+        }
+        span:nth-child(3){
+            
+            animation-duration: 10s;
+           
+        }
+
+        .frame:hover span:nth-child(1) {
+            opacity: 0.3;
+        }
+        .frame:hover span:nth-child(2) {
+            opacity: 0.6;
+        }
+        .frame:hover span:nth-child(3) {
+            opacity: 0.8;
+        }
+
+
+        @keyframes circle {
+            0%{
+                transform: rotate(0);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+        div div div{
+            /* border: 1px solid black; */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%;
+            text-align: center;
+            color: white;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            display:inline-block;
+            margin-top: 5px;
+            padding: 10px;
+            border: 1px solid white;
+            border-radius: 40% 60% 65% 35%/ 40% 45% 55% 60%;
+        }
+       
+    </style>
+    </head>
+
+<body>
+    <div class="container">
+        <div class="frame">
+            <span></span>
+            <span></span>
+            <span></span>
+            <div>
+                <h2>Heading Text</h2>
+                <p>
+                    span:nth-child(3){                    
+                        animation-duration: 10s;                   
+                    }        
+                    div:hover span:nth-child(1) {                    opacity: 0.3;
+                    }
+                    div:hover span:nth-child(2) {                    opacity: 0.6;
+                    }
+                    div:hover span:nth-child(3) {                    opacity: 0.8;                }            
+                    @keyframes circle {                    0%{
+                    </p>    
+            <a href="#none">Read More</a>
+            </div>
+        </div>
+        <div class="frame">
+            <span></span>
+            <span></span>
+            <span></span>
+            <div>
+                <h2>Heading Text</h2>
+                <p>
+                    span:nth-child(3){                    
+                        animation-duration: 10s;                   
+                    }        
+                    div:hover span:nth-child(1) {                    opacity: 0.3;
+                    }
+                    div:hover span:nth-child(2) {                    opacity: 0.6;
+                    }
+                    div:hover span:nth-child(3) {                    opacity: 0.8;                }            
+                    @keyframes circle {                    0%{
+                </p>
+                                                     
+                                
+            <a href="#none">Read More</a>
+            </div>
+        </div>
+        <div class="frame">
+            <span></span>
+            <span></span>
+            <span></span>
+            <div>
+                <h2>Heading Text</h2>
+                <p>
+                    span:nth-child(3){                    
+                        animation-duration: 10s;                   
+                    }        
+                    div:hover span:nth-child(1) {                    opacity: 0.3;
+                    }
+                    div:hover span:nth-child(2) {                    opacity: 0.6;
+                    }
+                    div:hover span:nth-child(3) {                    opacity: 0.8;                }            
+                    @keyframes circle {                    0%{
+                    </p>                                  
+                              
+            <a href="#none">Read More</a>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+
+    </script>
+</body>
+
+</html>

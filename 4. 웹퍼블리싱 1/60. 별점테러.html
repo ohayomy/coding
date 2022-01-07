@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .rating {
+            background-color: black;
+            color: white;
+            overflow: hidden;
+            width: 300px;
+            text-align: center;
+            border-radius: 5px;
+            padding: 5px;
+        }
+        .rating div {
+            float: left;
+            width: 50%;
+        }
+        .star {
+
+        }
+        .star .fas {
+            font-size: 18px;
+            cursor:pointer;
+        }
+        .star .fas.active {
+            color: yellow;
+            text-shadow: 0 0 5px yellow;
+        }
+        .print .fas{
+            color: orange;
+            font-size: 18px;
+            /* vertical-align: middle; */
+        }
+    </style>
+    </head>
+
+<body>
+    <div class="rating">
+        <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+        </div>
+        <div class="print">영화를 평가해주세요</div>
+
+    </div>
+
+
+    <script>
+        $(".star .fas").click(function() {
+            $(this).prevAll().addClass("active")
+            $(this).addClass("active")
+
+            $(this).nextAll().removeClass("active")
+
+            var num = $(this).index();
+            // $(".print").text(num)
+            if (num == 0) {
+                $(".print").html('<i class="fas fa-angry"></i> ' + "최악이에요")
+            } else if (num == 1) {
+                $(".print").html('<i class="fas fa-frown"></i> ' + "별로예요")
+            } else if (num == 2) {
+                $(".print").html('<i class="fas fa-meh"></i> ' + "보통이에요")
+            } else if (num == 3) {
+                $(".print").html('<i class="fas fa-grin"></i> ' + "좋아요")
+            } else if (num == 4) {
+                $(".print").html('<i class="fas fa-laugh-beam"></i> ' + "최고였어요")
+            }
+
+
+        })
+
+    </script>
+</body>
+
+</html>

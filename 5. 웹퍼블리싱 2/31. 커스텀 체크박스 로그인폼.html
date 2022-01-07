@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background:url(images/background.png) no-repeat;
+            font-size: 17px;
+            line-height: 1.5em;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        .login {
+            width: 430px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 50px;
+            box-sizing: border-box;
+            box-shadow: 5px 5px 10px black;
+        }
+       .login h1 {
+            text-align: center;
+            font-size: 42px;
+            margin: 0 0 40px 0;
+            /* 마진탑 0주기위함 */
+       }
+       .login .field {
+            display: block;
+            text-transform: capitalize;
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: 20px;
+       }
+       input {
+           outline:none;
+       }
+       input[type=email],
+       input[type=password] {
+           width: 100%;
+           padding: 12px 0 12px 30px;
+           box-sizing: border-box;
+           border: none;
+           border-bottom: 1px solid gainsboro;
+       }
+       input[type=email] {
+           background: url(images/icon-user.png) no-repeat center left 3px;
+           /* 이렇게 left 뒤에 3px을 주면 left로부터 3px 떨어진곳에 배치된다. */
+        }
+       input[type=password] {
+           background: url(images/icon-password.png) no-repeat center left 3px;
+       }
+       input[type=email]::placeholder,
+       input[type=password]::placeholder {
+           opacity: 0.7;
+           transition: 0.5s;
+           /* visibility: visible; */
+       }
+       input[type=email]:focus,
+       input[type=password]:focus {
+           border-color: black;
+       }
+       input[type=email]:focus::placeholder,
+       input[type=password]:focus::placeholder {
+           opacity:0;
+           /* visibility: hidden; */
+       }
+       .save-info {
+           margin: 30px 0;
+           text-align: center;
+           /* overflow: hidden; */
+           display: flex;
+           justify-content: space-between;
+       }
+       .save-info label {
+           /* float:left; */
+       }
+       .save-info a {
+           /* float: right; */
+       }
+       .event-info {
+           text-align: center;
+       }
+       .event-info label {
+           display: inline-block;
+           margin: 7px;
+       }
+       input[type=checkbox] {
+            display:none;
+       }
+       input[type=checkbox] + em {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background: url(images/icon-checkbox.png) no-repeat;
+            background-position: left;
+            /* border: 1px solid black; */
+            margin-right: 5px;
+
+            vertical-align: text-bottom;
+            /* vertical-align: middle;
+            margin-top: -5px; */
+            /* transform: translateY(3px); */
+            /* 3가지 방법으로 가능하다! */
+       }
+       input[type=checkbox]:checked + em {
+            background-position: right;
+       }
+       input[type=radio] {
+           display: none;
+       }
+       label {
+            cursor:pointer;
+       }
+       input[type=radio] + em {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background: url(images/icon-radio.png) no-repeat;
+            background-position: left;
+            margin-right: 3px;
+            vertical-align: text-bottom;
+       }
+       input[type=radio]:checked + em {
+            background-position: right;
+       }
+       input[type=button] {
+           padding: 10px;
+           width: 80%;
+           font-size: 18px;
+           font-weight: 600;
+           border-radius: 30px;
+           box-shadow: 2px 2px 5px gray;
+           border: none;
+           text-transform: uppercase;
+           background: linear-gradient(90deg, blue, red);
+           color: white;
+           margin:15px 0 15px 37px;
+           cursor: pointer;
+       }
+       .sns-info {
+           text-align: center;
+
+       }
+       .sns {
+           margin: 10px 0;
+       }
+       .sns a {
+
+       }
+       .sns a i {
+            font-size: 26px;
+            padding: 7px;
+            background-color: gold;
+            border-radius: 50%;
+            color: white;
+            margin: 3px;
+            box-shadow: 2px 2px 2px gainsboro;
+       }
+       .sns a:nth-child(1) i {
+            background-color: rgb(209, 70, 57);
+       }
+       .sns a:nth-child(2) i {
+            background-color: rgb(54, 54, 161);
+       }
+       .sns a:nth-child(3) i {
+            background-color: rgb(9, 179, 3);
+       }
+       .sns a:nth-child(4) i {
+            background-color: rgb(248, 232, 6);
+            color: rgb(44, 1, 1);
+       }
+       .signup-info {
+           text-align: center;
+        }
+        .signup-info span {
+            display: block;
+        }
+        .signup-info a {
+            text-transform: uppercase;
+            font-weight: 600;
+       }
+        .signup-info a:hover {
+            text-decoration: underline;
+       }
+    </style>
+    </head>
+
+<body>
+    <form action="" class="login">
+        <h1>Login Accounts</h1>
+        <span class="field">user email</span>
+        <input type="email" placeholder="Type your email..">
+        <span class="field">User Password</span>
+        <input type="password" placeholder="Type your password..">
+        <div class="save-info">
+            <label><input type="checkbox"><em></em>Save your email</label>
+            <a href="#none">forgot Password?</a>
+        </div>
+        <div class="event-info">
+            Would you like to receive event emails?
+            <div class="custom-radio">
+                <label><input type="radio" name="radio" checked><em></em>Yes</label>
+                <label><input type="radio" name="radio"><em></em>No</label>
+            </div>
+        </div>
+        <input type="button" value="login">
+        <div class="sns-info">
+            Or Login using
+            <div class="sns">
+                <a href="#none"><i class="xi-google"></i></a>
+                <a href="#none"><i class="xi-facebook"></i></a>
+                <a href="#none"><i class="xi-naver"></i></a>
+                <a href="#none"><i class="xi-kakaotalk"></i></a>
+            </div>
+        </div>
+        <div class="signup-info">
+            <span>Have not account yet?</span>
+            <a href="#none">sign up</a>
+        </div>
+
+    </form>
+
+
+    <script>
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+
+    <style>
+        #parent {
+            border: 3px solid black;
+            width: 300px;
+            /* overflow: hidden; */
+        }
+        #child {
+            border: 3px solid red;
+            width: 100px;
+            height: 100px;
+            float: left;
+
+        }
+       
+        
+    </style>
+
+
+    </head>
+
+<body>
+<div id="parent">
+    <div id="child"></div>
+</div>
+<h1>float는 둥둥뜬다는 뜻으로 부모요소에서 자식요소를 인지하지 못한다. 따라서 부모요소에<br>
+overflow:hidden;을 줘서 기존의 부모자식 상호관계를 회복한다.</h1>
+
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+
+    <style>
+        #parent {
+            width: 500px;
+            height: 500px;
+            background-color: orange;
+            position: relative;
+            overflow: hidden;
+
+        }
+        /* .left {
+            width: 50%;
+            border-right:1px solid black; 
+            float: left;
+        }
+        .right {
+            width: 50%;
+            border-left:1px solid black; 
+            float: right;
+        }
+        */
+        div div {
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            /* 이것만 하면 자식div의 왼쪽 위 꼭지점이 정중앙에옴 */
+            transform: translate(-50%, -50%);
+            /* 자기자신의 크기의 절반만큼 이동해서 정중앙이됨 */
+            
+        }
+
+        
+        
+    </style>
+
+
+    </head>
+
+<body>
+    <div id="parent">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div></div>
+    </div>
+    <h1>탑 50퍼 레프트 50퍼만 하면 정중앙엔 자식div의 왼쪽 위 꼭지점이 위치하게됨
+        여기에 자기자신의 절반만큼을 좌측 위로 움직여서 정중앙에 맞춘다는 것
+    </h1>
+
+
+</body>
+
+</html>

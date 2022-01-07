@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <style>
+        body {
+            background-image: url(images/image4.png);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+            /* 설명과 다르게 커버 안넣으면 꽉안참 */
+        }
+        body::before {
+            content:"";
+            position: absolute; /*바디라서 렐러티브 필요 ㄴ */
+            background-color: rgba(0, 0, 0, 0.555); /* 블랙 띄워놓고 색깔박스 클릭해서 투명도만 조정함. opacity 사용해도 됨 */
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            /* 왜 가상요소 ::before는 body의 배경이미지보다 위에 있는지?? */
+        }
+        .search {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .search h1 {
+            color: white;
+            width: 500px;
+            /* 왜 width 지정안하면 줄바꿈되는거지? */
+        }
+        .search input[type=text] {
+            width: 200px;
+            padding: 10px;
+            border: none;
+            margin-right: -7px;
+            border-radius: 40px 0 0 40px;
+            outline: none;
+            padding-left: 20px;
+            /* 안에 플레이스 홀더 꾸미기 */
+            box-sizing: border-box;
+        }
+        .search input[type=submit] {
+            width: 100px;
+            padding: 10px;
+            border: none;
+            border-radius: 0 40px 40px 0;
+            color: white;
+            background-color: orange;
+            cursor: pointer;
+
+        }
+        .search input[type=text]::placeholder {
+            font-style: italic;
+            font-size: 11px;
+        }
+        .search input[type=submit]:hover {
+            background-color: red;
+        }
+        .search input[type=text]:focus::placeholder {
+            visibility: hidden;
+        }
+       
+    </style>
+    </head>
+
+<body>
+    <form class="search">
+        <h1>welcome to search-engine</h1>
+        <input type="text" placeholder="글자를 입력해주세요">
+        <input type="submit" value="Search">
+    </form>
+
+
+    <script>
+
+
+    </script>
+</body>
+
+</html>

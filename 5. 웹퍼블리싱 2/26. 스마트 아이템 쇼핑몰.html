@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+
+        }
+        .items {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            counter-reset: number;
+            /* 아이템이 아닌 아이템즈에 넣는다는것 명심할것! */
+            /* number라는건 내가 정한 이름이고 어떤것이든 괜찮다. */
+        }
+        .item {
+            border: 1px solid black;
+            flex-grow: 1;
+            width: 200px;
+            height: 300px;
+            position:relative;
+            /* counter-increment: number; */
+        }
+        .item::before {
+            position: absolute;
+            content: counter(number);
+            counter-increment: number;
+            width: 35px;
+            height: 35px;
+            background-color: gray;
+            z-index: 10;
+            border-radius: 0 0 5px 0;
+            color:white;
+            line-height: 35px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .item:hover::before {
+            background-color: crimson;
+        }
+        .photo {
+            position: relative;
+            width: inherit;
+            height: inherit;
+        }
+        .photo a{
+            display: inline-block;
+            width: inherit;
+            height: inherit;
+        }
+        .photo a img {
+            width: inherit;
+            height: inherit;
+            position: absolute;
+            transition:0.5s;
+            object-fit: cover;
+            /* 오브젝트 핏은 width와 height가 정의되어야 쓸 수 있다. */
+
+        }
+        .photo a img:first-child {
+            z-index: 1;
+        }
+        
+        .photo:hover a img:first-child {
+            opacity: 0;
+        }
+        .detail span {
+            display: block;
+        }
+        
+    </style>
+    </head>
+
+<body>
+    <div class="items">
+
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item">
+            <div class="photo">
+                <a href="#none">
+                    <img src="images/tree.png">
+                    <img src="images/forest.png">
+                </a>
+            </div>
+            <div class="detail">
+                <span class="price">18<small>%</small>23,000원</span>
+                <span class="name">블루투스 헤드셋</span>
+            </div>
+        </div>
+        <div class="item"></div>
+        <div class="item"></div>
+        
+    </div>
+
+    <script>
+
+
+    </script>
+</body>
+
+</html>

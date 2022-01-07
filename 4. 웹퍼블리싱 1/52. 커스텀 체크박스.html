@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .custom {
+            margin-bottom: 20px;
+        }
+        .custom input {
+            box-shadow: 0 0 20px black;
+            /* border-radius: 20px; 적용안됨. 원형을 만들고자 한다면
+            밑처럼 이미지를 이용하거나 라벨테그를 꾸며서 붙여야함*/
+        }
+        .customm {
+            margin-bottom: 20px;
+            font-size: 30px;
+        }
+        .customm input[type=checkbox] {
+            display:none;
+        }
+        .customm label em {
+            /* border: 1px solid black; */
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 5px;
+            background: url(images/image.png) no-repeat;
+            background-size: cover; /* 이미지를 화면에 딱맞게 */
+            background-position: left center; /* 기본값*/
+
+        }
+        .customm input[type=checkbox]:checked + label em {
+            background: url(images/image2.png) no-repeat;
+            background-size: cover;
+
+        }
+        .seoul label{
+            cursor: pointer;
+        }
+        
+
+       
+    </style>
+    </head>
+
+<body>
+    <div class="custom">
+        <input type="checkbox" id="check">
+        <label for="check">
+            I agree...
+        </label>
+    </div>
+    <div class="customm">
+        <input type="checkbox" id="checkk">
+        <label for="checkk">
+            <em></em>
+            I agree...
+        </label>
+    </div>
+    <div class="seoul">
+        <input type="radio" name="what" id="check1"><label for="check1">초딩</label>
+        <input type="radio" name="what" id="check2"><label for="check2">중딩</label>
+        <input type="radio" name="what" id="check3"><label for="check3">고딩</label>
+        <input type="radio" name="what" id="check4"><label for="check4">대딩</label>
+        <input type="radio" name="what" id="check5"><label for="check5">직장인</label>
+        <!-- id는 절대 중복해서 써서는 안된다! -->
+    </div>
+    <script>
+
+
+    </script>
+</body>
+
+</html>

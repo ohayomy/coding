@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Poor+Story&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            outline: none;
+        }
+        body {
+            font-size: 15px;
+            font-family: 'Mukta', 'Poor Story';
+            line-height: 1.6em;
+            color: #222;
+            margin: 0;
+        }
+        a {
+            text-decoration: none;
+            color: #222;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+        }
+        
+        header {
+            height: 100px;
+            background-color: skyblue;
+            font-size: 2em;
+            text-align: center;
+            line-height: 100px;
+        }
+        section {
+            height: 400px;
+            font-size: 2em;
+            text-align: center;
+            line-height: 400px;
+        }
+        section:nth-of-type(even) {
+            background-color: gainsboro;
+        }
+        footer {
+            padding-top: 25px;
+            background-color: #222;
+            color: #999;
+        }
+        footer a {
+            color: #fff;
+        }
+        footer em {
+            font-style: none;
+            margin: 7px;
+        }
+        footer .inner {
+            width: 1100px;
+            margin: auto;
+            height: 130px;
+            /* overflow: hidden; */
+            /* 오버플로우가 아닌 height로 높이를 찾아준 것은 드롭다운 네비가 이너 바깥으로 벗어날 수 있기 때문 */
+        }
+        .copyright {
+            float: left;
+        }
+        .family {
+            padding-top: 20px;
+            float: right;
+        }
+        .policy {
+            margin-bottom: 20px;
+        }
+        .policy a:first-child{
+            color: yellowgreen;
+        }
+        .policy a:hover {
+            text-decoration: underline;
+        }
+        .info span::after {
+            content:"|";
+            font-size: 12px;
+            margin: 10px;
+        }
+        .info span:nth-of-type(3):after {
+            content: "";
+        }
+        .info p {
+            margin: 5px 0;
+        }
+        .slideup {
+            width: 180px;
+            text-align: center;
+            cursor:pointer;
+            position: relative;
+            /* border: 1px solid green; */
+        }
+        .title {
+            color: #fff;
+            font-size: 20px;
+            position: relative;
+            border: 1px solid gray;
+            padding: 5px 35px 5px 0px;
+        }
+        .title::after {
+            content:'\f107';
+            font-family:"Font Awesome 5 Free";
+            font-weight: 600;
+            position: absolute;
+            right: 9px;
+            color: white;
+        }
+        .title.active::after {
+            transform: rotate(180deg);
+        }
+        ul {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            width: 100%;
+
+
+            margin: 0;
+            padding: 0;
+            /* 이 두개가 엄청 컸다. 모르고 계속 헤맸음. 주의할것. */
+            display:none;
+
+        }
+        ul li {
+            list-style: none;
+            font-size: 20px;
+            background-color: gray;
+            border-bottom: 1px solid white;
+            padding: 5px;
+        }
+        ul li:last-child {
+            border: none;
+        }
+        ul li:hover {
+            background-color: darkslategray;
+        }
+    </style>
+
+
+    </head>
+
+<body>
+    <div class="container">
+        <header>Header</header>
+        <section>Section #01</section>
+        <section>Section #02</section>
+        <section>Section #03</section>
+        <section>Section #04</section>
+        <footer>
+            <div class="inner">
+                <div class="copyright">
+                    <div class="policy">
+                        <a href="#none">개인정보처리방침 </a><em>|</em>
+                        <a href="#none">사이트맵</a>
+                    </div>
+                    <div class="info">
+                        <span>서울특별시 은평구 갈현동 281-181 은방울빌라 301호</span><span>Tel.010-5596-9027</span><span>E-mail. ohrum4@hanmail.net</span>
+                        <p>COPYRIGHT (C) OHREUM COMPANY. ALL RIGHTS RESERVED</p>
+                    </div>
+                </div>
+                <div class="family">
+                    <div class="slideup">
+                        <div class="title">Family Sites</div>
+                        <ul>
+                            <li><a href="#none">네이버</a></li>
+                            <li><a href="#none">다음</a></li>
+                            <li><a href="#none">인프런</a></li>
+                            <li><a href="#none">유튜브</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        $(".title").click(function () {
+            $(".slideup ul").slideToggle()
+            $(this).toggleClass("active")
+        })
+        $("ul li").click(function () {
+            $(this).parent().slideUp()
+            $(".title").text($(this).text())
+        })
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            background-color: gold;
+            cursor: pointer;
+            margin: 10px;
+        }
+       
+    </style>
+    </head>
+
+<body>
+    <div onclick="location.href='https://www.google.com'">#1</div>
+    <div onclick="window.open('https://www.google.com')">#2</div>
+    <!-- 바깥 따옴표와 안쪽 따옴표를 반드시 구분해서 넣어줘야함 -->
+    <a href="javascript:history.back()">뒤로가기</a>
+    <a href="javascript:history.forward()">앞으로가기</a>
+    <a href="javascript:location.reload()">새로고침</a>
+    <a href='javascript:window.open()'>빈창열기</a>
+    <a href='javascript:window.open("13. 인라인 자바스크립트.html")'>같은창열기</a>
+    <!-- 윈도우 오픈으로 열었으므로 항상 잘 닫히는 페이지가 된다. -->
+    <a href='javascript:window.close()'>바로누르면되는창닫기</a>
+    <!-- window.open()으로 열린 창만 window.close()로 닫을 수 있다. 
+    원래는 조건이 붙지않았으나 보안 문제로 인해서 바뀌었다고 한다.-->
+
+
+    
+
+
+    <script>
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        .gnb {
+            /* border: 1px solid green; */
+            font-size: 30px;
+            margin: 30px;
+            
+        }
+        /* 이런식으로 클래스네임 띄어쓰기 하기전 겹치는걸로 일괄지정 가능 */
+        .gnb a {
+            /* border: 1px solid black; */
+            position: relative;
+            padding-bottom: 5px;
+            /* 패딩바텀 넣엇는데 a태그가 인라인 태그라서 간격이 안늘어나는듯 */
+        }
+        .gnb:nth-child(1) a::before {
+            content:"";
+            position: absolute;
+            /* 비포애프터는 원래 인라인 요소라서 크기값을 가질 수없지만 포지션 앱솔루트를 줘서 인라인 블록속성을 가진다. */
+            background: red;
+            height: 2px;
+            width: 0;
+            bottom: 0;
+            transition: 0.5s;
+        }
+        .gnb:nth-child(1) a:hover::before {
+            width: 100%;
+        }
+
+        .gnb:nth-child(2) a::before {
+            content:"";
+            position: absolute;
+            background: red;
+            height: 2px;
+            width: 0;
+            bottom: 0;
+            right: 0;
+            transition: 0.5s;
+        }
+        .gnb:nth-child(2) a:hover::before {
+            width: 100%;
+        }
+
+        .gnb:nth-child(3) a::before {
+        content:"";
+            position: absolute;
+            background: red;
+            height: 5px;
+            width: 5px;
+            bottom: 0;
+            left: 0;
+            transition: 0.6s ease-in-out;
+        }
+        .gnb:nth-child(3) a:hover::before {
+            left: calc(100% - 4px)
+            /* left: 99%; */
+        }
+
+        .gnb:nth-child(4) a::before {
+            content:"";
+            position: absolute;
+            background: red;
+            height: 2px;
+            width: 0;
+            bottom: 0;
+            left: 50%;
+            transition: 0.6s;
+            transform: translateX(-50%);
+        }
+        .gnb:nth-child(4) a:hover::before {
+            width: 100%;
+            /* left: 100%; */
+        }
+
+        .gnb:nth-child(5) a::before {
+            content:"";
+            position: absolute;
+            background: red;
+            height: 2px;
+            width: 100%;
+            bottom: 0;
+            left: 50%;
+            transition: 0.6s;
+            transform: translateX(-50%);
+        }
+        .gnb:nth-child(5) a:hover::before {
+            width: 0;
+            /* left: 100%; */
+        }
+
+        .gnb:nth-child(6) a::before {
+            content:"";
+            position: absolute;
+            background: red;
+            height: 2px;
+            width: 0;
+            bottom: 0;
+            left:0;
+            transition: 1s ease-in-out;
+        }
+        .gnb:nth-child(6) a {
+            left: 0;
+            transition: 1s ease-in-out;
+        }
+        .gnb:nth-child(6) a:hover{
+            left: 200px;
+        }
+        .gnb:nth-child(6) a:hover::before {
+            width: 100%;
+            left: 30%
+        }
+        
+        
+       
+    </style>
+    </head>
+
+<body>
+
+    <div class="gnb">
+        <a href="#none">CordingWork Online Class</a>
+    </div>
+    <div class="gnb">
+        <a href="#none">CordingWork Online Class</a>
+    </div>
+    <div class="gnb">
+        <a href="#none">CordingWork Online Class</a>
+    </div>
+    <div class="gnb">
+        <a href="#none">CordingWork Online Class</a>
+    </div>
+    <div class="gnb">
+        <a href="#none">CordingWork Online Class</a>
+    
+    </div>
+    <div class="gnb">
+        <a href="#none">CordingWork Online Class</a>
+    
+    </div>
+
+    <script>
+
+
+    </script>
+</body>
+
+</html>

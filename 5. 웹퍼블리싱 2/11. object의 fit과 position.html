@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <style>
+        div {
+            display: inline-block;
+            margin: 70px;
+        }
+        .frame1 {
+            border: 5px solid black;
+            width: 400px;
+            height: 400px;
+            background: url(images/tree.png) no-repeat left center;
+            background-size: cover;
+        }
+
+       .frame2 {
+            border: 5px solid red;
+            width: 400px;
+            height: 400px;
+       }
+
+
+       .frame3 {
+            border: 5px solid blue;
+            width: 400px;
+            height: 400px;
+       }
+       .frame3 img {
+           width: inherit;
+           height: inherit;
+       }
+
+
+       .frame4 {
+            border:5px solid green;
+            width: 400px;
+            height: 400px;
+        }
+        .frame4 img {
+            width: inherit;
+            height: inherit;
+            object-fit: cover;
+            object-position: center;
+           /* center가 기본값 */
+       }
+       /* 이처럼 백그라운드 이미지가 아니라 일반 이미지 태그로도 배경설정이 쉽게 가능하다. */
+
+    </style>
+    </head>
+
+<body>
+
+    <div class="frame1"></div>
+    <div class="frame2">
+        <img src="images/tree.png" alt="">
+    </div>
+    <div class="frame3">
+        <img src="images/tree.png" alt="">
+    </div>
+    <div class="frame4">
+        <img src="images/tree.png" alt="">
+    </div>
+    
+
+    <script>
+
+
+    </script>
+</body>
+
+</html>
