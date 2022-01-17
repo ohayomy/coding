@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Poor+Story&
+    display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+
+
+
+    <style>
+        * {
+            box-sizing: border-box;
+            outline: none;
+        }
+        body {
+            font-size: 18px;
+            font-family: 'Mukta', 'Poor Story';
+            line-height: 1.6em;
+            color: gainsboro;
+            margin: 0;
+            background-color: #222;
+        }
+        a {
+            text-decoration: none;
+            color: gainsboro;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+        }
+        .faq .inner {
+            width: 700px;
+            margin: auto;
+        }
+        .faq .inner h1 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 50px;
+            margin-top: 50px;
+        }
+        .title {
+            background-color: rgb(87, 85, 85);
+            cursor: pointer;
+            padding: 10px;
+            margin-bottom: 4px;
+            transition: 0.3s;
+        }
+        .title i {
+            float: right;
+            font-size: 20px;
+            margin-top: 5px;
+            margin-right: 2px;
+        }
+        .content {  background-color: rgb(78, 76, 76);
+            padding: 10px;
+            margin-bottom: 5px;
+            display: none;
+        }
+        .title:hover {
+            background-color: hotpink;
+        }
+        .title.active {
+            background-color: hotpink;
+        }
+        .title.active i {
+            transform: rotate(135deg);
+            transition: 1s;
+            /* 여기에 트랜지션을 주면 되돌릴때는 애니메이션효과를 없앨 수 있다. */
+        }
+    </style>
+
+
+    </head>
+
+<body>
+    <section class="faq">
+        <div class="inner">
+            <h1>Frequently Asked Questions</h1>
+            <article class="accordion">
+                <div class="title">What is Netflix?<i class="xi-plus-thin"></i></div>
+                <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aut, optio molestiae voluptatem similique repellat necessitatibus mollitia quod alias doloribus, dignissimos cumque perspiciatis <br><br>laudantium quia corrupti facere! Eveniet, autem. Ipsa commodi consectetur, esse corporis eum aut, culpa qui temporibus nostrum reprehenderit quisquam error molestiae, cupiditate expedita. Quasi eaque accusantium fuga.</div>
+                <div class="title">How much does Netflix cost?<i class="xi-plus-thin"></i></div>
+                <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aut, optio molestiae voluptatem similique repellat necessitatibus mollitia quod alias doloribus, dignissimos cumque perspiciatis <br><br>laudantium quia corrupti facere! Eveniet, autem. Ipsa commodi consectetur, esse corporis eum aut, culpa qui temporibus nostrum reprehenderit quisquam error molestiae, cupiditate expedita. Quasi eaque accusantium fuga.</div>
+                <div class="title">Where can I watch?<i class="xi-plus-thin"></i></div>
+                <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aut, optio molestiae voluptatem similique repellat necessitatibus mollitia quod alias doloribus, dignissimos cumque perspiciatis <br><br>laudantium quia corrupti facere! Eveniet, autem. Ipsa commodi consectetur, esse corporis eum aut, culpa qui temporibus nostrum reprehenderit quisquam error molestiae, cupiditate expedita. Quasi eaque accusantium fuga.</div>
+                <div class="title">How do I cancel?<i class="xi-plus-thin"></i></div>
+                <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aut, optio molestiae voluptatem similique repellat necessitatibus mollitia quod alias doloribus, dignissimos cumque perspiciatis <br><br>laudantium quia corrupti facere! Eveniet, autem. Ipsa commodi consectetur, esse corporis eum aut, culpa qui temporibus nostrum reprehenderit quisquam error molestiae, cupiditate expedita. Quasi eaque accusantium fuga.</div>
+                <div class="title">What can I watch on Netflix?<i class="xi-plus-thin"></i></div>
+                <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aut, optio molestiae voluptatem similique repellat necessitatibus mollitia quod alias doloribus, dignissimos cumque perspiciatis <br><br>laudantium quia corrupti facere! Eveniet, autem. Ipsa commodi consectetur, esse corporis eum aut, culpa qui temporibus nostrum reprehenderit quisquam error molestiae, cupiditate expedita. Quasi eaque accusantium fuga.</div>
+                <div class="title">Is Netflix good for kids?<i class="xi-plus-thin"></i></div>
+                <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aut, optio molestiae voluptatem similique repellat necessitatibus mollitia quod alias doloribus, dignissimos cumque perspiciatis <br><br>laudantium quia corrupti facere! Eveniet, autem. Ipsa commodi consectetur, esse corporis eum aut, culpa qui temporibus nostrum reprehenderit quisquam error molestiae, cupiditate expedita. Quasi eaque accusantium fuga.</div>
+            </article>
+        </div>
+    </section>
+
+    <script>
+        $(".content").eq(0).show()
+        // 0번째 열어놓기
+        $(".title").eq(0).addClass("active")
+
+        $(".title").click(function () {
+            $(this).addClass("active")
+            $(this).siblings(".title").removeClass("active")
+            $(this).next().slideDown()
+            $(this).siblings(".title").next().slideUp()
+        })
+
+    </script>
+</body>
+
+</html>

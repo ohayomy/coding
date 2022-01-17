@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Poor+Story&
+    display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="icon" href="images/netflix.png">
+    <style>
+        * {
+            box-sizing: border-box;
+            outline: none;
+        }
+        body {
+            font-size: 18px;
+            font-family: 'Mukta', 'Poor Story';
+            line-height: 1.6em;
+            color: #fff;
+            margin: 0;
+            background-color: black;
+        }
+        body.active {
+            overflow: hidden;
+        }
+        /* 모달창이 떳을 때 스크롤을 멈춤 */
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+        }
+        header {
+            overflow: hidden;
+            padding: 35px 55px;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+        }
+        .logo {
+            float: left;
+        }
+        .logo img {
+            width: 170px;
+        }
+        .signin{
+            float: right;
+        }
+        .signin button {
+            background-color: red;
+            border: none;
+            color: #fff;
+            padding: 7px 15px;
+            border-radius: 5px;
+            text-transform: capitalize;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .welcome {
+            height: 80vh;
+            background: url(images/KR-ko-20220103-popsignuptwoweeks-perspective_alpha_website_small.jpg) no-repeat center center;
+            background-size: cover;
+            position: relative;
+        }
+        .welcome::before {
+            content:"";
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.575);
+            width: 100%;
+            height: 100%;
+            top:0;
+            left:0;
+        }
+        .heading {
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 800px;
+        }
+        .heading h1 {
+            font-size: 64px;
+            line-height: 1.2em;
+        }
+        .heading h5 {
+            font-weight: 400;
+            font-size: 40px;
+            line-height: 1.2em;
+        }
+        .heading p {
+            font-size: 20px;
+        }
+        .getstarted {
+            position: relative;
+            display: inline-block;
+        }
+        .getstarted input[type=email],
+        .getstarted button {
+            height: 60px;
+            border: none;
+            vertical-align: middle;
+        }
+        .getstarted input[type=email] {
+            width: 450px;
+            margin-right: -6px;
+            font-size: 18px;
+            padding: 10px 0 0 10px;
+        }
+        .getstarted button {
+            width: 180px;
+            background-color: red;
+            font-size: 26px;
+            color: #fff;
+            cursor: pointer;
+        }
+        .getstarted input[type=email] + span {
+            color: #999;
+            position: absolute;
+            font-size: 18px;
+            left:15px;
+            top:15px;
+            font-weight: bold;
+            pointer-events: none;
+            transition: 0.1s;
+        }
+        .getstarted input[type=email]:focus + span,
+        .getstarted input[type=email]:invalid + span {
+            top:0;
+            font-size: 13px;
+        }
+        section {
+            border-bottom: 10px solid #333;
+            position: relative;
+        }
+        .enjoy, .download, .watch, .create {
+            height: 550px;
+        }
+        .inner {
+            width: 1050px;
+            margin: auto;
+            overflow: hidden;
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%, -50%);
+        }
+        .inner > div {
+            float: left;
+        }
+        .desc {
+            padding-top: 70px;
+            width: 55%;
+            
+        }
+        .desc h2 {
+            font-size: 60px;
+            line-height: 1.2em;
+        }
+        .desc p {
+            font-size: 30px;
+            line-height: 1.2em;
+        }
+        .preview {
+            text-align: center;
+            width: 45%;;
+        }
+        .preview img {
+            height: 370px;
+        }
+        .faq {
+            padding: 80px 0;
+        }
+        .faq-inner {
+            width: 750px;
+            margin: auto;
+        }
+        .faq-inner h1 {
+            text-align: center;
+            font-size: 50px;
+            margin-bottom: 50px;
+        }
+        input[name=faq-item] {
+            display: none;
+        }
+        input[name=faq-item] + label {
+            display: block;
+            background-color: #303030;
+            padding: 30px;
+            cursor: pointer;
+            font-size: 1.7em;
+            margin-bottom: 3px;
+        }
+        .faq-content {
+            background-color: #303030;
+            padding: 15px;
+            margin-bottom: 10px;
+            /* display:none; */
+            font-size: 1.7em;
+            line-height: 1.5em;
+
+            max-height: 0;
+            overflow: hidden;
+            padding: 0;
+            /* 패딩은 박스 자체의 공백을 늘리기 때문에 패딩0을 안주면 패딩만큼 삐져나온다. */
+            transition: max-height 0.5s, padding 0.3s;
+        }
+        input[name=faq-item]:checked + label + .faq-content{
+            /* display: block; */
+            max-height: 500px;
+            /* 그냥 하이트를 쓰면 텍스트양에 따른 적절한 높이를 줄 수 없다. */
+            padding: 15px;
+        }
+        input[name=faq-item] + label span {
+            float: right;
+            font-size: 30px;
+            transition: 0.5s;
+        }
+        input[name=faq-item]:checked + label span {
+            transform: rotate(-45deg);
+        }
+        aside {
+            text-align: center;
+            margin-top: 70px;
+        }
+        footer {
+            padding: 50px 0;
+        }
+        .footinner {
+            width: 850px;
+            margin: auto;
+            font-size: 14px;
+            color: #777;
+            line-height: 1.6em;
+        }
+        .sitemap {
+            padding-bottom: 50px;
+            margin-bottom: 50px;
+            border-bottom: 1px solid #777;
+        }
+        .sitemap h3 {
+            margin-bottom: 20px;
+        }
+        .sitemap .links .items{
+            display: inline-block;
+            /* border: 1px solid white; */
+            vertical-align: top;
+            width: 24%;
+            line-height: 2.5em;
+        }
+        .sitemap .links .items a{
+            color: #777;
+            display: block;
+        }
+        .items a:hover {
+            text-decoration: underline;
+        }
+        .modal {
+            background-color: rgba(0, 0, 0, 0.692);
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top:0;
+            left:0;
+            z-index: 100;
+            display: none;
+        }
+        .login {
+            /* border: 1px solid #fff; */
+            width: 450px;
+            height: 500px;
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.815);
+            position: relative;
+            padding: 50px;
+        }
+        .login i {
+            position: absolute;
+            top:20px;
+            right:20px;
+            cursor: pointer;
+            font-size: 40px;
+        }
+        .login h1 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+        .login input[type=text],
+        .login input[type=password] {
+            background-color: gray;
+            padding: 15px 15px;
+            border-radius: 10px;
+            width: 100%;
+            border: none;
+            margin-bottom: 20px;
+            font-size: 19px;
+            color: #fff;
+        }
+        .login input[type=text]::placeholder,
+        .login input[type=password]::placeholder {
+            color: gainsboro;
+        }
+        .login input[type=button] {
+            background-color: red;
+            padding: 13px;
+            margin-bottom: 10px;
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .save-info {
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .save-info label {
+            float: left;
+        }
+        .save-info a {
+            float: right;
+        }
+        .login a:hover {
+            text-decoration: underline;
+        }
+        .login span a {
+            color: royalblue;
+        }
+
+        
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+            .logo img {
+                width: 140px;
+            }
+            header {
+                padding: 35px 20px;
+            }
+
+            /* Common CSS */
+            section {
+                padding: 20px;
+            }
+
+            /* Section : Welcome */
+            .welcome {
+                height: 100vh;
+            }
+
+            /* Heading */
+            .heading {
+                width: 100%;
+            }
+            .heading h1 {
+                font-size: 34px;
+            }
+
+            /* Getstarted */
+            .getstarted {
+                width: 95%;
+            }
+            .getstarted input[type=email] {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+
+            /* Section : Enjoy, Download, Watch, Create */
+            .enjoy, .download, .watch, .create {
+                height: auto;
+            }
+            .inner {
+                width: 100%;
+                position: static;
+                transform: translate(0);
+            }
+
+            /* Change Order */
+            .download .inner,
+            .create .inner {
+                display: flex;
+                flex-direction: column;
+            }
+            .download .inner .desc,
+            .create .inner .desc {
+                order: 1;
+            }
+            .download .inner .preview,
+            .create .inner .preview  {
+                order: 2;
+            }
+
+            .desc,
+            .preview {
+                float: none;
+                width: 100%;
+                text-align: center;
+            }
+            .preview img {
+                width: 100%;
+                height: auto;
+            }
+            .desc h2 {
+                font-size: 30px;
+            }
+
+            /* Section : FAQ */
+            .faq {
+                padding: 80px 20px;
+            }
+            .faq-inner {
+                width: 100%;
+            }
+            .faq-inner h1 {
+                font-size: 30px;
+                line-height: 1.32em;
+            }
+            input[name=faq-item] + label span {
+                font-size: 26px;
+            }
+
+            /* Footer */
+            footer {
+                padding: 50px 20px;
+                text-align: center;
+            }
+            .footinner {
+                width: 100%;
+            }
+            .items {
+                width: 48%;
+                margin-bottom: 20px;
+            }
+
+            /* Login Modal */
+            .login {
+                width: 100%;
+            }
+            }
+
+    </style>
+</head>
+<body>
+    <div class="modal">
+        <div class="login">
+            <i class="xi-close-thin"></i>
+            <h1>로그인</h1>
+            <input type="text" placeholder="이메일 또는 전화번호">
+            <input type="password" placeholder="비밀번호">
+            <input type="button" value="로그인">
+            <div class="save-info">
+                <label><input type="checkbox">로그인 정보 저장</label>
+                <a href="#none">도움이 필요하신가요?</a>
+            </div>
+            <span>Netflix 회원이 아닌가요? <a href="#none"> 지금 가입하세요.</a></span>
+        </div>
+    </div>
+
+     <div class="container">
+         <header>
+             <div class="logo">
+                 <img src="images/Netflix_Logo_PMS.png">
+             </div>
+             <div class="signin">
+                 <button>로그인</button>
+             </div>
+         </header>
+         <section class="welcome">
+             <div class="heading">
+                 <h1>영화와 시리즈를 무제한으로.</h1>
+                 <h5>다양한 디바이스에서 시청하세요. 언제든 해지하실 수 있습니다.</h5>
+                 <p>시청할 준비가 되셨나요? 멤버십을 등록하거나 재시작하려면 이메일 주소를 입력하세요.</p>
+                 <div class="getstarted">
+                     <input type="email"><span>이메일 주소</span> <button>시작하기<i class="xi-angle-right-min"></i></button>
+                 </div>
+             </div>
+         </section>
+         <section class="enjoy">
+             <div class="inner">
+                <div class="desc">
+                     <h2>TV로 즐기세요.</h2>
+                     <p>스마트 TV, PlayStation, Xbox, Chromecast, Apple TV, 블루레이 플레이어 등 다양한 디바이스에서 시청하세요.</p>
+                </div>
+                <div class="preview">
+                        <img src="images/tv.png">
+                </div>
+            </div>
+         </section>
+         <section class="download">
+            <div class="inner">
+                 <div class="preview">
+                     <img src="images/mobile-0819.jpg">
+                 </div>
+                <div class="desc">
+                    <h2>즐겨 보는 콘텐츠를 저장해 오프라인으로 시청하세요.</h2>
+                    <p>간편하게 저장하고 빈틈없이 즐겨보세요.</p>
+                </div>
+            </div>
+         </section>
+         <section class="watch">
+            <div class="inner">
+                <div class="desc">
+                    <h2>다양한 디바이스에서 시청하세요.</h2>
+                    <p>각종 영화와 시리즈를 스마트폰, 태블릿, 노트북, TV에서 무제한으로 스트리밍하세요. 추가 요금이 전혀 없습니다.</p>
+                </div>
+                <div class="preview">
+                    <img src="images/device-pile.png">
+                </div>
+            </div>
+         </section>
+         <section class="create">
+            <div class="inner">
+                 <div class="preview">
+                     <img src="images/AAAABTyynLTvOBU46RmBnCIPyjAryrXCZKImpoXdp7Mz54jVGKnBQ1X84bzR-3vtD-RA4uu2b1FjrDgfxE6KElG14WAXW19X.png">
+                 </div>
+                <div class="desc">
+                    <h2>어린이 전용 프로필을 만들어 보세요.</h2>
+                    <p>자기만의 공간에서 좋아하는 캐릭터와 즐기는 신나는 모험. 자녀에게 이 특별한 경험을 선물하세요. 넷플릭스 회원이라면 무료입니다.</p>
+                </div>
+            </div>
+         </section>
+         <section class="faq">
+             <div class="faq-inner">
+                 <h1>자주 묻는 질문</h1>
+                 <article class="accordion">
+                     <input type="radio" id="faq1" name="faq-item">
+                     <label for="faq1">넷플릭스란 무엇인가요?<span><i class="xi-plus"></i></label></span>
+                     <div class="faq-content">넷플릭스는 각종 수상 경력에 빛나는 시리즈, 영화, 애니메이션, 다큐멘터리 등 다양한 콘텐츠를 인터넷 연결이 가능한 수천 종의 디바이스에서 시청할 수 있는 스트리밍 서비스입니다.
+                        <br><br>
+                        저렴한 월 요금으로 일체의 광고 없이 원하는 시간에 원하는 만큼 즐길 수 있습니다. 무궁무진한 콘텐츠가 준비되어 있으며 매주 새로운 시리즈와 영화가 제공됩니다.</div>
+                    <input type="radio" id="faq2" name="faq-item">
+                    <label for="faq2">넷플릭스의 요금은 얼마인가요?<span><i class="xi-plus"></i></label>
+                     <div class="faq-content">스마트폰, 태블릿, 스마트 TV, 노트북, 스트리밍 디바이스 등 다양한 디바이스에서 월정액 요금 하나로 넷플릭스를 시청하세요. 멤버십 요금은 월 9,500원부터 17,000원까지 다양합니다. 추가 비용이나 약정이 없습니다.</div>
+                     <input type="radio" id="faq3" name="faq-item">
+                     <label for="faq3">어디에서 시청할 수 있나요?<span><i class="xi-plus"></i></label>
+                     <div class="faq-content">언제 어디서나 시청할 수 있습니다. 넷플릭스 계정으로 로그인하면 PC에서 netflix.com을 통해 바로 시청할 수 있으며, 인터넷이 연결되어 있고 넷플릭스 앱을 지원하는 디바이스(스마트 TV, 스마트폰, 태블릿, 스트리밍 미디어 플레이어, 게임 콘솔 등)에서도 언제든지 시청할 수 있습니다.
+                        <br><br>
+                        iOS, Android, Windows 10용 앱에서는 좋아하는 시리즈를 저장할 수도 있습니다. 저장 기능을 이용해 이동 중이나 인터넷에 연결할 수 없는 곳에서도 시청하세요. 넷플릭스는 어디서든 함께니까요.</div>
+                    <input type="radio" id="faq4" name="faq-item">
+                    <label for="faq4">멤버십을 해지하려면 어떻게 하나요?<span><i class="xi-plus"></i></label>
+                     <div class="faq-content">넷플릭스는 부담 없이 간편합니다. 성가신 계약도, 약정도 없으니까요. 멤버십 해지도 온라인에서 클릭 두 번이면 완료할 수 있습니다. 해지 수수료도 없으니 원할 때 언제든 계정을 시작하거나 종료하세요.</div>
+                     <input type="radio" id="faq5" name="faq-item">
+                     <label for="faq5">넷플릭스에서 어떤 콘텐츠를 시청할 수 있나요?<span><i class="xi-plus"></i></label>
+                     <div class="faq-content">넷플릭스는 장편 영화, 다큐멘터리, 시리즈, 애니메이션, 각종 상을 수상한 넷플릭스 오리지널 등 수많은 콘텐츠를 확보하고 있습니다. 마음에 드는 콘텐츠를 원하는 시간에 원하는 만큼 시청하세요.</div>
+                     <input type="radio" id="faq6" name="faq-item">
+                     <label for="faq6">아이들이 넷플릭스를 봐도 좋을까요?<span><i class="xi-plus"></i></label>
+                     <div class="faq-content">멤버십에 넷플릭스 키즈 환경이 포함되어 있어 자녀가 자기만의 공간에서 가족용 시리즈와 영화를 즐기는 동안 부모가 이를 관리할 수 있습니다.
+                        <br><br>
+                        키즈 프로필과 더불어 PIN 번호를 이용한 자녀 보호 기능도 있어, 자녀가 시청할 수 있는 콘텐츠의 관람등급을 제한하고 자녀의 시청을 원치 않는 특정 작품을 차단할 수도 있습니다.</div>
+                 </article>
+                 <aside>
+                     <p>시청할 준비가 되셨나요? 멤버십을 등록하거나 재시작하려면 이메일 주소를 입력하세요.</p>
+                     <div class="getstarted">
+                         <input type="email"><span>이메일 주소</span> <button>시작하기<i class="xi-angle-right-min"></i></button>
+                        </div>
+                    </div>
+                </aside>
+         </section>
+         <footer>
+             <div class="footinner">
+                 <div class="sitemap">
+                     <h3>질문이 있으신가요? 문의 전화:  080-001-9587</h3>
+                     <div class="links">
+                         <div class="items">
+                             <a href="#none">자주 묻는 질문</a>
+                             <a href="#none">고객 센터</a>
+                             <a href="#none">계정</a>
+                             <a href="#none">미디어 센터</a>
+                         </div>
+                         <div class="items">
+                             <a href="#none">투자 정보(IR)</a>
+                             <a href="#none">입사 정보</a>
+                             <a href="#none">넷플릭스 지원 디바이스</a>
+                             <a href="#none">이용 약관</a>
+                         </div>
+                         <div class="items">
+                             <a href="#none">개인정보</a>
+                             <a href="#none">쿠키 설정</a>
+                             <a href="#none">회사 정보</a>
+                             <a href="#none">문의하기</a>
+                         </div>
+                         <div class="items">
+                             <a href="#none">속도 테스트</a>
+                             <a href="#none">법적 고지</a>
+                             <a href="#none">오직 넷플릭스에서</a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="copyright">
+                     <p>넷플릭스 대한민국
+                        <br><br>
+                        넷플릭스서비시스코리아 유한회사 통신판매업신고번호: 제2018-서울종로-0426호 전화번호: 080-001-9587<br>
+                        대표: 레지널드 숀 톰프슨<br>
+                        이메일 주소: korea@netflix.com<br>
+                        주소: 대한민국 서울특별시 종로구 우정국로 26, 센트로폴리스 A동 20층 우편번호 03161<br>
+                        사업자등록번호: 165-87-00119<br>
+                        클라우드 호스팅: Amazon Web Services Inc.<br>
+                        공정거래위원회 웹사이트</p>
+                 </div>
+             </div>
+         </footer>
+     </div>
+    
+    <script>
+       $(".signin button").click(function () {
+           $(".modal").fadeIn();
+           $("body").addClass("active")
+       })
+       $(".login i").click(function () {
+           $(".modal").fadeOut();
+           $("body").removeClass("active")
+        })
+       
+    </script>
+</body>
+</html>

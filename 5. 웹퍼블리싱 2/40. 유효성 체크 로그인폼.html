@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title></title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Poor+Story&
+    display=swap" rel="stylesheet">
+    <link rel="icon" href="images/image2.png">
+    <!-- 파비콘 넣기 -->
+    <style>
+        * {
+            box-sizing: border-box;
+            outline: none;
+        }
+        body {
+            font-size: 18px;
+            font-family: 'Mukta', 'Poor Story';
+            line-height: 1.6em;
+            color: #222;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url(images/jv10973012.png) no-repeat center center fixed;
+            background-size: cover;
+        }
+        body::before {
+            content:"";
+            position:absolute;
+            background-color: rgba(0, 0, 0, 0.493);
+            top:0;
+            left:0;
+            width: 100%;
+            height: 100%;
+        }
+        a {
+            text-decoration: none;
+            color: #222;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+        }
+        .login {
+            position: relative;
+            text-align: center;
+            border: 1px solid black;
+            width: 400px;
+            padding: 50px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.301);
+            box-shadow: 10px 10px 10px black;
+        }
+        .login h1 {
+            font-size: 2em;
+        }
+        .input-field {
+            position: relative;
+        }
+        .input-field input {
+            width: 100%;
+            padding: 10px;
+            background-color: transparent;
+            border:none;
+            border-bottom: 1px solid white;
+            margin: 20px 0;
+            color: #fff;
+            font-size: 18px;
+        }
+        .input-field span {
+            position: absolute;
+            top:30px;
+            left:0;
+            pointer-events: none;
+            /* span태그에 가로막혀 인풋태그에 클릭이안됨 */
+            transition: 0.5s;
+        }
+        .button-field input {
+            background-color: violet;
+            color: white;
+            border: none;
+            text-transform: uppercase;
+            font-size: 18px;
+            padding: 5px 20px;
+            margin: 10px;
+            width: 100%;
+            border-radius: 30px;
+            cursor:pointer;
+        }
+        .add-info {
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .add-info label{
+            float:left;
+            cursor: pointer;
+        }
+        .add-info input:checked + span{
+            color: rgb(62, 62, 221);
+        }
+        .add-info a{
+            float:right;
+        }
+        .add-info a:hover{
+            float:right;
+            text-decoration: underline;
+        }
+        .input-field input:focus + span,
+        .input-field input:valid + span {
+            top:0;
+            font-size: 14px;
+            color: blue;
+            font-weight: bold;
+        }
+        .input-field span.warning {
+            color: crimson !important;
+            /* 선택자의 방식에서 생략이 들어가서 우선순위가 밀림 */
+            animation: warning 0.2s ease-in-out 2;
+        }
+
+        @keyframes warning {
+            0% {
+                transform: translateX(-5px);
+            }
+            25% {
+                transform: translateX(5px);
+            }
+            50% {
+                transform: translateX(-5px);
+            }
+            75% {
+                transform: translateX(5px);
+            }
+            100% {
+                transform: translateX(-5px);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <section class="login">
+        <img src="images/google.png" width="100px">
+        <h1>Google Login</h1>
+        <form>
+            <div class="input-field">
+                <input type="email" id="userid" autocomplete="off" required><span>User Email</span>
+                <!-- 오토컴플리트=자동완성기능 -->
+            </div>
+            <div class="input-field">
+                <input type="password" id="userpw" minlength="8" maxlength="12" required><span>User Password</span>
+            </div>
+            <div class="button-field">
+                <input type="submit" value="Sign In" id="signin">
+            </div>
+            <div class="add-info">
+                <label>
+                    <input type="checkbox"><span>Save Your Email?</span>
+                </label>
+                <!-- label 뒤의 for를 아예지우면 자동으로 텍스트까지 클릭이된다. -->
+                <a href="#none">Forgot Password?</a>
+            </div>
+        </form>
+        
+    </section>
+    
+    <script>
+        var userId = $("#userid"),
+            userPw = $("#userpw"),
+            signIn = $("#signin");
+        signIn.click(function () {
+            if (userId.val() == "") {
+                userId.next('span').addClass("warning");
+                setTimeout(function () {
+                    userId.next("span").removeClass("warning")
+                }, 1500)
+            }
+            else if (userPw.val() == "") {
+                userPw.next("span").addClass("warning");
+                setTimeout(function () {
+                    userPw.next("span").removeClass("warning")
+                }, 1500)
+            }
+        })
+
+
+    </script>
+</body>
+</html>
