@@ -1,4 +1,4 @@
-package basic;
+package p1basic;
 import javax.xml.ws.soap.MTOMFeature;
 
 public class Practice02 {

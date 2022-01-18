@@ -38,6 +38,8 @@ ctrl + i : 자동들여쓰기(vscode의 beautify 익스텐션과 동일)
 ctrl + spacebar : 자동완성기능
 (행이동, 주석등은 vscode와 동일하며, 행삭제인 ctrl+D는 vs코드와 동일하게 행 복사로 임의로 바꿨음)
 
+alt+shift + y 로 자동줄바꿈 기능
+
 9. 자동완성 기능 수정은 window에서 preferences > java > editor > templates 에서 바꾼다.
 
 

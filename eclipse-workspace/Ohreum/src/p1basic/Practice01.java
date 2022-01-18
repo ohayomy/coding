@@ -1,4 +1,4 @@
-package basic;
+package p1basic;
 import javax.lang.model.element.VariableElement;
 
 public class Practice01 {

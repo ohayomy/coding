@@ -1,4 +1,4 @@
-package basic;
+package p1basic;
 
 public class Practice03 {
 
