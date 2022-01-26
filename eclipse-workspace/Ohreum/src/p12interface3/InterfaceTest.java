@@ -1,30 +1,30 @@
 package p12interface3;
 
 class A {
-	public void method(I i) {  //인터페이스 I를 구현한 클래스들만 들어올 수 있다
-		i.method();
+	public void print(I i) {  //인터페이스 I를 구현한 클래스들의 인스턴스만 들어올 수 있다
+		i.print();
 	}
 }
 
 interface I {
-	public void method();
+	public void print();
 }
 
 class B implements I {
-	public void method() {
+	public void print() {
 		System.out.println("B클래스의 메서드");
 	}
 }
 class C implements I {
-	public void method() {
+	public void print() {
 		System.out.println("C클래스의 메서드");
 	}
 }
 public class InterfaceTest {
 	public static void main(String[] args) {
 		A a = new A();
-//		a.method(new B());
-		a.method(new C());
+		a.print(new B());
+		a.print(new C());
 	}
 }
 
