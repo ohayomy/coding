@@ -18,6 +18,7 @@ public class PersonTest {
 		
 		System.out.println(pClass3.getName());
 
+		//클래스를 호출하는 클래스 3가지 방법.
 	}
 
 }
