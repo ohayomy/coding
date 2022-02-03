@@ -1,0 +1,49 @@
+일반적인 array
+-fixed-length로 길이가 미리 정해져 있어서 늘릴 때 더 큰배열을 정의해서 값을 복사한다.
+-중간 엘리먼트를 빼고 넣을 때, 그 뒤의 엘리먼트들이 통째로 이동해서 빈칸을 없애거나 낸다.
+
+Linked List
+-각각의 엘리먼트들에 뒤의 엘리먼트를 가리키는 링크가 있다. 이 링크에 의해 순서가 결정된다.
+-지네처럼 연결되어있다.
+-중간에 삽입하고 싶으면 링크가 가리키는 다음 노드(엘리먼트)의 순서를 바꾸는 식으로 넣기때문에 손쉽다.
+
+Stack
+-데이터가 아래부터 위로 쌓인다.
+-맨위에서만 데이터를 넣거나 뺄 수 있다.(Last in First out)
+-넣는건 push 빼는 건 pop
+
+Queue
+-좌우로 쌓인다. 맨 좌측이 front이고 우측이 rear이다.
+-우측에서 데이터를 넣는 것을 enQueue라고 하며 좌측에서 데이터가 나가는 것은 deQueue라고한다.
+-먼저온 데이터가 먼저 나가므로(선입선출) First in First out이다.
+
+ArrayList를 이용해서 Stack 방식과 Queue방식을 모두사용가능하다.
+add()로 데이터를 추가하고, remove로 꺼내는데, remove(size()-1)로 꺼내면 stack방식이고
+remove(0)으로 꺼내면 queue방식이다.
+
+Binary Search Tree
+가지가 두개만 갈라지는 트리를 바이너리 트리라고한다.
+이때, 왼쪽이 left child, 오른쪽이 right child라고하는데, left child는  parent node보다 작은 값이고, 오른쪽은 크다.
+각 노드는 유일한 키값을 가지며, 검색 시간이  로그 2의 N으로 줄어든다.
+
+해쉬구조..
+
+컬렉션 프레임워크는 크게 collection과 map 인터페이스로 나뉜다.
+collection에는 List와 Set으로 나뉘는데, List 는 선형구조(ArrayList, Vector, Linked List, Stack, Queue 등)이며, 순서가 있고 중복데이터가 허용된다.
+반대로 Set은 해쉬구조이며 HashSet, TreeSet 등이 있다. Set에서는 순서가 따로없으나, 직원의 사번같은 유일한 값을 보관한다.
+
+Iterator 인터페이스를 사용하면 컬렉션과 맵을 모두 순회할 수 있다.(for보다 더 효율적이다.)
+
+
+
+
+
+동기화(synchronization) : 두개의 쓰레드가 동시에 하나의 리소스에 접근할 때 순서를 맞추어서 데이터에 오류가 발생하지 않도록 함.
+Vector는 멀티쓰레드(동기화) 지원됨, ArrayList는 지원안됨
+ArrayList에서 동기화 기능이 추가되어야하는경우
+Collection.synchronizedList(new ArrayList<String>()); 사용
+
+
+
+
+

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+    <script src="jquery-3.6.0.js"></script>
+    
+    <style>
+        body {
+            border:1px solid black;
+            width: 740px;
+            margin: 0 auto;
+            height: 800px;
+            text-align: center;
+            line-height: 29px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+    </style>
+    <script>
+        
+        $(function() { 
+            for (var i=2; i<10; i++) {
+                
+                var output = i+"단"+"<br>";
+                for (var j=1; j<10; j++) {
+                    output += i+" x "+j+" = "+ i*j+"<br>";
+            }
+
+                $("<div></div>")
+                .appendTo("body")
+                .css({"height":"300px",
+                "width":"160px", 
+                "border":"1px solid black",
+                "margin":"9px",
+                "padding":"2px",
+                "font-size":"20px",
+                "float":"left"
+                    })
+                .html(output)
+        }
+    }
+    
+    );
+        </script>
+</head>
+<body>
+    <h1>구구단을 외자</h1>
+    <hr width="700px" size="2px" color="black">
+    
+    
+</body>
+</html>
