@@ -1,4 +1,4 @@
-package p15Collection.arrayList;
+package p15collection.arrayList;
 
 import java.util.ArrayList;
 

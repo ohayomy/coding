@@ -1,4 +1,4 @@
-package p15Collection;
+package p15collection;
 
 import java.util.Comparator;
 

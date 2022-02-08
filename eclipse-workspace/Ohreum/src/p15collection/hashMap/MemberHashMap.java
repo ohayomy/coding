@@ -1,8 +1,8 @@
-package p15Collection.hashMap;
+package p15collection.hashMap;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import p15Collection.Member;
+import p15collection.Member;
 public class MemberHashMap {
 	
 	private HashMap<Integer, Member> hashMap;

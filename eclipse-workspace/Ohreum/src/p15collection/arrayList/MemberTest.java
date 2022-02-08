@@ -1,6 +1,6 @@
-package p15Collection.arrayList;
+package p15collection.arrayList;
 
-import p15Collection.Member;
+import p15collection.Member;
 
 public class MemberTest {
 	public static void main(String[] args) {

@@ -1,8 +1,8 @@
-package p15Collection.treeSet;
+package p15collection.treeSet;
 import java.util.Iterator;
 import java.util.TreeSet;
 
-import p15Collection.Member;
+import p15collection.Member;
 
 public class MemberTreeSet {
 

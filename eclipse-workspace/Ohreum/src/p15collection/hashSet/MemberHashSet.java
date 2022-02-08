@@ -1,8 +1,8 @@
-package p15Collection.hashSet;
+package p15collection.hashSet;
 import java.util.HashSet;
 import java.util.Iterator;
 
-import p15Collection.Member;
+import p15collection.Member;
 
 public class MemberHashSet {
 

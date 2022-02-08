@@ -1,6 +1,6 @@
-package p15Collection.hashSet;
+package p15collection.hashSet;
 
-import p15Collection.Member;
+import p15collection.Member;
 
 public class MemberTest {
 	

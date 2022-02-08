@@ -1,6 +1,6 @@
-package p15Collection.treeSet;
+package p15collection.treeSet;
 
-import p15Collection.Member;
+import p15collection.Member;
 
 public class MemberTest {
 	

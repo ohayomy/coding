@@ -1,4 +1,4 @@
-package p15Collection.hashSet;
+package p15collection.hashSet;
 
 import java.util.HashSet;
 

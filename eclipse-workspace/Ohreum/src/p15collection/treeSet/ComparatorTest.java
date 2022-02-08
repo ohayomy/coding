@@ -1,4 +1,4 @@
-package p15Collection.treeSet;
+package p15collection.treeSet;
 import java.util.Comparator;
 import java.util.TreeSet;
 
