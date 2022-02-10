@@ -1,11 +1,6 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 
-class CertifiedItems {
+public class CertificationItem {
+
 	private String certificationNo;
 	private String certificationTypeName;
 	private String certificationFarm;
@@ -88,67 +83,15 @@ class CertifiedItems {
 		this.rawMaterialCertificationClassification = rawMaterialCertificationClassification;
 	}
 
+	public static void firstLine() {
+		System.out.println("순번" + "\t" + "인증번호" + "\t" + "인증종류명" + "\t" + "인증농가" + "\t" + "인증품목명" + "\t" + "재배면적" + "\t"
+				+ "생산계획량" + "\t" + "인증기간(시작일)" + "\t" + "인증기간(종료일)" + "\t" + "원재료인증구분");
+	}
+
 	public void certificationInfo() {
-		
-		private String certificationNo;
-		private String certificationTypeName;
-		private String certificationFarm;
-		private String certificationItemName;
-		private String cultivationArea;
-		private String productionPlannedAmount;
-		private String certificationStartDate;
-		private String certificationEndDate;
-		private String rawMaterialCertificationClassification;
-	}
-
-}
-
-public class CertificationItem {
-
-	public static void main(String[] args) throws IOException {
-		getTxt();
-		for (CertifiedItems s : list) {
-			System.out.println(s);
-		}
-	}
-
-	static ArrayList<CertifiedItems> list = new ArrayList<>();
-
-	public static void getTxt() throws IOException {
-
-		try {
-			BufferedReader br = new BufferedReader(new FileReader(new File("data3.txt")));
-			String str = "";
-			String[] element;
-
-			int count = 0;
-			while ((str = br.readLine()) != null) {
-				count++;
-				if (count == 1) {
-					continue;
-				}
-				CertifiedItems certifiedItems = new CertifiedItems();
-				element = str.split("\t");
-				certifiedItems.setCertificationNo(element[0]);
-				certifiedItems.setCertificationTypeName(element[1]);
-				certifiedItems.setCertificationFarm(element[2]);
-				certifiedItems.setCertificationItemName(element[3]);
-				certifiedItems.setCultivationArea(element[4]);
-				certifiedItems.setProductionPlannedAmount(element[5]);
-				certifiedItems.setCertificationStartDate(element[6]);
-				certifiedItems.setCertificationEndDate(element[7]);
-				if (element.length == 9) {
-					certifiedItems.setRawMaterialCertificationClassification(element[8]);
-				}
-
-				list.add(certifiedItems);
-			}
-
-		} catch (FileNotFoundException e) {
-			System.out.println("파일을 찾을 수 없습니다.");
-		} catch (NullPointerException e) {
-			System.out.println("Err : " + e);
-		}
+		System.out.println(certificationNo + "\t" + certificationTypeName + "\t" + certificationFarm + "\t"
+				+ certificationItemName + "\t" + cultivationArea + "\t" + productionPlannedAmount + "\t"
+				+ certificationStartDate + "\t" + certificationEndDate + "\t" + rawMaterialCertificationClassification);
 	}
 
 }
