@@ -1,0 +1,1 @@
+document.querySelectorAll('.modal.infd-modal-cover').forEach((t)=>t.remove());document.querySelector('#main').style='';

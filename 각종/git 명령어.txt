@@ -1,0 +1,35 @@
+자주쓰는 깃 명령어
+
+
+그래프 형태로 로그보기
+git log --all --graph --oneline
+
+브랜치 삭제할때
+git branch -d feature/webpublishing
+오리진이란 원격서버를 말한다. 원격서버에서도 지워준다
+git push origin --delete feature/webpublishing
+
+이건 까먹을까봐 넣어놓음 
+git status
+
+빈브랜치 만들기
+$ git checkout --orphan NEWBRANCH
+$ git rm -rf .
+$ git commit --allow-empty -m "init server manage"
+$ git push origin NEWBRANCH
+
+빈브랜치 merge할때
+refusing to merge unrelated histories라는 에러메세지 뜨면
+git merge (브랜치명) --allow-unrelated-histories 와 같이 뒤에 붙여준다.
+
+* error: failed to push some refs to 'https://github.com/pj6563/Online-Glasses.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+혹시 push할 때  다음과 같은 오류가 났다면 아마 위에서 말한 원격 저장소와 로컬 저장소의 상태가 달라서 나는 오류일 것이다. 그러니 pull을 먼저 해주어 둘의 상태를 같게 한 다음 push를 해준다
+
+원격저장소 연결끊기
+git remote remove origin(저장소이름)
+
+원격저장소 연결하기
+git remote add (저장소이름) (url)git 
