@@ -1,12 +1,11 @@
-package p00exercise.n3number;
+package gloomyday;
 
 public class Practice000 {
-	//초기버젼
+	
 	int countTarget(int start, int end, int target) {
 		int n = 0;
 		int x = 0;
 		
-		// start의 자리수 n
 		for (int j = 0; j < 10; j++) {
 			if (start / (int) Math.pow(10, j) == 0) {
 				n = j;
@@ -14,7 +13,6 @@ public class Practice000 {
 			}
 		}
 		
-		// target의 자리수 x
 		for (int k = 0; k < 10; k++) {
 			if (target / (int) Math.pow(10, k) == 0) {
 				x = k;

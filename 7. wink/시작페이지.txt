@@ -1,0 +1,224 @@
+<start page>
+
+.container
+	<header>
+		.heading
+			p
+			a
+			span.close-button
+		<nav>
+			.imgage
+				img
+			.list
+				a > span
+				a*3
+				a > span
+				a
+			.start-login
+				a*2
+		.desc
+			.inte
+				<ul>
+					<li>
+						<ul>
+							<li>*4
+								h2
+								p
+								a
+							</li>
+						</ul>
+					</li>
+				</ul>
+			.review
+				<ul>
+					<li>
+						h1
+						p
+						<ul>
+							<li>*2
+								h2
+								p
+								a
+							</li>
+						</ul>
+					</li>
+				</ul>
+	</header>
+	
+	<section.welcome>
+		.welcome
+			.welcome-desc
+				h1
+				p
+				a*2
+				span
+		.welcome-img-video
+			.welcome-img
+				img
+			.welcome-video
+				video
+	</section>
+	
+	<section.helped>
+		.helped
+			.helped-desc
+				h1
+				p
+			.helped-desc-bolds
+				.bold*3
+					span
+					p
+		.ratedHome
+			h1
+			.imgs
+				img*6
+	</section>
+	
+	<section.integrate>
+		.integrate-desc
+			h1
+			p
+		.integrate-imgs
+			.integrate-img*3
+				img
+				h2
+				p
+				a
+		
+	</section>
+	
+	<section.getstarted>
+		.finding
+			.find*3
+				img
+				h1
+				p
+				a > i
+	</section>
+	
+	<section.dropshop>
+		
+		.dropshop
+			h1
+			p
+			.dropshop-imgs
+				.img*5
+					img
+					h1
+					p
+			.getstarted-button
+				a
+	</section>
+	
+	<section.benefits>
+		.benefits
+			.benefit-desc
+				h1
+				p
+				.benefit-desc-imgs
+					.img*4
+						img
+						span
+						p
+				a > i
+				
+			.benefit-img
+				img
+	</section>
+	
+	<section.whyModalyst>
+		.whyModalyst
+			.whyModalyst-desc
+				h1
+				p
+			.whyModalyst-imgs
+				.img*2
+					img
+					h1
+					p
+	</section>
+	
+	<section.blogHome>
+		.blogHome
+			.blogHome-desc
+				h1
+				p
+			.blogHome-imgs
+				.blogHome-img*3
+					img
+					span
+					h1
+					p
+					span
+			.blogHome-button
+				a
+	</section>
+	
+	<section.whyclothing>
+		.whyclothing-top
+			.whyclothing-top-left
+				img
+			.whyclothing-top-right
+				h1
+				p*5
+				a > i
+		.whyclothing-bottom
+			.whyclothing-bottom-left
+				h1
+				p
+				a > i
+			.whyclothing-bottom-right
+				p*3
+			
+	</section>
+	
+	<section.whatonline>
+		.whatonline
+			.whatonline-desc
+				h1
+			.whatonline-modals
+				.whatonline-modal
+					img
+					span
+					.desc
+						i
+						p
+						i
+	</section>
+	
+	<section.faq>
+		.faq
+			.faq-heading
+				h1
+				p
+			.faq-drops
+				.faq-drop*6
+					.faq-drop-button
+						span
+						i
+					.faq-drop-desc
+						p
+	</section>
+	
+	<footer>
+		.footer
+			.footer-modalyst
+				.footer-modalyst-sns
+					img
+					.sns
+						a*4 > i
+				.footer-modalyst-descs
+					.footer-modalyst-desc*5
+						span
+						<ul>
+							<li>
+								a*?
+							</li>
+						</ul>
+			.footer-copyright
+				.copyright
+					.copyright-desc
+						p
+					.policy
+						a*2
+	</footer>
