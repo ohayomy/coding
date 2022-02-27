@@ -3,6 +3,7 @@ package practice;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
+import java.util.regex.Pattern;
 
 import org.junit.jupiter.api.Test;
 
@@ -40,6 +41,7 @@ public class Practice006Test {
 	void ex10() {
 		String s = "Merry";
 		System.out.println("Merry Merry Christmas Mr Lawrence".replaceFirst(s, "Thanks"));
+		System.out.println("Merry Merry Christmas Mr Lawrence".replaceAll(s, "Thanks"));
 	}
 	
 	

@@ -7,15 +7,20 @@
     <title></title>
     <script src="script/jquery-3.6.0.js"></script>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-
+    
     <style>
+        @font-face {
+            font-family: "Helvetica Neue"; 
+            src: url(./Helvetica\ Neue/HelveticaNeueLTPro-lt.otf);
+          }
+
         * {
             box-sizing: border-box;
             outline: none;
         }
         body {
-            font-size: 15px;
-            font-family: 'Mukta', 'Poor Story';
+            font-size: 16px;
+            font-family: "Helvetica Neue",sans-serif;
             line-height: 1.6em;
             color: #222;
             margin: 0;
@@ -33,19 +38,21 @@
             margin: 0;
         }
         .banner{
-            height: 28px;
+            height: 35px;
             background-color: #090948;
             color: honeydew;
             text-align: center;
             position: relative;
+            line-height: 35px;
+            /* display:none; */
         }
         .banner a {
-            color: honeydew;
-            font-size: 14px;
+            color: white;
+            font-size: 15px;
+            font-weight: 400;
         }
-        .banner a em {
-            font-style: normal;
-            font-weight: bold;
+        .banner b {
+            font-weight: 600;
         }
         .banner span {
             position: absolute;
@@ -53,8 +60,248 @@
             font-size: 28px;
             cursor: pointer;
         }
+        .gnb-outer {
+            border-bottom: 1px solid rgb(199, 196, 196);
+            height: 77px;
+            margin: auto;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .logo a {
+            font-size: 50px;
+            font-weight: bold;
+            color: darkblue;
+            margin-left: 30px;
+        }
+        ul.gnb {
+            height: 77px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 70px;
+        }
+        .gnb li {
+            
+        }
+        .gnb li a {
+            padding: 5px 10px;
+            margin-right: 10px;
+        }
+        .gnb li a:hover {
+            color: dodgerblue;
+        }
+        .gnb li a i {
+            font-size: 18px;
+        }
+        .start-login a:first-child{
+            border: 1px solid rgba(80,115,240,255);
+            padding: 18px 27px;
+            border-radius: 50px;
+            color: white;
+            background-color: rgba(80,115,240,255);
+            margin-left: 10px;
+            transition:0.3s;
+        }
+        .start-login a:first-child:hover {
+            background-color: white;
+            color: rgba(80,115,240,255);
+        }
+        .start-login a:last-child{
+            border: 1px solid rgba(80,115,240,255);
+            padding: 20px 27px;
+            border-radius: 50px;
+            color: rgba(80,115,240,255);
+            margin-left: 10px;
+            transition:0.3s;
+        }
+        .start-login a:last-child:hover {
+            background-color: rgba(80,115,240,255);
+            color: white;
+        }
+        .addition-info {
+            
+        }
+        .welcome {}
+        .welcome-inner {
+            width: 100%;
+            height: 875px;
+            padding: 115px 0 255px;
+            background: url("images/hero_bg2.png") no-repeat right center;
+            background-size: 950px;
+            position: relative;
 
-        
+        }
+        .welcome-desc {
+            width: 600px;
+            height: 500px;
+            margin-left: 370px;
+        }
+        .welcome-desc h1 {
+            font-size: 60px;
+            font-weight: bold;
+            line-height: 1.1em;
+            margin-top: 50px;
+        }
+        .welcome-desc p {
+            font-size: 18px;
+        }
+        .welcome-desc a {
+            font-size: 18px;
+            display: inline-block;
+        }
+        .welcome-desc a:nth-of-type(1) {
+            padding: 21px 25px;
+            background: linear-gradient(to right,#546eef, #8839e3);
+            border-radius: 50px;
+            color: white;
+            margin-right: 20px;
+        }
+        .welcome-desc a:nth-of-type(2) {
+            color: #5073F0;
+            text-decoration: underline;
+        }
+        .welcome-desc span {
+            font-size: 16px;
+            display: block;
+            color: #959595;
+            margin-top: 18px;
+        }
+        .welcome-video {
+            position: absolute;
+            top: 150px;
+            right: 0;
+            width: 700px;
+            height: 430px;
+            overflow: hidden;
+        }
+        .welcome-video video {
+            width: 760px;
+            height: inherit;
+            object-fit: cover;
+        }
+        .welcome-img1 {
+            position: absolute;
+            z-index: 10;
+            top: 120px;
+            right: 0;
+            width: 700px;
+            height: 50px;
+        }
+        .welcome-img2 {
+            position: absolute;
+            top: 400px;
+            right: 600px;
+            z-index: 1;
+            width: 200px;
+            height: 300px;
+        }
+        .welcome-img1 img {
+            width: inherit;
+            height: inherit;
+            object-fit: cover;
+            border-radius: 25px 0 0 0;
+        }
+        .welcome-img2 img {
+            width: inherit;
+            height: inherit;
+            object-fit: cover;
+            border-radius: 30px 0 0 0;
+        }
+
+        .help {
+            text-align: center;
+        }
+        .helped {
+            height: 564px;
+            background: linear-gradient(to bottom, #556ced, #9154e7);
+            padding: 66px 0 140px 0;
+            color: white;
+        }
+        .helped-desc {
+        }
+        .helped-desc h1 {
+            margin: 0 0 40px 0;
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .helped-desc p {
+            font-size: 18px;
+        }
+        .helped-num{
+            width: 1060px;
+            margin: 120px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .bold span{
+            font-size: 72px;
+            font-weight: bold;
+        }
+        .rated {
+            height: 296px;
+            padding: 70px 0 0;
+        }
+        .rated h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 0 0 70px 0;
+        }
+        .brands img {
+            margin: 0px 25px;
+        }
+        .integrate-inner {
+            width: 1170px;
+            margin: 0 auto;
+            padding: 90px 0 70px 0;
+            text-align: center;
+            border-top: 1px solid rgb(199, 196, 196);
+            border-bottom: 1px solid rgb(199, 196, 196);
+            overflow: hidden;
+        }
+        .integrate-title h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 50px;
+        }
+        .integrate-title p {
+            font-size: 18px;
+            color: #6C6C6C;
+        }
+        .integrate-content {
+            float: left;
+            margin: 20px 29px;
+        }
+        .integrate-logo {
+            width: 326px;
+            height: 103px;
+            position: relative;
+            margin-bottom: 40px;
+        }
+        .integrate-logo img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .integrate-content a {
+            display: inline-block;
+            margin-top: 5px;
+            background-color: #5073F0;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 55px;
+        }
+        .getstarted-inner {
+            height: 1750px;
+        }
+        .getstarted-article img {
+            width: 500px;
+            height: 455px;
+        }
+
         
     </style>
 
@@ -65,37 +312,38 @@
     <div class="container">
         <header>
             <div class="banner">
-                <a href="#none">Modalyst is joining Wix.com | <em>Read More Here</em></a>
+                <a href="#none">Modalyst is joining Wix.com | <b>Read More Here</b></a>
                 <span class="close-button"><i class="xi-close-min"></i></span>
             </div>
             <div class="gnb-outer">
                 <div class="logo">
-                    <a href=""><img src=""></a></div>
+                    <a href="#none">Wink</a>
+                </div>
                 <ul class="gnb">
                     <li>
-                        <a href="">App Integrations</a>
+                        <a href="#none">App Integrations <i class="xi-angle-down-min"></i></a>
                         <div class="addition-info"></div>
                     </li>
                     <li>
-                        <a href="">Features</a>
+                        <a href="#none">Features</a>
                     </li>
                     <li>
-                        <a href="">Sell on Wink</a>
+                        <a href="#none">Sell on Wink</a>
                     </li>
                     <li>
-                        <a href="">Pricing</a>
+                        <a href="#none">Pricing</a>
                     </li>
                     <li>
-                        <a href="">Reviews</a>
+                        <a href="#none">Reviews <i class="xi-angle-down-min"></i></a>
                         <div class="addition-info"></div>
                     </li>
                     <li>
-                        <a href="">Contact Us</a>
+                        <a href="#none">Contact Us</a>
                     </li>
                 </ul>
                 <div class="start-login">
-                    <a href=""></a>
-                    <a href=""></a>
+                    <a href="#none">Start for Free</a>
+                    <a href="#none">Log In</a>
                 </div>
             </div>
         </header>
@@ -103,53 +351,54 @@
         <section class="welcome">
             <div class="welcome-inner">
                 <div class="welcome-desc">
-                    <h1></h1>
-                    <p></p>
-                    <a href=""></a>
-                    <a href=""></a>
-                    <span></span>
+                    <h1>Add dropshipping<br> products to your<br> store, instantly</h1>
+                    <p>New stores and experienced sellers alike can use Modalyst. Modalyst connects you directly to designer brands, eco-friendly suppliers, private label manufacturers, and AliExpress sellers.</p>
+                    <a href="#none">View Products</a>
+                    <a href="#none">See More Features</a>
+                    <span>100% free to start. Easy to use. No credit card required.</span>
                 </div>
-                <div class="welcome-img-video">
-                    <div class="welcome-img">
-                        <img src="" alt="">
-                    </div>
-                    <div class="welcome-video">
-                        <video src=""></video>
-                    </div>
+                <div class="welcome-img1">
+                    <img src="./images/top-win.svg">
+                </div>
+                <div class="welcome-img2">
+                    <img src="./images/iphone.png">
+                </div>
+                <div class="welcome-video">
+                    <video src="./images/hero.mp4" autoplay muted loop width="760px" height="700px"></video>
                 </div>
             </div>
         </section>
 
-        <section class="helped">
+        <section class="help">
             <div class="helped">
                 <div class="helped-desc">
-                    <h1></h1>
-                    <p></p>
+                    <h1>How We’ve Helped Dropshipping Sites Just Like Yours</h1>
+                    <p>Over 350,000 online businesses and entrepreneurs have used Modalyst. It's the<br> easiest way to find drop shipping suppliers and profitable products to sell online.</p>
                 </div>
                 <div class="helped-num">
                     <div class="bold">
-                        <span></span>
-                        <p></p>
+                        <span>10M</span>
+                        <p>products added <br>to virtualstorefronts</p>
                     </div>
                     <div class="bold">
-                        <span></span>
-                        <p></p>
+                        <span>350K</span>
+                        <p>ecommerce stores <br>served</p>
                     </div>
                     <div class="bold">
-                        <span></span>
-                        <p></p>
+                        <span>50M</span>
+                        <p>online shoppers <br>reached</p>
                     </div>
                 </div>
             </div>
             <div class="rated">
-                <h1></h1>
+                <h1>Rated the Top Dropshipping Software by</h1>
                 <div class="brands">
-                    <img src="" alt="">
-                    <img src="" alt="">
-                    <img src="" alt="">
-                    <img src="" alt="">
-                    <img src="" alt="">
-                    <img src="" alt="">
+                    <img src="./images/rated1.png">
+                    <img src="./images/rated2.png">
+                    <img src="./images/rated3.png">
+                    <img src="./images/rated4.png">
+                    <img src="./images/rated5.png">
+                    <img src="./images/rated6.png">
                 </div>
             </div>
         </section>
@@ -157,26 +406,32 @@
         <section class="integrate">
             <div class="integrate-inner">
                 <div class="integrate-title">
-                    <h1></h1>
-                    <p></p>
+                    <h1>Modalyst integrates with Best eCommerce Platforms</h1>
+                    <p>Integrate Modalyst with your e-commerce site instantly. From Shopify to Wix to eBay stores, Modalyst<br> integrates in a single click with the best ecommerce platforms and dropshipping sites globally.</p>
                 </div>
                 <div class="integrate-content">
-                    <img src="" alt="">
-                    <h2></h2>
-                    <p></p>
-                    <a href=""></a>
+                    <div class="integrate-logo">
+                        <img src="./images/cms1.svg">
+                    </div>
+                    <h2>Shopify</h2>
+                    <p>Install the Modalyst Shopify app in a single<br> click to automate your dropshipping business.<br> Find reliable US suppliers and the best<br> dropshipping products for your Shopify<br> website. Join Modalyst and take your own<br> business to the next level.</p>
+                    <a href="#none">Learn More</a>
                 </div>
                 <div class="integrate-content">
-                    <img src="" alt="">
-                    <h2></h2>
-                    <p></p>
-                    <a href=""></a>
+                    <div class="integrate-logo">
+                        <img src="./images/wix-black.png">
+                    </div>
+                    <h2>Wix Stores</h2>
+                    <p>Install the Modalyst Wix app in a single click to<br> automate your dropshipping site. From high<br> quality USA suppliers to bestsellers on<br> AliExpress, you will find the best dropship<br> products for your Wix website. Join Modalyst<br> to take your business to the next level.</p>
+                    <a href="#none">Learn More</a>
                 </div>
                 <div class="integrate-content">
-                    <img src="" alt="">
-                    <h2></h2>
-                    <p></p>
-                    <a href=""></a>
+                    <div class="integrate-logo">
+                        <img src="./images/cms3.svg">
+                    </div>
+                    <h2>BigCommerce</h2>
+                    <p>Install the Modalyst BigCommerce app and<br> automate your dropshipping business within<br> minutes. Find the best drop ship suppliers and<br> drop shipping products for your BigCommerce<br> website. Join Modalyst and take your own<br> business to the next level.</p>
+                    <a href="#none">Learn More</a>
                 </div>
             </div>
         </section>
@@ -184,22 +439,22 @@
         <section class="getstarted">
             <div class="getstarted-inner">
                 <div class="getstarted-article">
-                    <img src="" alt="">
-                    <h1></h1>
-                    <p></p>
-                    <a href=""></a>
+                    <img src="./images/getstarted1.jpg">
+                    <h1>Finding US dropshipping suppliers is hard work. Modalyst makes it easier.</h1>
+                    <p>Install our top-rated dropshipping app to your e-commerce site and get access to US Suppliers, AliExpress vendors, and the best dropshipping products and wholesalers. Start selling the right products to the customer base that you know best. We connect you to inventory, so you can focus on creating a catalog of profitable products for your online store.</p>
+                    <a href="">Get Started</a>
                 </div>
                 <div class="getstarted-article">
-                    <img src="" alt="">
-                    <h1></h1>
-                    <p></p>
-                    <a href=""></a>
+                    <h1>Build a successful eCommerce business. Instantly.</h1>
+                    <p>Dropshipping inventory automation is the most effective way to operate an e-commerce website at low cost, because it removes the traditional complications of inventory management. Modalyst connects you to inventory so you can focus on other essentials, like building your customer base through digital marketing or selling more products through your online marketplace. For any online retailer or entrepreneur who wants to focus on great products and a quality customer experience, dropshipping may be your best new business strategy.</p>
+                    <a href="">Get Started</a>
+                    <img src="./images/getstarted2.jpg">
                 </div>
                 <div class="getstarted-article">
-                    <img src="" alt="">
-                    <h1></h1>
-                    <p></p>
-                    <a href=""></a>
+                    <h1>It’s time to add dropshipping to your business model.</h1>
+                    <p>The cons of managing inventory can be endless, particularly for online retailers. With dropshipping, ecommerce websites can maintain a robust product catalog without requiring the physical storage space or budget to stock large amounts of product. With dropship automation software, Modalyst removes the biggest downside for online shops--inventory management. This allows online retailers to focus on featuring popular products on a daily basis in their website storefronts without the hassle of the fulfillment process in the long run.</p>
+                    <a href="">Get Started</a>
+                    <img src="./images/getstarted3.jpg">
                 </div>
             </div>
         </section>
