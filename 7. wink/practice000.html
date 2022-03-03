@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title>Wink</title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="icon" href="./images/logo1.PNG">
+    
+    <style>
+        @font-face {
+            font-family: "Helvetica Neue"; 
+            src: url(./Helvetica\ Neue/HelveticaNeueLTPro-lt.otf);
+          }
+
+        * {
+            box-sizing: border-box;
+            outline: none;
+        }
+        body {
+            font-size: 16px;
+            font-family: "Helvetica Neue",sans-serif;
+            line-height: 1.6em;
+            color: #222;
+            margin: 0;
+        }
+        li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none;
+            color: #222;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+        }
+        .banner{
+            height: 35px;
+            background-color: #090948;
+            color: honeydew;
+            text-align: center;
+            position: relative;
+            line-height: 35px;
+        }
+        .banner a {
+            color: white;
+            font-size: 15px;
+            font-weight: 400;
+        }
+        .banner b {
+            font-weight: 600;
+        }
+        .banner span {
+            position: absolute;
+            right: 10px;
+            font-size: 28px;
+            cursor: pointer;
+        }
+        .gnb-outer {
+            border-bottom: 1px solid rgb(199, 196, 196);
+            height: 77px;
+            margin: 10px auto 0  auto;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .logo a {
+            font-size: 50px;
+            font-weight: bold;
+            color: darkblue;
+            margin-left: 30px;
+        }
+        ul.gnb {
+            height: 77px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 70px;
+        }
+        .gnb li {
+            position: relative;
+        }
+        .gnb li a {
+            padding: 5px 10px;
+            margin-right: 10px;
+        }
+        .gnb li a:hover {
+            color: dodgerblue;
+        }
+        .gnb li a i {
+            font-size: 18px;
+        }
+        .gnb li:nth-of-type(1) .addition-info {
+            position: absolute;
+            top:70px;
+            left: -150px;
+            opacity: 0;
+            visibility: hidden;
+            transition-duration: 0.5s;
+            transition-delay: 0.2s;
+            background-color: white;
+            z-index: 100;
+        }
+        .gnb li:nth-of-type(5) .addition-info {
+            position: absolute;
+            top:70px;
+            left: -600px;
+            opacity: 0;
+            visibility: hidden;
+            transition-duration: 0.5s;
+            transition-delay: 0.2s;
+            background-color: white;
+            z-index: 100;
+        }
+        .addition-info::before {
+            content:"";
+            position: absolute;
+            top: 0;
+            left: -1000px;
+            width: 1000px;
+            height: 100%;
+            background-color: white;
+            display: block;
+        }
+        .addition-info::after {
+            content:"";
+            position: absolute;
+            top: 0;
+            right: -1000px;
+            width: 1000px;
+            height: 100%;
+            background-color: white;
+            display: block;
+        }
+        .addition-inner1,
+        .addition-inner2 {
+            width: 1200px;
+            margin: 0 auto;
+            padding: 50px 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .addition-info .app-title {
+            width: 300px;
+            padding: 30px 10px 30px 0;
+        }
+        .addition-info .app-title h1 {
+            font-size: 36px;
+        }
+        .addition-info .app-title p {
+            font-size: 14px;
+        }
+        .addition-info .app-type {
+            width: 300px;
+            padding: 15px;
+        }
+        .addition-inner1 .app-type:last-child {
+            margin-left: 297px;
+        }
+        .addition-info .app-type h3{
+            font-size: 18px;
+        }
+        .addition-info .app-type p{
+            font-size: 14px;
+            color: #898989;
+        }
+        .addition-info .app-type a{
+            font-size: 16px;
+            padding: 10px 25px;
+            border-radius: 50px;
+            border: 1px solid #5063F0;
+            color: #5063F0;
+            display: inline-block;
+            margin-top: 20px;
+            transition: 0.5s;
+        }
+        .addition-info .app-type a:hover {
+            background-color: rgba(80,115,240,255);
+            color: white;
+        }
+        .gnb li:hover .addition-info {
+            opacity: 1;
+            visibility: visible;
+            top: 50px;
+        } 
+        .start-login a:first-child{
+            border: 1px solid rgba(80,115,240,255);
+            padding: 18px 27px;
+            border-radius: 50px;
+            color: white;
+            background-color: rgba(80,115,240,255);
+            margin-left: 10px;
+            transition:0.3s;
+        }
+        .start-login a:first-child:hover {
+            background-color: white;
+            color: rgba(80,115,240,255);
+        }
+        .start-login a:last-child{
+            border: 1px solid rgba(80,115,240,255);
+            padding: 20px 27px;
+            border-radius: 50px;
+            color: rgba(80,115,240,255);
+            margin-left: 10px;
+            transition:0.3s;
+        }
+        .start-login a:last-child:hover {
+            background-color: rgba(80,115,240,255);
+            color: white;
+        }
+        .welcome {}
+        .welcome-inner {
+            width: 100%;
+            height: 875px;
+            padding: 115px 0 255px;
+            background: url("images/hero_bg2.png") no-repeat right center;
+            background-size: 950px;
+            position: relative;
+
+        }
+        .welcome-desc {
+            width: 600px;
+            height: 500px;
+            margin-left: 370px;
+        }
+        .welcome-desc h1 {
+            font-size: 60px;
+            font-weight: bold;
+            line-height: 1.1em;
+            margin-top: 50px;
+        }
+        .welcome-desc p {
+            font-size: 18px;
+        }
+        .welcome-desc a {
+            font-size: 18px;
+            display: inline-block;
+        }
+        .welcome-desc a:nth-of-type(1) {
+            padding: 21px 25px;
+            background: linear-gradient(to right,#546eef, #8839e3);
+            border-radius: 50px;
+            color: white;
+            margin-right: 20px;
+        }
+        .welcome-desc a:nth-of-type(1):hover {
+            background: linear-gradient(to left,#546eef, #8839e3);
+        }
+        .welcome-desc a:nth-of-type(2) {
+            color: #5073F0;
+            text-decoration: underline;
+        }
+        .welcome-desc span {
+            font-size: 16px;
+            display: block;
+            color: #959595;
+            margin-top: 18px;
+        }
+        .welcome-video {
+            position: absolute;
+            top: 150px;
+            right: 0;
+            width: 700px;
+            height: 430px;
+            overflow: hidden;
+        }
+        .welcome-video video {
+            width: 760px;
+            height: inherit;
+            object-fit: cover;
+        }
+        .welcome-img1 {
+            position: absolute;
+            z-index: 10;
+            top: 120px;
+            right: 0;
+            width: 700px;
+            height: 50px;
+        }
+        .welcome-img2 {
+            position: absolute;
+            top: 400px;
+            right: 600px;
+            z-index: 1;
+            width: 200px;
+            height: 300px;
+        }
+        .welcome-img1 img {
+            width: inherit;
+            height: inherit;
+            object-fit: cover;
+            border-radius: 25px 0 0 0;
+        }
+        .welcome-img2 img {
+            width: inherit;
+            height: inherit;
+            object-fit: cover;
+            border-radius: 30px 0 0 0;
+        }
+
+        .help {
+            text-align: center;
+        }
+        .helped {
+            height: 564px;
+            background: linear-gradient(to bottom, #556ced, #9154e7);
+            padding: 66px 0 140px 0;
+            color: white;
+        }
+        .helped-desc {
+        }
+        .helped-desc h1 {
+            margin: 0 0 40px 0;
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .helped-desc p {
+            font-size: 18px;
+        }
+        .helped-num{
+            width: 1060px;
+            margin: 120px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .bold span{
+            font-size: 72px;
+            font-weight: bold;
+        }
+        .rated {
+            height: 296px;
+            padding: 70px 0 0;
+        }
+        .rated h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 0 0 70px 0;
+        }
+        .brands {
+            width: 1170px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .brands img {
+            /* margin: 0px 25px; */
+        }
+        .integrate-inner {
+            width: 1170px;
+            margin: 0 auto;
+            padding: 90px 0 70px 0;
+            text-align: center;
+            border-top: 1px solid rgb(199, 196, 196);
+            border-bottom: 1px solid rgb(199, 196, 196);
+            overflow: hidden;
+        }
+        .integrate-title h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 50px;
+        }
+        .integrate-title p {
+            font-size: 18px;
+            color: #6C6C6C;
+        }
+        .integrate-content {
+            float: left;
+            margin: 20px 29px;
+        }
+        .integrate-logo {
+            width: 326px;
+            height: 103px;
+            position: relative;
+            margin-bottom: 40px;
+        }
+        .integrate-logo img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .integrate-content a {
+            display: inline-block;
+            margin-top: 5px;
+            background-color: #5073F0;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 55px;
+        }
+        .getstarted-inner {
+            height: 1750px;
+            width: 1200px;
+            margin: 0 auto;
+            padding: 80px 0;
+            display: flex;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgb(199, 196, 196);
+        }
+        .getstarted-finding {
+            width: 100%;
+            height: 500px;
+            display: flex;
+            align-items: center;
+        }
+        .getstarted-build, .getstarted-time {
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: space-around;
+            width: 50%;
+            margin-top: -150px;
+        }
+        .getstarted-finding .getstarted-article {
+            width: 43%;
+        }
+        .getstarted-finding .getstarted-image {
+            width: 50%;
+        }
+        .getstarted-finding img {
+            width: 77%;
+        }
+        .getstarted-build .getstarted-article,
+        .getstarted-time .getstarted-article{
+            height: 40%;
+        }
+        .getstarted-build img,
+        .getstarted-time img {
+            width: 80%;
+        }
+        .getstarted h1 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            line-height: 1.4em;
+        }
+        .getstarted p {
+            font-size: 16px;
+            width: 70%;
+            margin-bottom: 50px;
+        }
+        .getstarted a {
+            font-weight: bold;
+            padding-bottom: 4px;
+            font-size: 24px;
+            border-bottom: 2px solid black;
+        }
+        .getstarted i {
+            font-size: 24px;
+        }
+        .dropship-inner {
+            text-align: center;
+            padding: 77px 0 140px;
+        }
+        .dropship-title h1 {
+            font-size: 36px;
+            margin:10px 0 30px;
+        }
+        .dropship-title p {
+            font-size: 18px;
+            color: #5F5F5F;
+        }
+        .dropship-process {
+            margin: 60px 0;
+        }
+        .dropship-step {
+            display: inline-block;
+            width: 234px;
+            vertical-align: top;
+            position: relative;
+        }
+        .dropship-step img {
+            margin-bottom: 35px;
+        }
+        .dropship-process h2 {
+            font-size: 24px;
+        }
+        .dropship-process p {
+            font-size: 16px;
+            color: #6C6C6C;
+        }
+        .dropship-button a{
+            font-size: 18px;
+            padding: 20px 49px;
+            background: linear-gradient(to right,#546eef, #8839e3);
+            border-radius: 50px;
+            color: white;
+        }
+        .dropship-button a:hover {
+            background: linear-gradient(to left,#546eef, #8839e3);
+        }
+        .dropship-step::after {
+            content: "\e90b";
+            font-family: xeicon;
+            position: absolute;
+            top: 30px;
+            right: -25px;
+            font-size: 40px;
+            color: rgb(204, 202, 202);
+        }
+        .dropship-step:nth-of-type(5)::after {
+            content: "";
+        }
+        .benefits-inner {
+            display: flex;
+        }
+        .benefits-desc {
+            width: 50%;
+            background-color: #3b62d2;
+            color: white;
+            padding: 80px 50px;
+        }
+        .benefits-image {
+            width: 50%;
+            background-color: #f0f3ff;
+            position: relative;
+        }
+        .benefits-image img {
+            width: 70%;
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .benefits-title h1 {
+            font-size: 36px;
+            line-height: 1.4em;
+            margin-bottom: 30px;
+        }
+        .benefits-title p {
+            font-size: 16px;
+        }
+        .benefits-articles {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .benefits-article {
+            margin-top: 70px;
+            width: 43%;
+        }
+        .benefits-image {}
+        .benefits-article span {
+            display: block;
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .benefits-article p {
+            font-size: 16px;
+        }
+        .benefits-desc a {
+            display: inline-block;
+            font-size: 24px;
+            color: white;
+            border-bottom: 1px solid white;
+            padding-bottom: 5px;
+            margin: 40px 0 0 20px;
+        }
+        .benefits-desc i {
+            font-size: 24px;
+            margin-left: 15px;
+        }
+        .whywink-inner {
+            width: 1200px;
+            margin: 0 auto;
+            padding: 110px 0;
+            overflow: hidden;
+            border-bottom: 1px solid rgb(199, 196, 196);
+        }
+        .whywink-title {
+            width: 975px;
+        }
+        .whywink-title h1 {
+            font-size: 36px;
+            line-height: 1.5em;
+        }
+        .whywink-title p {
+            font-size: 18px;
+            color: #6C6C6C;
+        }
+        .whywink-article {
+            width: 570px;
+            margin: 70px 0 15px 0;
+        }
+        .whywink-article:nth-child(2),
+        .whywink-article:nth-child(3) {
+            float: left;
+        }
+        .whywink-article:nth-child(2) {
+            margin-right: 60px;
+        }
+        .whywink-article img {
+            width: 530px;
+            margin-bottom: 40px;
+        }
+        .whywink-article h1 {
+            font-size: 24px;
+            margin-bottom: 50px;
+            line-height: 1.5em;
+        }
+        .whywink-article p {
+            font-size: 16px;
+            /* 밑 두줄은 글씨체변경시 없애도될듯 */
+            display: block;
+            padding-right: 40px;
+        }
+        .insight-inner {
+            padding: 90px 15px;
+            width: 1200px;
+            margin: 0 auto;
+        }
+        .insight-title {
+            text-align: center;
+        }
+        .insight-title h1 {
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+        .insight-title p {
+            font-size: 18px;
+            color: #6C6C6C;
+            margin: 0 175px;
+        }
+        .insight-cards {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 70px;
+        }
+        .insight-card {
+            width: 370px;
+            border-radius: 6px;
+            box-shadow: 0px 0px 10px rgb(199, 196, 196);
+            vertical-align: top;
+        }
+        .card-desc {
+            padding: 20px 25px 30px;
+        }
+        .insight-card img {
+            width: inherit;
+            border-radius: 6px 6px 0 0;
+            /* 이미지에 링크 걸기 */
+        }
+        .insight-card h6 {
+            font-size: 12px;
+            color: #556DEE;
+            margin-bottom: 13px;
+        }
+        .insight-card a {
+            display: block;
+            font-size: 18px;
+            line-height: 1.3em;
+            font-weight: bold;
+        }
+        .insight-card p {
+            height: 90px;
+            font-size: 14px;
+            color: #6D6D6D;
+            line-height: 1.6em;
+            margin-top: 15px;
+        }
+        .insight-card span {
+            font-size: 12px;
+            color: #C8C8C8;
+            font-weight: bold;
+        }
+        .insight-button {
+            text-align: center;
+        }
+        .insight-button a {
+            display: inline-block;
+            margin-top: 100px;
+            padding: 19px 49px;
+            background: linear-gradient(to right,#546eef, #8839e3);
+            border-radius: 50px;
+            color: white;
+        }
+        .insight-button a:hover {
+            background: linear-gradient(to left,#546eef, #8839e3);
+        }
+        .whyclothing {
+            width: 100%;
+        }
+        .whyclothing-top {
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+        .whyclothing-img {
+            width: 50%;
+            height: 895.28px;
+        }
+        .whyclothing-article {
+            width: 50%;
+            padding: 160px 120px;
+        }
+        .whyclothing-article h1{
+            font-size: 36px;
+            line-height: 1.5em;
+            margin-bottom: 45px;
+            font-weight: bold;
+        }
+        .whyclothing-article p {
+            font-size: 16px;
+            line-height: 1.4em;
+        }
+        .whyclothing-article div {
+            display: flex;
+            margin-top: 50px;
+        }
+        .whyclothing-article a {
+            font-size: 24px;
+            display: inline-block;
+            font-weight: bold;
+            padding-bottom: 10px;
+            border-bottom: 2px solid black;
+            margin-top: 2px;
+        }
+        .whyclothing-article i {
+            font-size: 30px;
+            margin-left: 20px;
+        }
+        .whyclothing-img img {
+            width: 100%;
+            height: inherit;
+            object-fit: cover;
+        }
+        .whyclothing-bot {
+            background-color: #6C3ED7;
+            color: white;
+            padding: 130px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .whyclothing-left {
+            width: 570px;
+            padding: 0 15px;
+            position: relative;
+            margin-bottom: 40px;
+        }
+        .whyclothing-right {
+            width: 570px;
+            padding: 0 15px;
+        }
+        .whyclothing-left h1{
+            font-size: 36px;
+            margin-bottom: 40px;
+            line-height: 1.4em;
+        }
+        .whyclothing-left p {
+            font-size: 18px;
+        }
+        .whyclothing-left div {
+            display: block;
+            position: absolute;
+            font-size: 24px;
+            font-weight: bold;
+            bottom: -70px;
+        }
+        .whyclothing-left a {
+            color: white;
+            padding-bottom: 4px;
+            border-bottom: 2px solid white;
+            margin-right: 10px;
+        }
+        .whyclothing-right p {
+            font-size: 16px;
+            margin: 16px 0;
+        }
+        .whatonline-inner {
+            text-align: center;
+            width: 1120px;
+            margin: 0 auto;
+            padding: 100px 0 180px 0;
+            border-bottom: 1px solid rgb(199, 196, 196);
+        }
+        .whatonline-title h1 {
+            font-size: 36px;
+            font-weight: bold;
+            line-height: 1.4em;
+            margin-bottom: 80px;
+        }
+        .whatonline-comment span {
+            color: #fdb10c;
+            font-size: 13px;
+        }
+        .whatonline-comment h6 {
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .whatonline-comment p {
+            font-size: 14px;
+            position: relative;
+        }
+        .whatonline-comment p::before {
+            content:"\e93b";
+            font-family: xeicon;
+            font-size: 17px;
+            position: absolute;
+            top: 10px;
+            left: -50px;
+            color: #456be7;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .whatonline-comment p::after {
+            content:"\e93e";
+            font-family: xeicon;
+            position: absolute;
+            top: 10px;
+            right: -50px;
+            color: #456be7;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .faq-inner {
+            padding: 130px 0;
+            width: 1170px;
+            margin: 0 auto;
+        }
+        .faq-inner h1 {
+            font-size: 48px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .faq-inner p {
+            font-size: 18px;
+            color: #6C6C6C;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .faq-content {
+
+        }
+        .faq-question {
+            font-size: 18px;
+            font-weight: bold;
+            padding: 28px 20px 28px 0;
+            border-top: 1px solid rgb(199, 196, 196);
+            border-bottom: 1px solid rgb(199, 196, 196);
+            cursor: pointer;
+        }
+        .faq-answer {
+            font-size: 16px;
+            padding: 30px 0;
+        }
+        .faq-question i {
+            float: right;
+            font-size: 35px;
+            font-weight: bold;
+            color: #5a71ee;
+            margin-top: -5px;
+        }
+        footer {
+            background: linear-gradient(to bottom, #823ee4, #556ced);
+            padding: 85px 0 55px;
+        }
+        .footer-inner {
+            width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .footer-logo {
+            width: 300px;
+        }
+        .footer-logo h1 {
+            color: white;
+            margin-bottom: 20px;
+            margin-left: 60px;
+        }
+        .sns-icon a{
+            margin-right: 17px;
+        }
+        .footer-menu {
+            display: flex;
+            width: 900px;
+            padding: 0 15px;
+        }
+        .footer-menu h6 {
+            color: white;
+            font-size: 18px;
+        }
+        .footer-menu a {
+            color: white;
+            font-size: 14px;
+        }
+        .footer-menu ul {
+            padding: 0;
+            padding-right: 30px;
+        }
+        .footer-menu li {
+            line-height: 30px;
+        }
+        .copyright, .policy {
+            margin-top: 100px;
+        }
+        .copyright p {
+            color: white;
+            font-size: 13px;
+        }
+        .policy a{
+            color: white;
+            font-size: 16px;
+        }
+
+    </style>
+
+
+    </head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="banner">
+                <a href="#none">Modalyst is joining Wix.com | <b>Read More Here</b></a>
+                <span class="close-button"><i class="xi-close-min"></i></span>
+            </div>
+            <div class="gnb-outer">
+                <div class="logo">
+                    <a href="#none">Wink</a>
+                </div>
+                <ul class="gnb">
+                    <li>
+                        <a href="#none">App Integrations <i class="xi-angle-down-min"></i></a>
+                        <div class="addition-info">
+                            <div class="addition-inner1">
+                                <div class="app-title">
+                                    <h1>Integrations</h1>
+                                    <p>Seamlessly integrate to your eCommerce store to become a successful dropshipping business overnight.</p>
+                                </div>
+                                <div class="app-type">
+                                    <h3>Wix</h3>
+                                    <p>Add Modalyst to your ecommerce plan and start taking your Wix website to the next level.</p>
+                                    <a href="#none">Learn More</a>
+                                </div>
+                                <div class="app-type">
+                                    <h3>Shopify</h3>
+                                    <p>Install Modalyst's Shopify app in one click to automate dropshipping for your Shopify store.</p>
+                                    <a href="#none">Learn More</a>
+                                </div>
+                                <div class="app-type">
+                                    <h3>BigCommerce</h3>
+                                    <p>List thousands of products to your BigCommerce store with a single click.<br><br></p>
+                                    <a href="#none">Learn More</a>
+                                </div>
+                                <div class="app-type">
+                                    <h3>Alibaba</h3>
+                                    <p>Integrate Modalyst with Alibaba to start sourcing dropship items from the world’s largest wholesale marketplace.</p>
+                                    <a href="#none">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#none">Features</a>
+                    </li>
+                    <li>
+                        <a href="#none">Sell on Wink</a>
+                    </li>
+                    <li>
+                        <a href="#none">Pricing</a>
+                    </li>
+                    <li>
+                        <a href="#none">Reviews <i class="xi-angle-down-min"></i></a>
+                        <div class="addition-info">
+                            <div class="addition-inner2">
+                                <div class="app-title">
+                                    <h1>Reviews</h1>
+                                    <p>Across platforms, Modalyst consistently ranks as one of the top rated dropshipping platforms on the market. Check the Wix and Shopify App to read our reviews.</p>
+                                </div>
+                                <div class="app-type">
+                                    <h3>Wix App</h3>
+                                    <p>Review our dozens of 5 star reviews in the Wix eCommerce app.<br><br></p>
+                                    <a href="#none">Learn More</a>
+                                </div>
+                                <div class="app-type">
+                                    <h3>Shopify App</h3>
+                                    <p>Check the Shopify App to see why Modalyst is the #1 Software for Dropshipping, Custom Branding & Packaging.</p>
+                                    <a href="#none">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#none">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="start-login">
+                    <a href="#none">Start for Free</a>
+                    <a href="#none">Log In</a>
+                </div>
+            </div>
+        </header>
+
+        <section class="welcome">
+            <div class="welcome-inner">
+                <div class="welcome-desc">
+                    <h1>Add dropshipping<br> products to your<br> store, instantly</h1>
+                    <p>New stores and experienced sellers alike can use Modalyst. Modalyst connects you directly to designer brands, eco-friendly suppliers, private label manufacturers, and AliExpress sellers.</p>
+                    <a href="#none">View Products</a>
+                    <a href="#none">See More Features</a>
+                    <span>100% free to start. Easy to use. No credit card required.</span>
+                </div>
+                <div class="welcome-img1">
+                    <img src="./images/top-win.svg">
+                </div>
+                <div class="welcome-img2">
+                    <img src="./images/iphone.png">
+                </div>
+                <div class="welcome-video">
+                    <video src="./images/hero.mp4" autoplay muted loop width="760px" height="700px"></video>
+                </div>
+            </div>
+        </section>
+
+        <section class="help">
+            <div class="helped">
+                <div class="helped-desc">
+                    <h1>How We’ve Helped Dropshipping Sites Just Like Yours</h1>
+                    <p>Over 350,000 online businesses and entrepreneurs have used Modalyst. It's the<br> easiest way to find drop shipping suppliers and profitable products to sell online.</p>
+                </div>
+                <div class="helped-num">
+                    <div class="bold">
+                        <span>10M</span>
+                        <p>products added <br>to virtualstorefronts</p>
+                    </div>
+                    <div class="bold">
+                        <span>350K</span>
+                        <p>ecommerce stores <br>served</p>
+                    </div>
+                    <div class="bold">
+                        <span>50M</span>
+                        <p>online shoppers <br>reached</p>
+                    </div>
+                </div>
+            </div>
+            <div class="rated">
+                <h1>Rated the Top Dropshipping Software by</h1>
+                <div class="brands">
+                    <img src="./images/rated1.png">
+                    <img src="./images/rated2.png">
+                    <img src="./images/rated3.png">
+                    <img src="./images/rated4.png">
+                    <img src="./images/rated5.png">
+                    <img src="./images/rated6.png">
+                </div>
+            </div>
+        </section>
+
+        <section class="integrate">
+            <div class="integrate-inner">
+                <div class="integrate-title">
+                    <h1>Modalyst integrates with Best eCommerce Platforms</h1>
+                    <p>Integrate Modalyst with your e-commerce site instantly. From Shopify to Wix to eBay stores, Modalyst<br> integrates in a single click with the best ecommerce platforms and dropshipping sites globally.</p>
+                </div>
+                <div class="integrate-content">
+                    <div class="integrate-logo">
+                        <img src="./images/cms1.svg">
+                    </div>
+                    <h2>Shopify</h2>
+                    <p>Install the Modalyst Shopify app in a single<br> click to automate your dropshipping business.<br> Find reliable US suppliers and the best<br> dropshipping products for your Shopify<br> website. Join Modalyst and take your own<br> business to the next level.</p>
+                    <a href="#none">Learn More</a>
+                </div>
+                <div class="integrate-content">
+                    <div class="integrate-logo">
+                        <img src="./images/wix-black.png">
+                    </div>
+                    <h2>Wix Stores</h2>
+                    <p>Install the Modalyst Wix app in a single click to<br> automate your dropshipping site. From high<br> quality USA suppliers to bestsellers on<br> AliExpress, you will find the best dropship<br> products for your Wix website. Join Modalyst<br> to take your business to the next level.</p>
+                    <a href="#none">Learn More</a>
+                </div>
+                <div class="integrate-content">
+                    <div class="integrate-logo">
+                        <img src="./images/cms3.svg">
+                    </div>
+                    <h2>BigCommerce</h2>
+                    <p>Install the Modalyst BigCommerce app and<br> automate your dropshipping business within<br> minutes. Find the best drop ship suppliers and<br> drop shipping products for your BigCommerce<br> website. Join Modalyst and take your own<br> business to the next level.</p>
+                    <a href="#none">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="getstarted">
+            <div class="getstarted-inner">
+                <div class="getstarted-finding">
+                    <div class="getstarted-image">
+                        <img src="./images/getstarted1.jpg">
+                    </div>
+                    <div class="getstarted-article">
+                        <h1>Finding US dropshipping suppliers is hard work. Modalyst makes it easier.</h1>
+                        <p>Install our top-rated dropshipping app to your e-commerce site and get access to US Suppliers, AliExpress vendors, and the best dropshipping products and wholesalers. Start selling the right products to the customer base that you know best. We connect you to inventory, so you can focus on creating a catalog of profitable products for your online store.</p>
+                        <a href="">Get Started</a>&nbsp&nbsp<i class="xi-long-arrow-right"></i>
+                    </div>
+                </div>
+                <div class="getstarted-build">
+                    <div class="getstarted-image">
+                        <img src="./images/getstarted2.jpg">
+                    </div>
+                    <div class="getstarted-article">
+                        <h1>Build a successful eCommerce business. Instantly.</h1>
+                        <p>Dropshipping inventory automation is the most effective way to operate an e-commerce website at low cost, because it removes the traditional complications of inventory management. Modalyst connects you to inventory so you can focus on other essentials, like building your customer base through digital marketing or selling more products through your online marketplace. For any online retailer or entrepreneur who wants to focus on great products and a quality customer experience, dropshipping may be your best new business strategy.</p>
+                        <a href="">Get Started</a>&nbsp&nbsp<i class="xi-long-arrow-right"></i>
+                    </div>
+                </div>
+                <div class="getstarted-time">
+                    <div class="getstarted-image">
+                        <img src="./images/getstarted3.jpg">
+                    </div>
+                    <div class="getstarted-article">
+                        <h1>It’s time to add dropshipping to your business model.</h1>
+                        <p>The cons of managing inventory can be endless, particularly for online retailers. With dropshipping, ecommerce websites can maintain a robust product catalog without requiring the physical storage space or budget to stock large amounts of product. With dropship automation software, Modalyst removes the biggest downside for online shops--inventory management. This allows online retailers to focus on featuring popular products on a daily basis in their website storefronts without the hassle of the fulfillment process in the long run.</p>
+                        <a href="">Get Started</a>&nbsp&nbsp<i class="xi-long-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="dropship">
+            <div class="dropship-inner">
+                <div class="dropship-title">
+                    <h1>How does dropshipping work on Modalyst?</h1>
+                    <p>Save time and money with the best dropshipping automation software</p>
+                </div>
+                <div class="dropship-process">
+                    <div class="dropship-step">
+                        <img src="./images/step1.svg">
+                        <h2>Start</h2>
+                        <p>Start for free on Modalyst in just one click. Let’s get started!</p>
+                    </div>
+                    <div class="dropship-step">
+                        <img src="./images/step2.svg">
+                        <h2>Connect</h2>
+                        <p>Connect to your Shopify store, Wix store, or other ecommerce platform</p>
+                    </div>
+                    <div class="dropship-step">
+                        <img src="./images/step3.svg">
+                        <h2>Curate</h2>
+                        <p>Curate the best products for dropshipping and import their product information into your Modalyst account</p>
+                    </div>
+                    <div class="dropship-step">
+                        <img src="./images/step4.svg">
+                        <h2>Customize</h2>
+                        <p>Customize the products to fit the style of your online store and publish the product data</p>
+                    </div>
+                    <div class="dropship-step last">
+                        <img src="./images/step5.svg">
+                        <h2>Sell</h2>
+                        <p>Sell products and market your merchandise at full retail prices with complete inventory control</p>
+                    </div>
+                </div>
+                <div class="dropship-button">
+                    <a href="">Get Started</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="benefits">
+            <div class="benefits-inner">
+                <div class="benefits-desc">
+                    <div class="benefits-title">
+                        <h1>The Key Benefits of Dropshipping with Modalyst:</h1>
+                        <p>Discover the dropshipping automation software that gives you the freedom to sell the products you love without the traditional hassles. Take your online store to the next level with Modalyst.</p>
+                    </div>
+                    <div class="benefits-articles">
+                        <div class="benefits-article">
+                            <img src="./images/ben1.svg">
+                            <span>Add Dropship Suppliers to your Online Store, For free</span>
+                            <p>Find thousands of fast shipping suppliers in the USA and Europe and top AliExpress suppliers, with just the click of a button. Add products to your sales channels and keep them synced along the way. Modalyst suppliers offer millions of best-selling and private label products to sell online.</p>
+                        </div>
+                        <div class="benefits-article">
+                            <img src="./images/ben2.svg">
+                            <span>Curate a Large Variety of Products for your Online Store, Without Risk</span>
+                            <p>Modalyst has the largest catalog of high quality products and AliExpress items for your dropshipping website. We integrate with over 500 ecommerce distribution sites that offer the best in fashion and apparel options. From verified United States Suppliers to high profit margin potential Aliexpress Suppliers, Modalyst has it all.</p>
+                        </div>
+                        <div class="benefits-article">
+                            <img src="./images/ben4.svg">
+                            <span>Set Pricing & Shipping Standards to Automatically Increase Margins</span>
+                            <p>Define your pricing rules to systemically markup products. Automatically include your cost of shipping in the retail cost to offer free shipping to your buyers without it impacting your margins. Avoid additional costs of the supply chain by outsourcing order fulfillment and shipment to the wholesale supplier.</p>
+                        </div>
+                        <div class="benefits-article">
+                            <img src="./images/ben5.svg">
+                            <span>Monitor your Inventory with Better Functionality and Complete Control</span>
+                            <p>With drop shipping, retailers pay for a product after it’s sold, which allows online business owners to feature an unlimited assortment of skus without the constraints and upfront costs of stocking products. As trends change, you can easily add new products without much effort to ensure your online merchandise is always in-style.</p>
+                        </div>
+                    </div>
+                    <a href="">Start Now</a><i class="xi-long-arrow-right"></i>
+                </div>
+                <div class="benefits-image">
+                    <img src="./images/tools.png">
+                </div>
+            </div>
+        </section>
+
+        <section class="whywink">
+            <div class="whywink-inner">
+                <div class="whywink-title">
+                    <h1>Why Modalyst is a Great Choice for Transforming your Dropshipping Company into a Successful Business</h1>
+                    <p>Work with top dropship vendors based in the USA, UK, Europe, Canada & Australia. Use our Chrome Extension to add millions of AliExpress products in a single-click. To further differentiate your storefront, add custom branding & hangtags to your products through our Private Label Dropshipping program.</p>
+                </div>
+                <div class="whywink-article">
+                    <img src="./images/whymodalyst1.jpg">
+                    <h1>Onboard 1000s of dropship suppliers in a<br> single click</h1>
+                    <p>Modalyst has a long list of suppliers and drop shipping wholesalers for your dropshipping store. From verified USA merchants and suppliers, to profitable Ali Express Suppliers, Modalyst has all the dropshipping suppliers you need at wholesale and discount prices. In addition, Modalyst suppliers have experience working with drop ship companies, just like yours.</p>
+                </div>
+                <div class="whywink-article">
+                    <img src="./images/whymodalyst2.jpg">
+                    <h1>All the Winning Products You Need on a<br> Single Platform
+                    </h1>
+                    <p>Modalyst has the largest catalog of different types of products for your drop shipping website. Let Modalyst automate your ecommerce business while you focus on finding winning products at a low price for your own brand's success.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="insight">
+            <div class="insight-inner">
+                <div class="insight-title">
+                    <h1>Dropshipping Insights</h1>
+                    <p>Modalyst works with all kinds of ecommerce retailers - from startup to enterprise. Our blog is an industry leading resource, highlighting tips and tools to build a successful dropshipping business.</p>
+                </div>
+                <div class="insight-cards">
+                    <div class="insight-card">
+                        <img src="./images/blog1.jpg">
+                        <div class="card-desc">
+                            <h6>Find Products to Sell</h6>
+                            <a href="#none">Why US Suppliers are the Solution for Your Store During the</a>
+                            <p>With the recent outbreak of the novel coronavirus, US and international dropshippers have been left struggling to maintain their supply chains......</p>
+                            <span>Mar 20, 2020</span>
+                        </div>
+                    </div>
+                    <div class="insight-card">
+                        <img src="./images/blog2.jpg">
+                        <div class="card-desc">
+                            <h6>E-Commerce Marketing</h6>
+                            <a href="#none">Reap the Benefits of AI and Chatbots for Your Dropshipping Business</a>
+                            <p>We’ve come a long way since those early days where data scientists needed to predict a customer’s needs all on their own and be lucky enough to have come to the right conclusion.....</p>
+                            <span>Feb 06, 2020</span>
+                        </div>
+                    </div>
+                    <div class="insight-card">
+                        <img src="images/blog3.jpg">
+                        <div class="card-desc">
+                            <h6>Find Products to Sell</h6>
+                            <a href="#none">Everything You Need to Know About AliExpress Dropshipping</a>
+                            <p>When you run a dropshipping business, your first goal is making money.
+                                However, a close second is having the platfo.....</p>
+                            <span>Nov 13, 2019</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="insight-button">
+                    <a href="#none">Read Our Blog</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="whyclothing">
+            <div class="whyclothing-top">
+                <div class="whyclothing-img">
+                    <img src="./images/cloth_bg.jpg">
+                </div>
+                <div class="whyclothing-article">
+                    <h1>Why Clothing Products are Great to Sell Online</h1>
+                    <p>The apparel and accessories industry has been experiencing a major shift, with fashion retailers shutting down at an alarming rate.</p>
+                    <p>However, the opposite is true for the eCommerce fashion industry, which is expected to rise from $481 billion in 2018 to $712 billion by 2022.</p>
+                    <p>With the apparel market having so many categories and a lot of competition, it's a good idea to narrow down your store offerings, because there are so many valuable places for ecommerce entrepreneurs to carve out their own products niche. Frankly, a niche apparel store will usually be more profitable than a generic one.</p>
+                    <p>So, whether it's a bedazzled jeans or rave jewelry, the more niche you go, the more likely you are to boost conversion rates and succeed.</p>
+                    <p>When it comes to starting a dropshipping website, you need to start with product discovery and research first.</p>
+                    <div><a href="#none">Check out our 3,000+ categories</a><i class="xi-long-arrow-right"></i></div>
+                </div>
+            </div>
+            <div class="whyclothing-bot">
+                <div class="whyclothing-left">
+                    <h1>How to Find Clothing<br> Distributors & Vendors on<br> Modalyst</h1>
+                    <p>The apparel market is absolutely huge, so finding<br> vendors for your store will not be difficult.</p>
+                    <div><a href="#none">Learn More</a><i class="xi-long-arrow-right"></i></div>
+                </div>
+                <div class="whyclothing-right">
+                    <p>A quick search for apparel on AliExpress returns over 715,000 results, Amazon returns over 500,000 results, eBay returns over 5,536,000 results and Etsy returns over 323,000 results for products to sell.</p>
+                    <p>Modalyst integrates with over 100 eCommerce distribution sites, and has access to suppliers that offer all kinds of fashion and apparel drop shipping options.</p>
+                    <p>Whether it’s offering t-shirts, jackets, hats, socks, pants or shoes, Modalyst has you covered as we can easily import hundreds and even thousands of apparel items from high-quality distributors around the world, and even within the U.S.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="whatonline">
+            <div class="whatonline-inner">
+                <div class="whatonline-title">
+                    <h1>What Online Retailers Are Saying about<br> Dropshipping with Modalyst</h1>
+                </div>
+                <div class="whatonline-comment">
+                    <span><i class="xi-star"></i></span>
+                    <span><i class="xi-star"></i></span>
+                    <span><i class="xi-star"></i></span>
+                    <span><i class="xi-star"></i></span>
+                    <span><i class="xi-star"></i></span>
+                    <h6>New to modalyst, can't wait!</h6>
+                    <p>Modalyst has thousands of products to choose from at very reasonable prices. They even offer custom print dropshipping and custom tags for your products. This is a really great website that is definitely better than its other competitors on several aspects. I can't wait to get started.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq">
+            <div class="faq-inner">
+                <h1>Modalyst FAQ</h1>
+                <p>Modalyst features the best drop ship suppliers and on-demand products for Top Ecommerce websites.</p>
+                <div class="faq-content">
+                    <div class="faq-question">What is dropshipping?<i class="xi-plus"></i></div>
+                    <div class="faq-answer">Dropshipping is a retail method that allows online stores to avoid purchasing inventory. When customers place an order on an ecommerce site, dropshipping automatically reroutes those online orders to the brand, wholesaler, or supplier, who then fulfills and ships the product directly to the customer. With automated dropshipping software from Modalyst, your online store can focus on curating the best products, providing superior customer service, while completely bypassing the costs and complications of inventory.</div>
+                    <div class="faq-question">What is the Modalyst return policy?<i class="xi-plus"></i></div>
+                    <div class="faq-answer">There is a universal return policy for all products on the Modalyst Marketplace, excluding AliExpress items. This policy is standardized across all Modalyst suppliers and applies to items in undamaged or unworn (with tags attached) condition. The refund window is 14 days long and goes into effect the day your customer receives the package. The refund policy for AliExpress suppliers is specific to the supplier. Please make sure to review the individual policy when you decide to work with suppliers on the AliExpress platform.</div>
+                    <div class="faq-question">How and when do I pay for the products that I sell?<i class="xi-plus"></i></div>
+                    <div class="faq-answer">For integrated Wix Stores or Shopify shops, your customer orders are automatically routed from your store to your account on Modalyst immediately upon purchase by your customer, including all of the order details and customer shipping information. To have the item fulfilled and sent directly to your customer, go to your orders section on Modalyst and click Pay Now. For all other retailers, visit your inventory list on Modalyst and pay the brand directly for the items after they sell.</div>
+                    <div class="faq-question">Do you guarantee that all dropshipment products are always in-stock?<i class="xi-plus"></i></div>
+                    <div class="faq-answer">So long as your store is linked to Modalyst via our Wix app, Shopify app, or Bigcommerce app, Modalyst will automatically update the inventory quantities on your virtual storefront. Modalyst does not hold inventory, but connects ecommerce stores to suppliers who maintain their own warehouse or inventory source. These suppliers maintain their own inventory and fulfill shipments to customers. Brands on Modalyst are required to update their inventory counts. Once a count is entered, we automatically count down the stock levels as items are purchased.</div>
+                    <div class="faq-question">Who are your suppliers?<i class="xi-plus"></i></div>
+                    <div class="faq-answer">Modalyst suppliers range from private label manufacturers to handmade indie brands to AliExpress suppliers. On our own Marketplace, we feature hundreds of US dropshipping suppliers as well as international suppliers from all over the world. These vendors are vetted and offer fast shipping, and affordable products at discounted rates. Separately, we connect retailers directly to AliExpress, giving them access to millions of AliExpress items. When you find a supplier you want to work with, add them to your online store, and see why they are some of the best drop shipping companies in USA.</div>
+                    <div class="faq-question">Where are your suppliers from?<i class="xi-plus"></i></div>
+                    <div class="faq-answer">We feature thousands of US drop shipping suppliers and major dropship companies from around the world, including Aliexpress. Through our official dropshipping partnership with AliExpress, we connect you to millions of suppliers, who ship worldwide. Whether you seek local USA dropshippers for your online store or international vendors, we have the widest selection of drop shippers on Modalyst.</div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-inner">
+                <div class="footer-logo">
+                    <!-- <img src=""> -->
+                    <h1>W I N K</h1>
+                    <div class="sns-icon">
+                        <a href="#none"><img src="./images/facebook.svg"></a>
+                        <a href="#none"><img src="./images/twitter.svg"></a>
+                        <a href="#none"><img src="./images/instagram.svg"></a>
+                        <a href="#none"><img src="./images/pinterest.svg"></a>
+                    </div>
+                </div>
+                <div class="footer-menu">
+                    <div>
+                        <h6>Integrations</h6>
+                        <ul>
+                            <li><a href="#none">Wix Integration</a></li>
+                            <li><a href="#none">Shopify Integration</a></li>
+                            <li><a href="#none">BigCommerce Integration</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h6>Features</h6>
+                        <ul>
+                            <li><a href="#none">Retailer Features</a></li>
+                            <li><a href="#none">Supplier Features</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h6>Pricing</h6>
+                        <ul>
+                            <li><a href="#none">Dropshipping Pricing</a></li>
+                            <li><a href="#none">Supplier Pricing</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h6>Resources</h6>
+                        <ul>
+                            <li><a href="#none">Help Center</a></li>
+                            <li><a href="#none">Contact Us</a></li>
+                            <li><a href="#none">Email Us</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h6>Blog</h6>
+                        <ul>
+                            <li><a href="#none">Why US Suppliers are the Solution</a></li>
+                            <li><a href="#none">The Ultimate List of Dropshipping Suppliers</a></li>
+                            <li><a href="#none">AliExpress Dropshipping</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>Copyright © 2013-2020 MODALYST, INC.</p>
+                </div>
+                <div class="policy">
+                    <a href="#none">Privacy Policy &nbsp;&nbsp;&nbsp;|</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#none">Terms of Use</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        $(".banner span").click(function() {
+            $(".banner").slideUp();
+        })
+
+    </script>
+</body>
+
+</html>
