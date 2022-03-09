@@ -38,6 +38,9 @@
         h1, h2, h3, h4, h5, h6 {
             margin: 0;
         }
+        .container {
+            overflow: hidden;
+        }
         .banner{
             height: 35px;
             background-color: #090948;
@@ -213,7 +216,6 @@
             background-color: rgba(80,115,240,255);
             color: white;
         }
-        .welcome {}
         .welcome-inner {
             width: 100%;
             height: 875px;
@@ -641,10 +643,12 @@
         .card-desc {
             padding: 20px 25px 30px;
         }
-        .insight-card img {
+        .insight-card a {
+            width: inherit;
+        }
+        .insight-card a img {
             width: inherit;
             border-radius: 6px 6px 0 0;
-            /* 이미지에 링크 걸기 */
         }
         .insight-card h6 {
             font-size: 12px;
@@ -844,12 +848,21 @@
             font-weight: bold;
             padding: 28px 20px 28px 0;
             border-top: 1px solid rgb(199, 196, 196);
-            border-bottom: 1px solid rgb(199, 196, 196);
+            /* border-bottom: 1px solid rgb(199, 196, 196); */
             cursor: pointer;
+            overflow: hidden;
+        }
+        .faq-content .faq-question:nth-child(11) {
+            border-bottom: 1px solid rgb(199, 196, 196);
         }
         .faq-answer {
             font-size: 16px;
             padding: 30px 0;
+            display: none;
+            border-top: 1px solid rgb(199, 196, 196);
+        }
+        .faq-content .faq-answer:nth-child(12) {
+            border-top: none;
         }
         .faq-question i {
             float: right;
@@ -1228,7 +1241,7 @@
                 </div>
                 <div class="insight-cards">
                     <div class="insight-card">
-                        <img src="./images/blog1.jpg">
+                        <a href="#none"><img src="./images/blog1.jpg"></a>
                         <div class="card-desc">
                             <h6>Find Products to Sell</h6>
                             <a href="#none">Why US Suppliers are the Solution for Your Store During the</a>
@@ -1237,7 +1250,7 @@
                         </div>
                     </div>
                     <div class="insight-card">
-                        <img src="./images/blog2.jpg">
+                        <a href="#none"><img src="./images/blog2.jpg"></a>
                         <div class="card-desc">
                             <h6>E-Commerce Marketing</h6>
                             <a href="#none">Reap the Benefits of AI and Chatbots for Your Dropshipping Business</a>
@@ -1246,7 +1259,7 @@
                         </div>
                     </div>
                     <div class="insight-card">
-                        <img src="images/blog3.jpg">
+                        <a href="#none"><img src="./images/blog3.jpg"></a>
                         <div class="card-desc">
                             <h6>Find Products to Sell</h6>
                             <a href="#none">Everything You Need to Know About AliExpress Dropshipping</a>
@@ -1394,7 +1407,11 @@
 
     <script>
         $(".banner span").click(function() {
-            $(".banner").slideUp();
+            $(".banner").slideUp()
+        })
+        $(".faq-question").click(function() {
+            $(this).next().slideToggle()
+            $(this).find("i").toggleClass("xi-minus").toggleClass("xi-plus")
         })
 
     </script>

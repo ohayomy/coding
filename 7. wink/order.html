@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+
+  <title></title>
+  <script src="script/jquery-3.6.0.js"></script>
+  <link rel="stylesheet" href="./css/welcome-button.css">
+  <link rel="stylesheet" href="./css/sidebar.css">
+  <script src="https://kit.fontawesome.com/6a5a5c3e4a.js" crossorigin="anonymous"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      outline: none;
+    }
+
+    body {
+      color: #222;
+      margin: 0;
+      font-size: 15px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #222;
+    }
+
+    h1,h2,h3,h4,h5,h6 {
+      margin: 0;
+    }
+
+    ol,
+    ul,
+    li {
+      list-style: none;
+      margin: 25px 0;
+    }
+
+    /* side-bar 추가사항 */
+    .findProducts {
+      background-color: inherit;
+      color: #999;
+    }
+
+    .orders {
+      background-color: #0B1A2D;
+      padding: 8px 0 12px 0;
+      color: white;
+      margin: 0;
+    }
+
+    .inbox {
+      margin-top: 15px;
+    }
+
+    .myProducts ul {
+      margin-bottom: -10px;
+    }
+
+    /* 본편시작 */
+    .order {
+      position: relative;
+      top: 30px;
+      left: 500px;
+    }
+
+    .title h1 {
+      font-size: 36px;
+      font-weight: normal;
+      margin-bottom: 35px;
+    }
+
+    .search-bar {
+      position: relative;
+      width: 400px;
+      height: 56px;
+      display: inline-block;
+      margin-right: 20px;
+    }
+
+    .search-bar input[type=text] {
+      font-size: 15px;
+      width: inherit;
+      border-radius: 5px;
+      padding: 18px;
+      border: 2px solid rgba(182, 178, 178, 0.733);
+    }
+
+    .search-bar input[type=text]:hover,
+    .search-bar input[type=text]:focus {
+      border: 2px solid rgb(55, 55, 168);
+    }
+
+    .search-bar input[type=text]::placeholder {
+      visibility: hidden;
+    }
+
+    .search-bar input[type=text]:focus::placeholder {
+      visibility: visible;
+    }
+
+    .search-bar span {
+      position: absolute;
+      top: 17px;
+      left: 15px;
+      display: block;
+      font-size: 17px;
+      color: rgb(153, 147, 147);
+      transition: 0.3s;
+    }
+
+    .search-bar input[type=text]:focus~span {
+      top: -7px;
+      left: 14px;
+      font-size: 13px;
+      color: darkblue;
+      z-index: 100;
+      padding: 0 3px;
+      background: linear-gradient(180deg, #E7E9EC 50%, white 50%);
+    }
+
+    .search-bar i {
+      position: absolute;
+      top: 8px;
+      right: 15px;
+      font-size: 21px;
+      color: darkblue;
+      border-radius: 50%;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .search-bar h6 {
+      position: absolute;
+      top: 70px;
+      left: 330px;
+      background-color: black;
+      color: gainsboro;
+      padding: 15px;
+      font-size: 12px;
+      border-radius: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+      z-index: 50;
+    }
+
+    .search-bar i:hover {
+      background-color: rgba(193, 186, 204, 0.445);
+    }
+
+    .search-bar h6::after {
+      position: absolute;
+      content: "";
+      background-color: black;
+      width: 15px;
+      height: 15px;
+      transform: rotate(45deg);
+      top: -5px;
+      left: 27px;
+      transition: 0.5s;
+    }
+
+    .search-bar i:hover~h6 {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* 드롭다운 옵션 */
+    .status,
+    .fulfill,
+    .source {
+      display: inline-block;
+      position: relative;
+      vertical-align: top;
+      margin-right: 20px;
+    }
+
+    .default {
+      border: 2px solid rgba(182, 178, 178, 0.733);
+      width: 300px;
+      height: 58px;
+      font-size: 16px;
+      padding: 17px;
+      border-radius: 5px;
+      background-color: white;
+      cursor: pointer;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      /* 글자초과 ...으로 표시하기 실패함 */
+    }
+
+    .default:hover {
+      border: 2px solid rgb(55, 55, 168);
+    }
+
+    .default.active {
+      border: 2px solid rgb(55, 55, 168);
+    }
+
+    .default~span {
+      position: absolute;
+      top: -7px;
+      left: 14px;
+      font-size: 13px;
+      color: gray;
+      z-index: 100;
+      padding: 0 3px;
+      background: linear-gradient(180deg, #E7E9EC 50%, white 50%);
+    }
+
+    .default.active~span {
+      color: darkblue;
+    }
+
+    .default~i {
+      position: absolute;
+      top: 18px;
+      right: 15px;
+      font-size: 20px;
+      color: gray;
+    }
+
+    .default.rotate~i {
+      transform: rotate(180deg);
+    }
+
+    .default~ul {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 200;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      box-shadow: 0px 2px 10px gray;
+      display: none;
+    }
+
+    .default~ul li {
+      width: 290px;
+      margin: 0;
+      padding: 12px 0px 12px 12px;
+      font-size: 15px;
+    }
+
+    .default~ul li:hover {
+      background-color: rgba(170, 170, 233, 0.294);
+    }
+
+    .default~ul li:first-child {
+      margin-top: 7px;
+    }
+
+    .default~ul li:last-child {
+      margin-bottom: 7px;
+    }
+
+    .default.second.deActive {
+      cursor: none;
+      pointer-events: none;
+      border: 2px solid rgba(182, 178, 178, 0.733);
+    }
+
+    /* 캘린더 */
+    .calendar-outer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-right: 20px;
+      position: relative;
+    }
+
+    .calendar-outer .period p {
+      margin-left: 10px;
+      font-size: 22px;
+      height: 33px;
+      padding: 3px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .calendar-outer .period.active {
+      font-size: 100px;
+    }
+
+    .calendar-outer .period p:hover {
+      background-color: rgba(219, 219, 219, 0.657);
+    }
+
+    .calendar-outer .period p span {
+      font-size: 18px;
+    }
+
+    .calendar-outer .expo {
+      margin: 25px 10px;
+      font-size: 17px;
+      position: relative;
+    }
+
+    .calendar-outer .expo a {
+      display: block;
+      height: 33px;
+      padding: 7px 10px 0 10px;
+      border-radius: 5px;
+    }
+
+    .calendar-outer .expo a:hover {
+      background-color: rgba(219, 219, 219, 0.657);
+    }
+
+    .calendar-outer .expo h6 {
+      position: absolute;
+      top: 50px;
+      left: -50px;
+      background-color: #090948;
+      color: white;
+      padding: 12px 15px;
+      border-radius: 5px;
+      width: 220px;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+    }
+
+    .calendar-outer .expo a:hover~h6 {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .calendar-outer .expo h6::after {
+      position: absolute;
+      content: "";
+      width: 15px;
+      height: 15px;
+      background-color: #090948;
+      transform: rotate(45deg);
+      top: -7px;
+      left: 120px;
+    }
+
+    .calendar {
+      position: absolute;
+      top: 70px;
+      left: 20px;
+      box-shadow: 0 5px 10px gray;
+      font-size: 12px;
+      background-color: white;
+      display: flex;
+      border-radius: 5px;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+    }
+
+    .calendar.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .calendar .date {
+      width: 225px;
+    }
+
+    .calendar .date ul {
+      padding: 0;
+      margin: 0;
+    }
+
+    .calendar .date ul li {
+      padding: 10px 20px;
+      margin: 0;
+      border-bottom: 1px solid gainsboro;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .calendar .date ul li:hover {
+      background-color: rgb(229, 229, 250);
+    }
+
+    .calendar .date .days-up {
+      margin-bottom: 50px;
+    }
+
+    .calendar .date .days-up>div {
+      padding: 10px 0 5px 10px;
+    }
+
+    .calendar .date .days-up input {
+      width: 30px;
+      height: 30px;
+      margin-right: 12px;
+      padding-left: 9px;
+    }
+
+    .calendar .date .days-up input::placeholder {
+      font-size: 20px;
+    }
+
+    .calendar .date .days-up span {}
+
+    .calendar .figure {
+      width: 332px;
+      border-left: 1px solid gainsboro;
+    }
+
+    .figure .start-end {
+      background-color: #EFF2F7;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 52px;
+    }
+
+    .figure .startDate,
+    .figure .endDate {
+      display: block;
+      width: 149px;
+      height: 30px;
+      text-align: center;
+      line-height: 30px;
+      background-color: white;
+      padding: 1px 2px;
+      cursor: pointer;
+      border-radius: 5px;
+      border: 1px solid white;
+    }
+
+    .figure .startDate.active,
+    .figure .endDate.active {
+      border: 1px solid rgb(108, 108, 209);
+    }
+
+    .figure-date {
+      height: 60px;
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .figure-date span {
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 5px;
+    }
+
+    .figure-date span:hover {
+      background-color: rgb(224, 224, 224);
+    }
+
+    .figure-date span:nth-child(1) i {
+      transform: rotate(90deg);
+    }
+
+    .figure-date span:nth-child(2) i {
+      margin-left: 10px;
+    }
+
+    .figure-date span:nth-child(3) i {
+      margin-left: 10px;
+    }
+
+    .figure-date span:nth-child(4) i {
+      transform: rotate(-90deg);
+    }
+
+    .figure-cal {
+      height: 268px;
+    }
+
+    .ordermatch {
+      margin-right: 20px;
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .showing {
+      overflow: hidden;
+      margin-right: 20px;
+    }
+
+    .showing-item {
+      float: left;
+      margin-left: 10px;
+    }
+
+    .showing-page {
+      float: right;
+      margin-right: 20px;
+    }
+
+    .showing-page span {
+      display: inline-block;
+      padding: 10px 17px;
+      border-radius: 4px;
+      font-size: 17px;
+      background-color: rgba(219, 219, 219, 0.657);
+      cursor: pointer;
+    }
+
+    .showing-page i {
+      margin: 20px 15px 0 15px;
+      cursor: pointer;
+    }
+  </style>
+
+
+</head>
+
+<body>
+  <div class="container">
+    <aside>
+      <div class="sidebar">
+        <div class="modalyst">
+          <h1>wink</h1>
+        </div>
+        <div class="modalyst-list">
+          <ul>
+            <li class="findProducts">
+              <a href="#none">Find Products</a>
+            </li>
+            <li class="myProducts">
+              <span>My Products</span>
+              <ul>
+                <li><a href="#none">Import List</a></li>
+                <li>Sync List</li>
+                <li><a href="#none">Archive List</a></li>
+                <li>Pricing Rules</li>
+              </ul>
+            </li>
+            <li class="orders">Orders</li>
+            <li class="inbox">Inbox</li>
+            <li class="settings">
+              <span>Settings</span>
+              <ul>
+                <li>Connect Your Store</li>
+                <li>Alibaba & AliExpress</li>
+                <li>Manage Store Plan</li>
+                <li>Store Porfile</li>
+                <li>Business Information</li>
+                <li>User Settings</li>
+                <li>Logout</li>
+              </ul>
+            </li>
+            <li class="helpCenter">Help Center</li>
+          </ul>
+          <div class="modal-footer">
+            <div class="hobbyPlan">
+              <h2>Hobby plan</h2>
+              <p>25 products left</p>
+            </div>
+            <div class="blog">
+              <a href="#none">Blog</a>
+              <a href="#none">Terms of Service</a>
+              <a href="#none">Privacy Policy</a>
+              <a href="#none">Contact</a>
+              <span>
+                <a href="#none"><i class="xi-twitter"></i></a>
+                <a href="#none"><i class="xi-facebook"></i></a>
+                <a href="#none"><i class="xi-instagram"></i></a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="order">
+      <div class="title">
+        <h1>Orders</h1>
+      </div>
+      <div class="search-option">
+        <div class="search-bar">
+          <input type="text" placeholder="Filter by keywords"><span>Search</span><i class="xi-search"></i>
+          <h6>Search</h6>
+        </div>
+        <div class="status">
+          <div class="default first">Open</div>
+          <i class="xi-caret-down-min"></i>
+          <span>status</span>
+          <ul>
+            <li data-height="10px">All</li>
+            <li data-height="-29px">Open</li>
+            <li data-height="-68px">Fulfilled</li>
+            <li data-height="-107px">Cancelled</li>
+            <li data-height="-146px">Partially Cancelled</li>
+          </ul>
+        </div>
+        <div class="fulfill">
+          <div class="default second">All</div>
+          <i class="xi-caret-down-min"></i>
+          <span>Fulfillment Status</span>
+          <ul>
+            <li data-height="10px">All</li>
+            <li data-height="-29px">Pending Sync to 3rd Party Supplier</li>
+            <li data-height="-68px">Pending Payment</li>
+            <li data-height="-107px">Paid & Pending Fulfillment</li>
+            <li data-height="-146px">Partially Fulfilled</li>
+            <li data-height="-185px">Fulfilled</li>
+          </ul>
+        </div>
+        <div class="source">
+          <div class="default third">All</div>
+          <i class="xi-caret-down-min"></i>
+          <span>Source</span>
+          <ul>
+            <li data-height="10px">All</li>
+            <li data-height="-29px">Wink</li>
+            <li data-height="-68px">AliExpress</li>
+            <li data-height="-107px">Alibaba</li>
+          </ul>
+        </div>
+      </div>
+      <div class="calendar-outer">
+        <div class="period">
+          <p><i class="xi-calendar"></i>
+            <span id="past"></span>
+            <span>~</span>
+            <span id="present"></span>
+          </p>
+        </div>
+        <div class="calendar">
+          <div class="date">
+            <ul>
+              <li>Today</li>
+              <li>Yesterday</li>
+              <li>This Week</li>
+              <li>Last Week</li>
+              <li>This Month</li>
+              <li>Last Month</li>
+            </ul>
+            <div class="days-up">
+              <div><input type="text" placeholder="-"><span>days up to today</span></div>
+              <div><input type="text" placeholder="-"><span>days starting today</span></div>
+            </div>
+          </div>
+          <div class="figure">
+            <div class="start-end">
+              <span class="startDate">Jan 3, 2022</span>
+              <span class="endDate">Jan 6, 2022</span>
+            </div>
+            <div class="figure-date">
+              <span><i class="xi-caret-down"></i></span>
+              <span>March <i class="xi-angle-down"></i></span>
+              <span>2022 <i class="xi-angle-down"></i></span>
+              <span><i class="xi-caret-down"></i></span>
+            </div>
+            <div class="figure-cal">
+            </div>
+          </div>
+        </div>
+        <div class="expo">
+          <a href="#none"><i class="xi-cloud-download-o"></i> Export orders</a>
+          <h6>Export currently selected orders</h6>
+        </div>
+      </div>
+      <div class="ordermatch">
+        <p>There are no orders matching your criteria.</p>
+      </div>
+      <div class="showing">
+        <div class="showing-item">
+          <p>Showing 0 items in 1 page</p>
+        </div>
+        <div class="showing-page">
+          <i class="xi-angle-left"></i>
+          <i class="xi-angle-left-thin"></i>
+          <span>1</span>
+          <i class="xi-angle-right-thin"></i>
+          <i class="xi-angle-right"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="button">
+      <span><i class="xi-message-o"></i></span>
+    </div>
+    <div class="show-welcome">
+      <div class="gray">
+        <h2>WINK</h2>
+        <h1>Welcome!</h1>
+        <p>
+          We're the Wink cutomer support team. Please let us know if you have any question about getting started!
+        </p>
+      </div>
+      <div class="message">
+        <h3>Start a conversation</h3>
+        <div class="message-desc">
+          <img src="./images/blog1.jpg">
+          <span>Our usual reply time</span>
+          <span>Under 4 hours</span>
+        </div>
+        <a id="SendMes-button" href="#none"><i class="xi-send"></i>Send us a message</a>
+      </div>
+      <div class="searchforhelp">
+        <h2>Search for help</h2>
+        <div class="search-input">
+          <i class="xi-search"></i>
+          <input type="text" placeholder="Search articles...">
+        </div>
+        <h3>Suggested article</h3>
+        <div class="introduce">
+          <a href="#none">
+            I'm a Retailer. How is the shipping rat..
+            <i class="xi-angle-right"></i>
+          </a>
+          <a href="#none">
+            I'm a Retailer. How is the shipping rat..
+            <i class="xi-angle-right"></i>
+          </a>
+          <a href="#none">
+            I'm a Retailer. How is the shipping rat..
+            <i class="xi-angle-right"></i>
+          </a>
+        </div>
+      </div>
+      <div class="howtoFirst">
+        <span>How to import products</span>
+        <span>Go to the "Search page" to find anything for your store The...</span>
+      </div>
+      <div class="howtoSecond">
+        <span>What Kind of Suppliers Can i Find on Wink?</span>
+        <span>Go to the "Search page" to find anything for your store The...</span>
+      </div>
+      <div class="howtoThird">
+        <span>What Kind of Suppliers Can i Find on Wink?</span>
+        <span>Go to the "Search page" to find anything for your store The...</span>
+      </div>
+    </div>
+
+    <script>
+      $('.button').click(function () {
+        $('.show-welcome').toggleClass('active')
+      })
+
+      $(".default").click(function () {
+        $(this).addClass("active")
+        $(this).next().next().next().children().addClass("active")
+        $(this).next().next().next().fadeToggle()
+        $(this).toggleClass("rotate")
+      })
+
+      $("html").click(function (e) {
+        if (!$(e.target).hasClass("active")) {
+          $(".default").removeClass("active")
+          $(".default").next().next().next().fadeOut()
+        }
+      })
+
+      $(".search-option ul li").on("click", function () {
+        $(this).parent().fadeOut()
+        $(this).parent().siblings(".default").text($(this).text())
+        var height = $(this).attr("data-height")
+        $(this).parent().animate({
+          top: height
+        }, 100)
+
+        var text = $(".default.first").text()
+        if (text == "Fulfilled" || text == "Cancelled" || text == "Partially Cancelled") {
+          $(".default.second").addClass("deActive")
+          $(".default.second").parent().css("opacity", "0.7")
+        } else {
+          $(".default.second").removeClass("deActive")
+          $(".default.second").parent().css("opacity", "1")
+        }
+      })
+
+      var monthEnglish = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
+        "October", "November", "December"
+      ]
+      var present = document.getElementById("present");
+      var past = document.getElementById("past");
+      var date = new Date();
+      present.innerHTML = monthEnglish[date.getMonth()] + " " + date.getDate() + " , " + date.getFullYear();
+      past.innerHTML = monthEnglish[date.getMonth() - 1] + " " + date.getDate() + " , " + date.getFullYear();
+      // 수정 필요....
+
+      $(".startDate, .endDate").click(function () {
+        $(this).addClass("active")
+        $(this).siblings().removeClass("active")
+      })
+
+      $(".period").click(function () {
+        $(this).next().toggleClass("active")
+        $(".period *").toggleClass("active")
+        $(".calendar *").addClass("active")
+      })
+
+      $("html").click(function (event) {
+        if (!$(event.target).hasClass("active")) {
+          $(".period *").removeClass("active")
+          $(".period").next().removeClass("active")
+        }
+      })
+    </script>
+</body>
+
+</html>

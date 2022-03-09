@@ -1,0 +1,43 @@
+.container
+	<aside>
+	사이드바 
+	</aside>
+	
+	<section>
+		.orders
+			.heading
+				h1
+			.search-bar
+				.search
+					input[type=text]
+					span
+					i
+				.status
+					select
+						option*5
+				.fulfill
+					select
+						option*6
+				.source
+					select
+						option*4
+			.날짜 + Export orders
+				.cal
+					i
+					p
+				.export
+					i
+					p
+			p
+			.showing
+				.showing-item
+					p
+				.showing-page
+					i
+					i
+					span
+					i
+					i
+			
+	</section>
+	.welcome-button 추가

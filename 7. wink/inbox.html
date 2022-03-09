@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+
+    <title>WINK</title>
+    <script src="script/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="./css/welcome-button.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="icon" href="./images/logo1.PNG">
+
+    <style>
+        @font-face {
+            font-family: "Lato";
+            src: url(./Lato/Lato-Regular.ttf);
+        }
+
+        * {
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        body {
+            font-size: 15px;
+            font-family: "Lato", sans-serif;
+            line-height: 1.6em;
+            color: #222;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #222;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .gnb-outer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            background-color: #0e2139;
+        }
+
+        .logo a {
+            display: block;
+            font-size: 50px;
+            font-weight: bold;
+            color: white;
+            margin-left: 50px;
+        }
+
+        .gnb {
+            display: flex;
+        }
+
+        .gnb li {
+            position: relative;
+            display: block;
+        }
+
+        .gnb li>a {
+            color: #7c8ca3;
+            font-size: 13px;
+            display: block;
+            padding: 27px 31px;
+        }
+
+        .gnb li>a:hover {
+            color: white;
+            background-color: #071524;
+        }
+
+        .gnb li>a.active {
+            background-color: #071524;
+        }
+
+        .gnb li>a i {
+            font-size: 18px;
+            margin-right: 3px;
+            vertical-align: text-bottom;
+        }
+
+        .dropdown {
+            position: absolute;
+            width: 100%;
+            top: 80px;
+            left: 0;
+            display: none;
+        }
+
+        .dropdown a {
+            display: block;
+            color: #7c8ca3;
+            height: 36px;
+            font-size: 13px;
+            padding: 8px 10px;
+            background-color: #071524;
+            text-align: center;
+        }
+
+        .dropdown a:hover {
+            color: white;
+            background-color: #0e2139;
+        }
+
+        .gnb li:hover .dropdown {
+            display: block;
+        }
+
+        .banner {
+            text-align: center;
+        }
+
+        .banner-add,
+        .banner-fin {
+            height: 41px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .banner-add {
+            background-color: #7194a7;
+            color: white;
+        }
+
+        .banner-fin {
+            background-color: #e5edf1;
+            color: #555555;
+        }
+
+        .banner-add h3,
+        .banner-fin h3 {
+            font-size: 14px;
+        }
+
+        .banner-add span,
+        .banner-fin span {
+            margin: 0 20px;
+        }
+
+        .banner-add p,
+        .banner-fin p {
+            font-size: 14px;
+        }
+
+        .banner-add a,
+        .banner-fin a {
+            font-size: 12px;
+            font-weight: bold;
+            display: block;
+            color: white;
+            background: linear-gradient(to bottom, #c97f38, #ad631b);
+            width: 160px;
+            height: 30px;
+            border-radius: 8px;
+            line-height: 30px;
+        }
+
+        .banner-add a:hover,
+        .banner-fin a:hover {
+            filter: brightness(110%);
+        }
+
+        .banner-fin h3 {
+            margin-left: 109px;
+        }
+
+        .banner-add a {
+            margin-left: 250px;
+        }
+
+        .banner-fin a {
+            margin-left: 163px;
+        }
+
+        .line {
+            width: 960px;
+            height: 17px;
+            border-bottom: 1px solid rgb(190, 189, 189);
+            margin: 0 auto;
+        }
+
+        .search {
+            width: 962px;
+            height: 60px;
+            margin: 17px auto;
+            background-color: #f1f6f9;
+            line-height: 60px;
+        }
+
+        .search-bar {
+            position: relative;
+            width: 322px;
+            height: 30px;
+        }
+
+        .search-bar input {
+            border: 2px solid rgba(185, 183, 183, 0.644);
+            width: 100%;
+            height: 100%;
+            margin-left: 15px;
+            padding-left: 15px;
+            border-radius: 5px;
+        }
+
+        .search-bar input:focus {
+            border: 2px solid black;
+        }
+
+        .search-bar input::placeholder {
+            font-style: italic;
+            font-size: 11px;
+            color: #acadad;
+        }
+
+        .search-bar i {
+            position: absolute;
+            top: 23px;
+            left: 315px;
+            font-weight: bold;
+        }
+
+        .snb-outer {
+            display: inline-block;
+            margin-top: 20px;
+            margin-left: 480px;
+            position: relative;
+        }
+
+        .snb-outer span {
+            position: absolute;
+            top: -10px;
+            left: 40px;
+            z-index: 100;
+            background-color: white;
+        }
+
+        .snb-outer.inbox span {
+            background: linear-gradient(to bottom, white, #e5edf1);
+        }
+
+        .snb {
+            display: inline-block;
+            border: 1px solid rgb(153, 153, 153);
+        }
+
+        .snb li {
+            font-size: 12px;
+            padding: 15px 13px 13px;
+            width: 180px;
+            text-align: center;
+            color: #666666;
+            border: 1px solid white;
+            cursor: pointer;
+        }
+
+        .snb li:first-child {
+            border-top: none;
+        }
+
+        .snb li:last-child {
+            border-bottom: none;
+        }
+
+        .snb li:hover {
+            background-color: #e5edf1;
+            border-top: 1px solid rgba(153, 153, 153, 0.479);
+            border-bottom: 1px solid rgb(153, 153, 153, 0.479);
+        }
+
+        .snb li:first-child:hover {
+            border-top: none;
+        }
+
+        .snb li:last-child:hover {
+            border-bottom: none;
+        }
+
+        .content>div {
+            display: none;
+            color: #222222;
+            width: 750px;
+            position: absolute;
+            top: 290px;
+            left: 680px;
+        }
+
+        .content>div.active {
+            display: block;
+        }
+
+        .content p {
+            font-size: 12px;
+        }
+
+        .compose-to,
+        .compose-subject,
+        .compose-body {
+            overflow: hidden;
+        }
+
+        .compose-to h3,
+        .compose-subject h3,
+        .compose-body h3 {
+            float: left;
+            width: 75px;
+            font-size: 16px;
+            text-align: right;
+        }
+
+        .compose-to input,
+        .compose-subject input {
+            width: 450px;
+            height: 22px;
+        }
+
+        .compose-to input,
+        .compose-subject input,
+        .compose-body textarea {
+            float: left;
+            margin-left: 5px;
+            margin-bottom: 10px;
+            border: 1px solid rgb(197, 196, 196);
+            background-color: #f7fafb;
+        }
+
+        .compose-to input:focus,
+        .compose-subject input:focus,
+        .compose-body textarea:focus {
+            border: 2px solid black;
+        }
+
+        .compose-attach {
+            margin-bottom: 5px;
+            margin-top: -10px;
+        }
+
+        .compose-attach .left {
+            float: left;
+            width: 80px;
+            visibility: hidden;
+        }
+
+        .compose-attach p {
+            font-size: 10px;
+            margin: 0 0 5px 0;
+        }
+
+        .attach-before a {
+            display: inline-block;
+            padding: 9px 25px;
+            background-color: #e8f3f6;
+            border: 1px solid rgb(197, 196, 196);
+            border-radius: 5px;
+            font-size: 12px;
+            color: #788287;
+            font-weight: bold;
+        }
+
+        .attach-before a:hover {
+            filter: brightness(102%);
+        }
+
+        .attach-after {
+            position: relative;
+        }
+
+        .attach-after a {
+            padding: 5px 10px;
+            border: 1px solid rgb(197, 196, 196);
+            background-color: #e8f3f6;
+        }
+
+        .attach-after a:hover {
+            border: 1px solid #222;
+        }
+
+        .attach-after a:nth-child(1) {
+            border-radius: 5px 0 0 5px;
+        }
+
+        .attach-after a:nth-child(3) {
+            margin-left: -3px;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .attach-after>p {
+            position: absolute;
+            top: -75px;
+            left: 75px;
+            background-color: rgb(59, 59, 59);
+            color: rgb(240, 240, 240);
+            font-size: 12px;
+            border-radius: 5px;
+            padding: 5px 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+        }
+
+        .attach-after>p::after {
+            content: "";
+            position: absolute;
+            top: 51px;
+            left: 10px;
+            background-color: rgb(59, 59, 59);
+            width: 13px;
+            height: 13px;
+            transform: rotate(45deg);
+        }
+
+        .attach-after a:nth-child(1):hover~p {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .attach-after i {
+            margin-right: 5px;
+        }
+
+        .drag {
+            width: 315px;
+            height: 60px;
+            background-color: #e8f3f6;
+            border: 1px solid rgb(197, 196, 196);
+            margin: 8px 0 3px 80px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .drag span {
+            position: absolute;
+            top: -2px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        .drag span::after {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border: 1px solid black;
+            top: 7px;
+            left: -3px;
+        }
+
+        .drag p {
+            position: absolute;
+            top: 38px;
+            right: 10px;
+            font-size: 11px;
+        }
+
+        .attach-before,
+        .attach-after {
+            display: none;
+        }
+
+        .attach-before.show,
+        .attach-after.show {
+            display: block;
+        }
+
+        .compose-body textarea {
+            width: 660px;
+            height: 250px;
+        }
+
+        .compose-submit {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .compose-submit button {
+            font-size: 12px;
+            color: white;
+            padding: 11px 30px;
+            font-weight: bold;
+            border-radius: 5px;
+            border: none;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .compose-submit button:hover {
+            filter: brightness(120%);
+        }
+
+        .compose-submit button:first-child {
+            background: linear-gradient(to bottom, #7aa3b9, #4a7790);
+        }
+
+        .compose-submit button:last-child {
+            background: linear-gradient(to bottom, #c87e37, #ab6019);
+        }
+        footer {
+            height: 80px;
+            background-color: #2B3A4D;
+            margin-top: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        footer * {
+            color: #999999;
+        }
+        .footer-inner {
+            width: 960px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+        }
+        .copyright {
+            margin-right: 40px;
+        }
+        .copyright-logo {
+            font-size: 35px;
+            color: white;
+            text-align: center;
+            margin-bottom: 3px;
+        }
+        .copyright-inc {
+            font-size: 10px;
+        }
+        .footer-menu {
+            
+        }
+        .footer-menu ul{
+            overflow: hidden;
+        }
+        .footer-menu ul li{
+            float: left;
+            margin-left: 20px;
+        }
+        .footer-menu ul li a{
+            font-size: 12px;
+        }
+        .footer-menu ul li a:hover{
+            color: rgb(158, 158, 1);
+            text-decoration: underline;
+        }
+        .footer-sns {
+            margin-left: 50px;
+        }
+        .footer-sns a{
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        .footer-sns a i:hover{
+            color: #777777;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="gnb-outer">
+                <div class="logo">
+                    <a href="#none">Wink</a>
+                </div>
+                <ul class="gnb">
+                    <li>
+                        <a href="#none"><i class="xi-box"></i>INBOX</a>
+                    </li>
+                    <li>
+                        <a href="#none"><i class="xi-tags"></i>FIND PRODUCTS</a>
+                    </li>
+                    <li>
+                        <a href="#none"><i class="xi-market"></i>MY DROPSHIPPING <i class="xi-angle-down"></i></a>
+                        <div class="dropdown">
+                            <a href="#none">Import List</a>
+                            <a href="#none">Sync List</a>
+                            <a href="#none">Wink Orders</a>
+                            <a href="#none">Extension Orders</a>
+                            <a href="#none">Pricing Rules</a>
+                            <a href="#none">Archive List</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#none"><i class="xi-cog"></i>SETTING <i class="xi-angle-down"></i></a>
+                        <div class="dropdown">
+                            <a href="#none">Connect AliExpress</a>
+                            <a href="#none">Connect Your Store</a>
+                            <a href="#none">Manage Store Plan</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#none"><i class="xi-help-o"></i>HELP CENTER</a>
+                    </li>
+                    <li>
+                        <a href="#none"><i class=""></i>HI,<span>OH </span><i class="xi-angle-down"></i></a>
+                        <div class="dropdown">
+                            <a href="#none">Store profile</a>
+                            <a href="#none">Business info</a>
+                            <a href="#none">Help Center</a>
+                            <a href="#none">User setting</a>
+                            <a href="#none">Log Out</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <aside>
+            <div class="banner">
+                <div class="banner-add">
+                    <h3>ADD MORE FROM OUR MARKETPLACE</h3>
+                    <span>|</span>
+                    <p>Sell niche products from US Suppliers</p>
+                    <a href="#none">UPGRADE NOW</a>
+                </div>
+                <div class="banner-fin">
+                    <h3>FINISH YOUR PROFILE</h3>
+                    <span>|</span>
+                    <p>Complete your profile to attract more suppliers now</p>
+                    <a href="#none">COMPLETE PROFILE</a>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="search">
+                <div class="search-bar">
+                    <input type="text" placeholder="SEARCH MESSAGES">
+                    <i class="xi-search"></i>
+                </div>
+            </div>
+        </aside>
+        <section class="snb-outer">
+            <span>MY MESSAGES</span>
+            <ul class="snb">
+                <li data-alt="tab1">INBOX</li>
+                <li data-alt="tab2">COMPOSE</li>
+                <li data-alt="tab3">SENT</li>
+                <li data-alt="tab4">DRAFTS</li>
+                <li data-alt="tab5">ARCHIVES</li>
+                <li data-alt="tab6">TRASH</li>
+            </ul>
+        </section>
+        <section class="content">
+            <div class="inbox active" id="tab1">
+                <h1>INBOX</h1>
+                <p>You are currently on the <b>Hobby Plan.</b> You will be able to message your suppliers directly once
+                    you have an order with each supplier and have paid for the order.</p>
+            </div>
+            <div class="compose" id="tab2">
+                <form action="">
+                    <h1>COMPOSE</h1>
+                    <p>You are currently on the <b>Hobby Plan.</b> You will be able to message your suppliers directly
+                        once
+                        you have an order with each supplier and have paid for the order.</p>
+                    <div class="compose-to">
+                        <h3>TO:</h3>
+                        <input type="text" placeholder="Type the name of the business or person you want to contact"
+                            required>
+                    </div>
+                    <div class="compose-subject">
+                        <h3>SUBJECT:</h3>
+                        <input type="text" required>
+                    </div>
+                    <div class="compose-attach">
+                        <div class="left">자리채우기용</div>
+                        <div class="right">
+                            <p> You can upload up to 5 attachments per message.</p>
+                            <div class="attach-before show">
+                                <a href="#none"><i class="xi-paperclip"></i> ATTACH FILES</a>
+                            </div>
+                            <div class="attach-after">
+                                <a href="#none"><i class="xi-plus"></i>Add</a>
+                                <p>You can choose multiple files at once, by holding Ctrl or<br> Cmd (on Mac) button, or
+                                    just Drag'n'drop files here.</p>
+                                <a href="#none"><i class="xi-trash"></i>Delete</a>
+                                <div class="drag">
+                                    <span>x</span>
+                                    <p>Drag and drop files into this box</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="compose-body">
+                        <h3>BODY:</h3>
+                        <textarea></textarea>
+                    </div>
+                    <div class="compose-submit">
+                        <button>SAVE AS DRAFT</button>
+                        <button>SEND MESSAGE</button>
+                    </div>
+                </form>
+            </div>
+            <div class="sent" id="tab3">
+                <h1>SENT</h1>
+            </div>
+            <div class="drafts" id="tab4">
+                <h1>DRAFTS</h1>
+            </div>
+            <div class="archives" id="tab5">
+                <h1>ARCHIVES</h1>
+                <p>Messages in this folder will never be removed. You can use this folder for long term storage.</p>
+            </div>
+            <div class="trash" id="tab6">
+                <h1>TRASH</h1>
+                <p>Messages in this folder can be removed from time-to-time. For long term storage, use the archive
+                    folder.</p>
+            </div>
+        </section>
+        <footer>
+            <div class="footer-inner">
+                <div class="copyright">
+                    <div class="copyright-logo">WINK</div>
+                    <div class="copyright-inc">Copyright © 2013-2022 MODALYST, INC  
+                    </div>
+                </div>
+                <div class="footer-menu">
+                    <ul>
+                        <li><a href="#none">BLOG</a></li>
+                        <li><a href="#none">TERMS OF USE</a></li>
+                        <li><a href="#none">PRIVACY POLICY</a></li>
+                        <li><a href="#none">HELP CENTER</a></li>
+                        <li><a href="#none">CONTACT</a></li>
+                    </ul>
+                </div>
+                <div class="footer-sns">
+                    <a href="#none"><i class="xi-facebook-official"></i></a>
+                    <a href="#none"><i class="xi-twitter"></i></a>
+                    <a href="#none"><i class="xi-pinterest"></i></a>
+                </div>
+            </div>
+        </footer>
+
+        <div class="button">
+            <span><i class="xi-message-o"></i></span>
+        </div>
+        <div class="show-welcome">
+            <div class="gray">
+                <h2>WINK</h2>
+                <h1>Welcome!</h1>
+                <p>
+                    We're the Wink cutomer support team. Please let us know if you have any question about getting
+                    started!
+                </p>
+            </div>
+            <div class="message">
+                <h3>Start a conversation</h3>
+                <div class="message-desc">
+                    <img src="./images/blog1.jpg">
+                    <span>Our usual reply time</span>
+                    <span>Under 4 hours</span>
+                </div>
+                <a id="SendMes-button" href="#none"><i class="xi-send"></i>Send us a message</a>
+            </div>
+            <div class="searchforhelp">
+                <h2>Search for help</h2>
+                <div class="search-input">
+                    <i class="xi-search"></i>
+                    <input type="text" placeholder="Search articles...">
+                </div>
+                <h3>Suggested article</h3>
+                <div class="introduce">
+                    <a href="#none">
+                        I'm a Retailer. How is the shipping rat..
+                        <i class="xi-angle-right"></i>
+                    </a>
+                    <a href="#none">
+                        I'm a Retailer. How is the shipping rat..
+                        <i class="xi-angle-right"></i>
+                    </a>
+                    <a href="#none">
+                        I'm a Retailer. How is the shipping rat..
+                        <i class="xi-angle-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="howtoFirst">
+                <span>How to import products</span>
+                <span>Go to the "Search page" to find anything for your store The...</span>
+            </div>
+            <div class="howtoSecond">
+                <span>What Kind of Suppliers Can i Find on Wink?</span>
+                <span>Go to the "Search page" to find anything for your store The...</span>
+            </div>
+            <div class="howtoThird">
+                <span>What Kind of Suppliers Can i Find on Wink?</span>
+                <span>Go to the "Search page" to find anything for your store The...</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('.button').click(function () {
+            $('.show-welcome').toggleClass('active')
+        })
+        $(".snb li:first-child").mouseenter(function () {
+            $(".snb-outer").addClass("inbox")
+        })
+        $(".snb li:first-child").mouseleave(function () {
+            $(".snb-outer").removeClass("inbox")
+        })
+        $(".snb li").click(function () {
+            var alt = $(this).attr("data-alt")
+            $("#" + alt).addClass("active").siblings().removeClass("active")
+        })
+        $(".attach-before a").click(function () {
+            $(this).parent().removeClass("show")
+            $(".attach-after").addClass("show")
+        })
+        $(".drag span").click(function () {
+            $(".attach-after").removeClass("show")
+            $(".attach-before").addClass("show")
+        })
+        $(".dropdown a").mouseenter(function () {
+            $(this).parent().siblings("a").addClass("active")
+        })
+        $(".dropdown a").mouseleave(function () {
+            $(this).parent().siblings("a").removeClass("active")
+        })
+    </script>
+</body>
+
+</html>
